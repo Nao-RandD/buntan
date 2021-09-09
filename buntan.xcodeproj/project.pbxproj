@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B01D43BA0476047EE09C930 /* Pods_buntan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E2FED4ED7A2635244999AC9 /* Pods_buntan.framework */; };
 		9FEC417426E8E2CC00B55299 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEC417326E8E2CC00B55299 /* AppDelegate.swift */; };
 		9FEC417626E8E2CC00B55299 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEC417526E8E2CC00B55299 /* SceneDelegate.swift */; };
 		9FEC417826E8E2CC00B55299 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEC417726E8E2CC00B55299 /* HomeViewController.swift */; };
@@ -16,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E2FED4ED7A2635244999AC9 /* Pods_buntan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_buntan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		204CB05096C6FB6120184E08 /* Pods-buntan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-buntan.release.xcconfig"; path = "Target Support Files/Pods-buntan/Pods-buntan.release.xcconfig"; sourceTree = "<group>"; };
 		9FEC417026E8E2CC00B55299 /* buntan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = buntan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FEC417326E8E2CC00B55299 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9FEC417526E8E2CC00B55299 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +27,7 @@
 		9FEC417C26E8E2D000B55299 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9FEC417F26E8E2D000B55299 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9FEC418126E8E2D000B55299 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DF870C7356CAFC3777A38F9F /* Pods-buntan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-buntan.debug.xcconfig"; path = "Target Support Files/Pods-buntan/Pods-buntan.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +35,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B01D43BA0476047EE09C930 /* Pods_buntan.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1021102835AC627E5C6AEB3E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0E2FED4ED7A2635244999AC9 /* Pods_buntan.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		9FEC416726E8E2CB00B55299 = {
 			isa = PBXGroup;
 			children = (
 				9FEC417226E8E2CC00B55299 /* buntan */,
 				9FEC417126E8E2CC00B55299 /* Products */,
+				A6CD8567C968D8EF79B08B73 /* Pods */,
+				1021102835AC627E5C6AEB3E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +71,41 @@
 		9FEC417226E8E2CC00B55299 /* buntan */ = {
 			isa = PBXGroup;
 			children = (
+				9FEC418826E8EE6700B55299 /* Model */,
+				9FEC418726E8EE5900B55299 /* Controller */,
 				9FEC417326E8E2CC00B55299 /* AppDelegate.swift */,
 				9FEC417526E8E2CC00B55299 /* SceneDelegate.swift */,
-				9FEC417726E8E2CC00B55299 /* HomeViewController.swift */,
 				9FEC417926E8E2CC00B55299 /* Main.storyboard */,
 				9FEC417C26E8E2D000B55299 /* Assets.xcassets */,
 				9FEC417E26E8E2D000B55299 /* LaunchScreen.storyboard */,
 				9FEC418126E8E2D000B55299 /* Info.plist */,
 			);
 			path = buntan;
+			sourceTree = "<group>";
+		};
+		9FEC418726E8EE5900B55299 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9FEC417726E8E2CC00B55299 /* HomeViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		9FEC418826E8EE6700B55299 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A6CD8567C968D8EF79B08B73 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DF870C7356CAFC3777A38F9F /* Pods-buntan.debug.xcconfig */,
+				204CB05096C6FB6120184E08 /* Pods-buntan.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +115,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9FEC418426E8E2D000B55299 /* Build configuration list for PBXNativeTarget "buntan" */;
 			buildPhases = (
+				0680D69DDD963637514C8D18 /* [CP] Check Pods Manifest.lock */,
 				9FEC416C26E8E2CC00B55299 /* Sources */,
 				9FEC416D26E8E2CC00B55299 /* Frameworks */,
 				9FEC416E26E8E2CC00B55299 /* Resources */,
+				213254C2F87F5E349650009E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -131,6 +174,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0680D69DDD963637514C8D18 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-buntan-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		213254C2F87F5E349650009E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-buntan/Pods-buntan-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-buntan/Pods-buntan-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-buntan/Pods-buntan-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9FEC416C26E8E2CC00B55299 /* Sources */ = {
@@ -283,6 +368,7 @@
 		};
 		9FEC418526E8E2D000B55299 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DF870C7356CAFC3777A38F9F /* Pods-buntan.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -301,6 +387,7 @@
 		};
 		9FEC418626E8E2D000B55299 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 204CB05096C6FB6120184E08 /* Pods-buntan.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
