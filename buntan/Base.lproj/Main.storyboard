@@ -74,21 +74,56 @@
             </objects>
             <point key="canvasLocation" x="1513" y="1096"/>
         </scene>
-        <!--View Controller-->
+        <!--User Point View Controller-->
         <scene sceneID="pLB-Yt-CAE">
             <objects>
-                <viewController id="pXT-cN-2ch" sceneMemberID="viewController">
+                <viewController id="pXT-cN-2ch" customClass="UserPointViewController" customModule="buntan" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="f67-er-xX8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="山本ハウス" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2li-6n-I2s">
+                                <rect key="frame" x="100" y="178" width="214" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ja8-i6-Iz1">
+                                <rect key="frame" x="80" y="217" width="254" height="0.5"/>
+                                <color key="backgroundColor" systemColor="labelColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="0.5" id="HzY-Xc-twB"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IiV-Mh-RBh">
+                                <rect key="frame" x="0.0" y="227.5" width="414" height="585.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="esb-ea-zp4"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="2li-6n-I2s" firstAttribute="leading" secondItem="esb-ea-zp4" secondAttribute="leading" constant="100" id="22S-fp-RjW"/>
+                            <constraint firstItem="esb-ea-zp4" firstAttribute="trailing" secondItem="2li-6n-I2s" secondAttribute="trailing" constant="100" id="7aO-90-rQE"/>
+                            <constraint firstItem="esb-ea-zp4" firstAttribute="trailing" secondItem="Ja8-i6-Iz1" secondAttribute="trailing" constant="80" id="9SI-1b-fhK"/>
+                            <constraint firstItem="IiV-Mh-RBh" firstAttribute="top" secondItem="Ja8-i6-Iz1" secondAttribute="bottom" constant="10" id="Afu-h1-4bW"/>
+                            <constraint firstItem="IiV-Mh-RBh" firstAttribute="leading" secondItem="esb-ea-zp4" secondAttribute="leading" id="EAa-Rq-Uf4"/>
+                            <constraint firstItem="IiV-Mh-RBh" firstAttribute="trailing" secondItem="esb-ea-zp4" secondAttribute="trailing" id="GXG-6m-HZC"/>
+                            <constraint firstItem="Ja8-i6-Iz1" firstAttribute="top" secondItem="2li-6n-I2s" secondAttribute="bottom" constant="3" id="N2P-t1-0aK"/>
+                            <constraint firstItem="IiV-Mh-RBh" firstAttribute="bottom" secondItem="esb-ea-zp4" secondAttribute="bottom" id="T3P-xd-G4j"/>
+                            <constraint firstItem="Ja8-i6-Iz1" firstAttribute="leading" secondItem="esb-ea-zp4" secondAttribute="leading" constant="80" id="Tfw-Ve-7jt"/>
+                            <constraint firstItem="2li-6n-I2s" firstAttribute="top" secondItem="esb-ea-zp4" secondAttribute="top" constant="90" id="eqg-Qy-vcP"/>
+                            <constraint firstItem="2li-6n-I2s" firstAttribute="centerX" secondItem="f67-er-xX8" secondAttribute="centerX" id="y8a-Yf-MBb"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="KdG-O8-gSw"/>
+                    <connections>
+                        <outlet property="tableView" destination="IiV-Mh-RBh" id="kFz-se-fI6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SBU-DE-2Lb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1513" y="-619"/>
+            <point key="canvasLocation" x="1511.5942028985507" y="-619.41964285714278"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="7ZK-vE-7zN">
@@ -115,6 +150,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="iVj-mo-KR5" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="LMM-nS-LdY">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
@@ -175,6 +211,9 @@
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
