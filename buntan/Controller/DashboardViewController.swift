@@ -1,5 +1,5 @@
 //
-//  UserPointViewController.swift
+//  DashboardViewController.swift
 //  buntan
 //
 //  Created by Naoyuki Kan on 2021/09/14.
@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class UserPointViewController: UIViewController {
+class DashboardViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     private var userPointList: [UserInfo] = [
         UserInfo(name: "Shin", point: 20),
@@ -21,8 +21,8 @@ class UserPointViewController: UIViewController {
         // Do any additional setup after loading the view.
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UINib(nibName:"UserPointCell", bundle: nil),
-                                   forCellReuseIdentifier: "UserPointCell")
+        tableView.register(UINib(nibName: "DashboardTableViewCell", bundle: nil),
+                                   forCellReuseIdentifier: "DashboardCell")
 
 //        let user1 = User(name: "Shin", point: 20)
 //        let user2 = User(name: "Nao", point: 40)
@@ -35,14 +35,14 @@ class UserPointViewController: UIViewController {
 
 }
 
-extension UserPointViewController: UITableViewDataSource, UITableViewDelegate {
+extension DashboardViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return userPointList.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        let cell = tableView.dequeueReusableCell(withIdentifier: "UserPointCell", for: indexPath) as! UserPointCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "DashboardCell", for: indexPath) as! DashboardTableViewCell
         // カスタムセルにRealmの情報を反映
         cell.configure(user: userPointList[indexPath.row].name,
                        point: userPointList[indexPath.row].point)
