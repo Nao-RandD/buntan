@@ -6,14 +6,18 @@
 //
 
 import UIKit
+import RealmSwift
 
 class HomeViewController: UIViewController {
+    private var taskList: Results<TaskItem>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
-
 }
+
+//extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
+//
+//}
 

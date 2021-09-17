@@ -3,7 +3,6 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -31,22 +30,33 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EA6-9X-lC1">
-                                <rect key="frame" x="20" y="751" width="374" height="42"/>
-                                <color key="backgroundColor" name="AccentColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="送信">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EA6-9X-lC1">
+                                <rect key="frame" x="100" y="751" width="214" height="42"/>
+                                <color key="backgroundColor" red="0.96713835000000004" green="0.58129739759999999" blue="0.117292203" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Send">
+                                            <attributes>
+                                                <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <font key="NSFont" metaFont="system" size="25"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="EA6-9X-lC1" secondAttribute="bottom" constant="20" id="9RH-2C-TxK"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="EA6-9X-lC1" secondAttribute="trailing" constant="20" id="Cat-mi-mO2"/>
-                            <constraint firstItem="EA6-9X-lC1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="QVO-OE-ZYK"/>
                             <constraint firstItem="lkI-8q-35L" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="RAd-sn-1ma"/>
+                            <constraint firstItem="EA6-9X-lC1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="100" id="SkK-Gt-DrR"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="EA6-9X-lC1" secondAttribute="trailing" constant="100" id="bEm-Qq-4fz"/>
                             <constraint firstItem="lkI-8q-35L" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="cRm-ZS-VPF"/>
                             <constraint firstItem="lkI-8q-35L" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="oYR-80-8rL"/>
                             <constraint firstItem="EA6-9X-lC1" firstAttribute="top" secondItem="lkI-8q-35L" secondAttribute="bottom" constant="20" id="uPG-3M-qGh"/>
@@ -74,10 +84,10 @@
             </objects>
             <point key="canvasLocation" x="1513" y="1096"/>
         </scene>
-        <!--User Point View Controller-->
+        <!--Dashboard View Controller-->
         <scene sceneID="pLB-Yt-CAE">
             <objects>
-                <viewController id="pXT-cN-2ch" customClass="UserPointViewController" customModule="buntan" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="pXT-cN-2ch" customClass="DashboardViewController" customModule="buntan" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="f67-er-xX8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -125,11 +135,11 @@
             </objects>
             <point key="canvasLocation" x="1511.5942028985507" y="-619.41964285714278"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--MyUI Navigation Controller View Controller-->
         <scene sceneID="7ZK-vE-7zN">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xme-wt-ymz" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" selectedImage="homekit" catalog="system" id="olE-vI-krD"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xme-wt-ymz" customClass="MyUINavigationControllerViewController" customModule="buntan" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="homekit" catalog="system" id="olE-vI-krD"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hYB-jJ-ps5">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -155,20 +165,19 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="xme-wt-ymz" kind="relationship" relationship="viewControllers" id="1gF-Lr-kDH"/>
+                        <segue destination="xme-wt-ymz" kind="relationship" relationship="viewControllers" id="miO-c8-9Ty"/>
                         <segue destination="z7c-C1-ZR0" kind="relationship" relationship="viewControllers" id="KDd-M3-dB3"/>
-                        <segue destination="d4c-Of-mFG" kind="relationship" relationship="viewControllers" id="bfo-oU-jpJ"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oWY-Ig-tqL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-307.24637681159425" y="188.83928571428569"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--MyUI Navigation Controller View Controller-->
         <scene sceneID="MR7-PM-IlU">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="z7c-C1-ZR0" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" selectedImage="pencil" catalog="system" id="BIE-Pa-v0t"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="z7c-C1-ZR0" customClass="MyUINavigationControllerViewController" customModule="buntan" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="pencil" catalog="system" id="BIE-Pa-v0t"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="SJT-fb-kqE"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="rm4-pZ-zDn">
@@ -184,33 +193,10 @@
             </objects>
             <point key="canvasLocation" x="603" y="-619"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="ja9-cp-KlB">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="d4c-Of-mFG" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" selectedImage="rosette" catalog="system" id="Lqb-Ww-Btr"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7Iz-af-boS">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="zvI-n1-EmA" kind="relationship" relationship="rootViewController" id="5qo-XX-Y0E"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="th1-Vp-DOq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="603" y="1096"/>
-        </scene>
     </scenes>
     <resources>
         <image name="homekit" catalog="system" width="128" height="106"/>
         <image name="pencil" catalog="system" width="128" height="113"/>
-        <image name="rosette" catalog="system" width="106" height="128"/>
-        <namedColor name="AccentColor">
-            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

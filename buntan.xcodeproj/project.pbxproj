@@ -8,25 +8,30 @@
 
 /* Begin PBXBuildFile section */
 		9B01D43BA0476047EE09C930 /* Pods_buntan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E2FED4ED7A2635244999AC9 /* Pods_buntan.framework */; };
-		9FB2F7E726F0D318006CDF73 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9FB2F7E626F0D318006CDF73 /* GoogleService-Info.plist */; };
+		9F8E376426F369FD00084709 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8E376226F369FD00084709 /* TaskTableViewCell.swift */; };
+		9F8E376526F369FD00084709 /* TaskTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F8E376326F369FD00084709 /* TaskTableViewCell.xib */; };
+		9F8E376726F36F9C00084709 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9F8E376626F36F9C00084709 /* GoogleService-Info.plist */; };
+		9FB2F7EA26F21961006CDF73 /* MyUINavigationControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB2F7E926F21961006CDF73 /* MyUINavigationControllerViewController.swift */; };
 		9FEC417426E8E2CC00B55299 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEC417326E8E2CC00B55299 /* AppDelegate.swift */; };
 		9FEC417626E8E2CC00B55299 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEC417526E8E2CC00B55299 /* SceneDelegate.swift */; };
 		9FEC417826E8E2CC00B55299 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEC417726E8E2CC00B55299 /* HomeViewController.swift */; };
 		9FEC417B26E8E2CC00B55299 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FEC417926E8E2CC00B55299 /* Main.storyboard */; };
 		9FEC417D26E8E2D000B55299 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FEC417C26E8E2D000B55299 /* Assets.xcassets */; };
 		9FEC418026E8E2D000B55299 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FEC417E26E8E2D000B55299 /* LaunchScreen.storyboard */; };
-		9FEC418C26EF5E4100B55299 /* TaskList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEC418B26EF5E4100B55299 /* TaskList.swift */; };
-		9FEC418F26F0B15D00B55299 /* UserPointCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEC418E26F0B15D00B55299 /* UserPointCell.swift */; };
-		9FEC419326F0B35E00B55299 /* UserPointCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FEC419226F0B35E00B55299 /* UserPointCell.xib */; };
-		9FEC419526F0B65B00B55299 /* UserPointViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEC419426F0B65B00B55299 /* UserPointViewController.swift */; };
+		9FEC418C26EF5E4100B55299 /* TaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEC418B26EF5E4100B55299 /* TaskItem.swift */; };
+		9FEC418F26F0B15D00B55299 /* DashboardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEC418E26F0B15D00B55299 /* DashboardTableViewCell.swift */; };
+		9FEC419326F0B35E00B55299 /* DashboardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FEC419226F0B35E00B55299 /* DashboardTableViewCell.xib */; };
+		9FEC419526F0B65B00B55299 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEC419426F0B65B00B55299 /* DashboardViewController.swift */; };
 		9FEC419826F0B84900B55299 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEC419726F0B84800B55299 /* UserInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0E2FED4ED7A2635244999AC9 /* Pods_buntan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_buntan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		204CB05096C6FB6120184E08 /* Pods-buntan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-buntan.release.xcconfig"; path = "Target Support Files/Pods-buntan/Pods-buntan.release.xcconfig"; sourceTree = "<group>"; };
-		9FB2F7E626F0D318006CDF73 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
-		9FB2F7E826F0D31F006CDF73 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9F8E376226F369FD00084709 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
+		9F8E376326F369FD00084709 /* TaskTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskTableViewCell.xib; sourceTree = "<group>"; };
+		9F8E376626F36F9C00084709 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9FB2F7E926F21961006CDF73 /* MyUINavigationControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyUINavigationControllerViewController.swift; sourceTree = "<group>"; };
 		9FEC417026E8E2CC00B55299 /* buntan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = buntan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FEC417326E8E2CC00B55299 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9FEC417526E8E2CC00B55299 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -35,10 +40,10 @@
 		9FEC417C26E8E2D000B55299 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9FEC417F26E8E2D000B55299 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9FEC418126E8E2D000B55299 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9FEC418B26EF5E4100B55299 /* TaskList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskList.swift; sourceTree = "<group>"; };
-		9FEC418E26F0B15D00B55299 /* UserPointCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPointCell.swift; sourceTree = "<group>"; };
-		9FEC419226F0B35E00B55299 /* UserPointCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserPointCell.xib; sourceTree = "<group>"; };
-		9FEC419426F0B65B00B55299 /* UserPointViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPointViewController.swift; sourceTree = "<group>"; };
+		9FEC418B26EF5E4100B55299 /* TaskItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItem.swift; sourceTree = "<group>"; };
+		9FEC418E26F0B15D00B55299 /* DashboardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardTableViewCell.swift; sourceTree = "<group>"; };
+		9FEC419226F0B35E00B55299 /* DashboardTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashboardTableViewCell.xib; sourceTree = "<group>"; };
+		9FEC419426F0B65B00B55299 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		9FEC419726F0B84800B55299 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		DF870C7356CAFC3777A38F9F /* Pods-buntan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-buntan.debug.xcconfig"; path = "Target Support Files/Pods-buntan/Pods-buntan.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -66,7 +71,6 @@
 		9FEC416726E8E2CB00B55299 = {
 			isa = PBXGroup;
 			children = (
-				9FB2F7E626F0D318006CDF73 /* GoogleService-Info.plist */,
 				9FEC417226E8E2CC00B55299 /* buntan */,
 				9FEC417126E8E2CC00B55299 /* Products */,
 				A6CD8567C968D8EF79B08B73 /* Pods */,
@@ -85,7 +89,7 @@
 		9FEC417226E8E2CC00B55299 /* buntan */ = {
 			isa = PBXGroup;
 			children = (
-				9FB2F7E826F0D31F006CDF73 /* GoogleService-Info.plist */,
+				9F8E376626F36F9C00084709 /* GoogleService-Info.plist */,
 				9FEC419626F0B80B00B55299 /* Contents */,
 				9FEC418D26F0B12200B55299 /* View */,
 				9FEC418826E8EE6700B55299 /* Model */,
@@ -104,7 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				9FEC417726E8E2CC00B55299 /* HomeViewController.swift */,
-				9FEC419426F0B65B00B55299 /* UserPointViewController.swift */,
+				9FEC419426F0B65B00B55299 /* DashboardViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -112,7 +116,7 @@
 		9FEC418826E8EE6700B55299 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				9FEC418B26EF5E4100B55299 /* TaskList.swift */,
+				9FEC418B26EF5E4100B55299 /* TaskItem.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -120,8 +124,10 @@
 		9FEC418D26F0B12200B55299 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				9FEC418E26F0B15D00B55299 /* UserPointCell.swift */,
-				9FEC419226F0B35E00B55299 /* UserPointCell.xib */,
+				9FEC418E26F0B15D00B55299 /* DashboardTableViewCell.swift */,
+				9FEC419226F0B35E00B55299 /* DashboardTableViewCell.xib */,
+				9F8E376226F369FD00084709 /* TaskTableViewCell.swift */,
+				9F8E376326F369FD00084709 /* TaskTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -130,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				9FEC419726F0B84800B55299 /* UserInfo.swift */,
+				9FB2F7E926F21961006CDF73 /* MyUINavigationControllerViewController.swift */,
 			);
 			path = Contents;
 			sourceTree = "<group>";
@@ -204,9 +211,10 @@
 			files = (
 				9FEC418026E8E2D000B55299 /* LaunchScreen.storyboard in Resources */,
 				9FEC417D26E8E2D000B55299 /* Assets.xcassets in Resources */,
-				9FB2F7E726F0D318006CDF73 /* GoogleService-Info.plist in Resources */,
+				9F8E376526F369FD00084709 /* TaskTableViewCell.xib in Resources */,
 				9FEC417B26E8E2CC00B55299 /* Main.storyboard in Resources */,
-				9FEC419326F0B35E00B55299 /* UserPointCell.xib in Resources */,
+				9FEC419326F0B35E00B55299 /* DashboardTableViewCell.xib in Resources */,
+				9F8E376726F36F9C00084709 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,12 +267,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9FEC419526F0B65B00B55299 /* UserPointViewController.swift in Sources */,
-				9FEC418F26F0B15D00B55299 /* UserPointCell.swift in Sources */,
-				9FEC418C26EF5E4100B55299 /* TaskList.swift in Sources */,
+				9FEC419526F0B65B00B55299 /* DashboardViewController.swift in Sources */,
+				9FEC418F26F0B15D00B55299 /* DashboardTableViewCell.swift in Sources */,
+				9FEC418C26EF5E4100B55299 /* TaskItem.swift in Sources */,
 				9FEC419826F0B84900B55299 /* UserInfo.swift in Sources */,
 				9FEC417826E8E2CC00B55299 /* HomeViewController.swift in Sources */,
 				9FEC417426E8E2CC00B55299 /* AppDelegate.swift in Sources */,
+				9FB2F7EA26F21961006CDF73 /* MyUINavigationControllerViewController.swift in Sources */,
+				9F8E376426F369FD00084709 /* TaskTableViewCell.swift in Sources */,
 				9FEC417626E8E2CC00B55299 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
