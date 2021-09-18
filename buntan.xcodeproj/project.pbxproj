@@ -11,6 +11,7 @@
 		9F8E376426F369FD00084709 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8E376226F369FD00084709 /* TaskTableViewCell.swift */; };
 		9F8E376526F369FD00084709 /* TaskTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F8E376326F369FD00084709 /* TaskTableViewCell.xib */; };
 		9F8E376726F36F9C00084709 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9F8E376626F36F9C00084709 /* GoogleService-Info.plist */; };
+		9F8E376926F576FB00084709 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8E376826F576FB00084709 /* MenuViewController.swift */; };
 		9FB2F7EA26F21961006CDF73 /* MyUINavigationControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB2F7E926F21961006CDF73 /* MyUINavigationControllerViewController.swift */; };
 		9FEC417426E8E2CC00B55299 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEC417326E8E2CC00B55299 /* AppDelegate.swift */; };
 		9FEC417626E8E2CC00B55299 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEC417526E8E2CC00B55299 /* SceneDelegate.swift */; };
@@ -31,6 +32,7 @@
 		9F8E376226F369FD00084709 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		9F8E376326F369FD00084709 /* TaskTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskTableViewCell.xib; sourceTree = "<group>"; };
 		9F8E376626F36F9C00084709 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9F8E376826F576FB00084709 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		9FB2F7E926F21961006CDF73 /* MyUINavigationControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyUINavigationControllerViewController.swift; sourceTree = "<group>"; };
 		9FEC417026E8E2CC00B55299 /* buntan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = buntan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FEC417326E8E2CC00B55299 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 			children = (
 				9FEC417726E8E2CC00B55299 /* HomeViewController.swift */,
 				9FEC419426F0B65B00B55299 /* DashboardViewController.swift */,
+				9F8E376826F576FB00084709 /* MenuViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9FEC419526F0B65B00B55299 /* DashboardViewController.swift in Sources */,
+				9F8E376926F576FB00084709 /* MenuViewController.swift in Sources */,
 				9FEC418F26F0B15D00B55299 /* DashboardTableViewCell.swift in Sources */,
 				9FEC418C26EF5E4100B55299 /* TaskItem.swift in Sources */,
 				9FEC419826F0B84900B55299 /* UserInfo.swift in Sources */,
@@ -424,6 +428,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 44SQBVTPVY;
 				INFOPLIST_FILE = buntan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -443,6 +448,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 44SQBVTPVY;
 				INFOPLIST_FILE = buntan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

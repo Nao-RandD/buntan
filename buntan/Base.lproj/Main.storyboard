@@ -48,6 +48,9 @@
                                         <integer key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="tappedSendButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hif-Sh-T9b"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -62,11 +65,42 @@
                             <constraint firstItem="EA6-9X-lC1" firstAttribute="top" secondItem="lkI-8q-35L" secondAttribute="bottom" constant="20" id="uPG-3M-qGh"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="TXA-pa-BCx"/>
+                    <navigationItem key="navigationItem" id="TXA-pa-BCx">
+                        <barButtonItem key="leftBarButtonItem" image="line.horizontal.3" catalog="system" id="wXc-Qc-dqe">
+                            <connections>
+                                <segue destination="gyr-9J-u7d" kind="presentation" identifier="showMenu" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="hWN-ag-QZD"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1513.0434782608697" y="188.83928571428569"/>
+        </scene>
+        <!--Menu View Controller-->
+        <scene sceneID="CFe-ad-XkK">
+            <objects>
+                <viewController modalPresentationStyle="overCurrentContext" id="gyr-9J-u7d" customClass="MenuViewController" customModule="buntan" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" tag="1" contentMode="scaleToFill" id="sOI-9x-vhg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iLM-JO-3da">
+                                <rect key="frame" x="0.0" y="0.0" width="281" height="813"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="zGE-1z-hNg"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.50186460381312081" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <connections>
+                        <outlet property="menuView" destination="iLM-JO-3da" id="4dk-Vm-fCM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="neB-Do-lAu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2513.04347826087" y="188.83928571428569"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="M58-ZP-b4q">
@@ -139,7 +173,9 @@
         <scene sceneID="7ZK-vE-7zN">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xme-wt-ymz" customClass="MyUINavigationControllerViewController" customModule="buntan" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="homekit" catalog="system" id="olE-vI-krD"/>
+                    <tabBarItem key="tabBarItem" title="" image="homekit" catalog="system" id="olE-vI-krD">
+                        <color key="badgeColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hYB-jJ-ps5">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -177,7 +213,7 @@
         <scene sceneID="MR7-PM-IlU">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="z7c-C1-ZR0" customClass="MyUINavigationControllerViewController" customModule="buntan" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="pencil" catalog="system" id="BIE-Pa-v0t"/>
+                    <tabBarItem key="tabBarItem" title="" image="Dashboard" id="BIE-Pa-v0t"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="SJT-fb-kqE"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="rm4-pZ-zDn">
@@ -195,8 +231,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Dashboard" width="33.5" height="33.5"/>
         <image name="homekit" catalog="system" width="128" height="106"/>
-        <image name="pencil" catalog="system" width="128" height="113"/>
+        <image name="line.horizontal.3" catalog="system" width="128" height="64"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
