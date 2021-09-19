@@ -8,16 +8,11 @@
 import UIKit
 
 class TaskTableViewCell: UITableViewCell {
+    @IBOutlet weak var taskNameLabel: UILabel!
+    @IBOutlet weak var taskPointLabel: UILabel!
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    func configure(taskName: String, point: Int) {
+        taskNameLabel.text = taskName
+        taskPointLabel.text = "\(point) pt"
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
 }

@@ -48,4 +48,6 @@ class MenuViewController: UIViewController {
             }
         }
     }
+
+    @IBAction private func exit(segue: UIStoryboardSegue) {}
 }
