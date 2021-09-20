@@ -10,9 +10,10 @@ import RealmSwift
 
 class HomeViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
-    var indicator: UIActivityIndicatorView!
+    private var indicator: UIActivityIndicatorView!
     private var taskList: Results<TaskItem>!
     private var realm: Realm!
+    private var token: NotificationToken?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,10 +21,20 @@ class HomeViewController: UIViewController {
         indicator = UIActivityIndicatorView()
         view.addSubview(indicator)
 
+        realm = try! Realm()
+        taskList = realm.objects(TaskItem.self)
+        token = taskList.observe { [weak self] _ in
+          self?.reload()
+        }
+
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "TaskTableViewCell", bundle: nil),
                                    forCellReuseIdentifier: "TaskCell")
+    }
+
+    private func reload() {
+        tableView.reloadData()
     }
 
     @IBAction func tappedSendButton(_ sender: Any) {
