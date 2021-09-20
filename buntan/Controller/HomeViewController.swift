@@ -55,6 +55,8 @@ class HomeViewController: UIViewController {
         view.addSubview(imageView)
     }
 
+    @IBAction private func exit(segue: UIStoryboardSegue) {}
+
 //    func hideIndicator(){
 //        // viewにローディング画面が出ていれば閉じる
 //        if let viewWithTag = self.view.viewWithTag(100100) {
