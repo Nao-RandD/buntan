@@ -11,8 +11,8 @@ import RealmSwift
 class TaskItem: Object {
     @objc dynamic var taskId = 0
     @objc dynamic var name = ""
-    @objc dynamic var point = ""
+    @objc dynamic var point = 0
     override static func primaryKey() -> String? {
-        return "taskItem"
+        return "taskId"
     }
 }
