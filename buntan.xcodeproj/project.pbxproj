@@ -11,6 +11,7 @@
 		9F7F135426F7692100AF0543 /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7F135326F7692100AF0543 /* AddTaskViewController.swift */; };
 		9F7F135626F83CCF00AF0543 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7F135526F83CCF00AF0543 /* SignupViewController.swift */; };
 		9F7F135826F83F5700AF0543 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7F135726F83F5700AF0543 /* TabBarController.swift */; };
+		9F7F135A26FB596A00AF0543 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7F135926FB596900AF0543 /* ProfileViewController.swift */; };
 		9F8E376426F369FD00084709 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8E376226F369FD00084709 /* TaskTableViewCell.swift */; };
 		9F8E376526F369FD00084709 /* TaskTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F8E376326F369FD00084709 /* TaskTableViewCell.xib */; };
 		9F8E376726F36F9C00084709 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9F8E376626F36F9C00084709 /* GoogleService-Info.plist */; };
@@ -35,6 +36,7 @@
 		9F7F135326F7692100AF0543 /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
 		9F7F135526F83CCF00AF0543 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		9F7F135726F83F5700AF0543 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TabBarController.swift; path = buntan/Controller/TabBarController.swift; sourceTree = SOURCE_ROOT; };
+		9F7F135926FB596900AF0543 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		9F8E376226F369FD00084709 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		9F8E376326F369FD00084709 /* TaskTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskTableViewCell.xib; sourceTree = "<group>"; };
 		9F8E376626F36F9C00084709 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				9F8E376826F576FB00084709 /* MenuViewController.swift */,
 				9F7F135326F7692100AF0543 /* AddTaskViewController.swift */,
 				9F7F135526F83CCF00AF0543 /* SignupViewController.swift */,
+				9F7F135926FB596900AF0543 /* ProfileViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 				9F7F135826F83F5700AF0543 /* TabBarController.swift in Sources */,
 				9F7F135426F7692100AF0543 /* AddTaskViewController.swift in Sources */,
 				9F8E376926F576FB00084709 /* MenuViewController.swift in Sources */,
+				9F7F135A26FB596A00AF0543 /* ProfileViewController.swift in Sources */,
 				9FEC418F26F0B15D00B55299 /* DashboardTableViewCell.swift in Sources */,
 				9FEC418C26EF5E4100B55299 /* TaskItem.swift in Sources */,
 				9FEC419826F0B84900B55299 /* UserInfo.swift in Sources */,
