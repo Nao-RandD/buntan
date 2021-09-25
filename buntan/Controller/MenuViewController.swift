@@ -9,6 +9,9 @@ import UIKit
 
 class MenuViewController: UIViewController {
     @IBOutlet weak var menuView: UIView!
+    @IBOutlet weak var userNameLabel: UILabel!
+
+    private let userDefaults = UserDefaults.standard
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -26,7 +29,7 @@ class MenuViewController: UIViewController {
         },
             completion: { bool in
         })
-
+        userNameLabel.text = userDefaults.object(forKey: "User") as? String
     }
 
     // メニューエリア以外タップ時の処理
@@ -49,5 +52,7 @@ class MenuViewController: UIViewController {
         }
     }
 
-    @IBAction private func exit(segue: UIStoryboardSegue) {}
+    @IBAction private func exit(segue: UIStoryboardSegue) {
+        userNameLabel.text = userDefaults.object(forKey: "User") as? String
+    }
 }
