@@ -8,7 +8,6 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
-
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var groupLabel: UILabel!
 
@@ -23,7 +22,7 @@ class ProfileViewController: UIViewController {
     }
 }
 
-/// MARK - UITextFieldDelegate
+// MARK - UITextFieldDelegate
 extension ProfileViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         nameTextField = textField

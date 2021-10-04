@@ -8,16 +8,11 @@
 import UIKit
 
 class HistoryTableViewCell: UITableViewCell {
+    @IBOutlet weak var taskNameLabel: UILabel!
+    @IBOutlet weak var taskNumberLabel: UILabel!
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    func configure(taskName: String, taskNum: Int) {
+        taskNameLabel.text = taskName
+        taskNumberLabel.text = "No. \(taskNum)"
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
 }

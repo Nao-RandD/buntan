@@ -38,8 +38,8 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="taskNameLabel" destination="vQK-uK-1cJ" id="KY6-KG-CWh"/>
-                <outlet property="taskPointLabel" destination="NAj-Id-z3Q" id="feo-zU-yrf"/>
+                <outlet property="taskNameLabel" destination="vQK-uK-1cJ" id="J44-sG-ro9"/>
+                <outlet property="taskPointLabel" destination="NAj-Id-z3Q" id="ZEZ-1r-F2F"/>
             </connections>
             <point key="canvasLocation" x="26" y="110"/>
         </tableViewCell>
