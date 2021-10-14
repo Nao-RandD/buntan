@@ -20,12 +20,20 @@ class HomeViewController: UIViewController {
     private let db = Firestore.firestore()
     private let userDefaults = UserDefaults.standard
     private var selectTask: String = ""
+    private var taskListener: ListenerRegistration?
+    private var groupTasks : [GroupTask]? = nil
+
+    struct GroupTask {
+        var group: String
+        var name: String
+        var point: Int
+    }
 
     override func viewWillAppear(_ animated: Bool) {
-        // Do any additional setup after loading the view.
 
         getTaskList()
         settingTableView()
+        setListener()
     }
 
     override func viewDidLoad() {
@@ -39,21 +47,7 @@ class HomeViewController: UIViewController {
     @IBAction func tappedSendButton(_ sender: Any) {
         showIndicator()
 
-        // TableViewで選択されているタスクを取得
-        let taskCollection = db.collection("group")
-        taskCollection.getDocuments { (_snapshot, _error) in
-            if let error = _error {
-                print(error.localizedDescription)
-                return
-            }
-
-            let datas = _snapshot!.documents.compactMap { $0.data() }
-            let groups = datas.map {
-                $0["task"]
-            } as? [String: Int]
-            self.taskList = groups ?? ["タスク": 0]
-        }
-
+        /// TODO - 
         // Realmにデータを保存
 
 
@@ -66,13 +60,6 @@ class HomeViewController: UIViewController {
     }
 
     @IBAction private func exit(segue: UIStoryboardSegue) {}
-
-//    func hideIndicator(){
-//        // viewにローディング画面が出ていれば閉じる
-//        if let viewWithTag = self.view.viewWithTag(100100) {
-//            viewWithTag.removeFromSuperview()
-//        }
-//    }
 }
 
 extension HomeViewController {
@@ -92,47 +79,33 @@ extension HomeViewController {
                                    forCellReuseIdentifier: "TaskCell")
     }
 
+    private func setListener() {
+        self.taskListener = db.collection( "task" ).addSnapshotListener { snapshot, e in
+                if let snapshot = snapshot {
+
+                    self.groupTasks = snapshot.documents.map { task -> GroupTask in
+                        let data = task.data()
+                        return GroupTask(group: data["group"] as! String, name: data["name"] as! String, point: data["point"] as! Int)
+                    }
+                    print("中身は\(self.groupTasks)")
+                    self.tableView.reloadData()
+                }
+            }
+    }
+
     private func saveToRealm() {
 
     }
 
     private func getTaskList() {
         let group = userDefaults.object(forKey: "Group") as! String
-        let taskCollection = db.collection("group").document(group)
-        taskCollection.getDocument { (_snapshot, _error) in
+        let taskCollection = db.collection("task")
+        taskCollection.getDocuments { (_snapshot, _error) in
             if let error = _error {
                 print(error.localizedDescription)
                 return
             }
-
-            if let document = _snapshot, document.exists {
-                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
-                print("Document data: \(dataDescription)")
-
-                guard let data = document.data() as? [String: Any] else {
-                    print("データを取得できませんでした")
-                    return
-                }
-                print("Documentのtaskは\(data)")
-            } else {
-                print("Document does not exist")
-            }
-//
-//            let datas = _snapshot!.documents.compactMap { $0.data() }
-//            print(datas)
-//            let groups = datas.map {
-//                print("taskの中身は\($0["task"])")
-//                $0["task"]
-//            } as? [String: Int]
-//            print(groups)
-//            self.taskList = groups ?? ["タスク": 0]
         }
-
-        for (key, value) in taskList {
-            let _value = String(value)
-            _taskList.append([key, _value])
-        }
-        print(_taskList)
     }
 
     private func setTaskItem(contents: Results<TaskItem>, user: String, point: Int) -> TaskItem {
@@ -151,7 +124,7 @@ extension HomeViewController {
         let point = getTotalPoint()
         let data: [String: Any] = ["name": user, "group": gourp, "point": point]
 
-        self.db.collection("users").document(user).setData(data, merge: true)
+        self.db.collection("task").addDocument(data: data)
     }
 
     private func getTotalPoint() -> Int {
@@ -201,24 +174,23 @@ extension HomeViewController {
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        guard let taskList = taskList else {
-//            return 0
-//        }
-        return taskList.count
+        guard let groupTasks = groupTasks else { return 0 }
+        return groupTasks.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "TaskCell", for: indexPath) as! TaskTableViewCell
 
-        // カスタムセルにRealmの情報を反映
-        cell.configure(taskName: _taskList[indexPath.row][0],
-        point: Int(_taskList[indexPath.row][1]) ?? 0)
+        guard let groupTasks = groupTasks else { return cell }
+        cell.configure(taskName: groupTasks[indexPath.row].name,
+                       point: groupTasks[indexPath.row].point)
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        print("選択中のタスクは\(taskList[indexPath.row])")
-//        selectTask = taskList[indexPath.row].name
+        guard let groupTasks = groupTasks else { return }
+        print("選択中のタスクは\(groupTasks[indexPath.row])")
+        selectTask = groupTasks[indexPath.row].name
      }
 }
