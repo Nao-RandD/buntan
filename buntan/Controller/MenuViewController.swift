@@ -46,8 +46,7 @@ class MenuViewController: UIViewController {
                 },
                     completion: { bool in
                         self.dismiss(animated: true, completion: nil)
-                }
-                )
+                })
             }
         }
     }

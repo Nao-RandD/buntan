@@ -14,7 +14,6 @@ class HomeViewController: UIViewController {
     
     private var indicator: UIActivityIndicatorView!
     private var taskList: [String: Int] = ["タスク": 0]
-    private var _taskList: [[String]] = [["", ""]]
     private var realm: Realm!
     private var token: NotificationToken?
     private let db = Firestore.firestore()
@@ -47,15 +46,22 @@ class HomeViewController: UIViewController {
     @IBAction func tappedSendButton(_ sender: Any) {
         showIndicator()
 
-        /// TODO - 
+        /// TODO -
+        guard let point = groupTasks?[0].point else {
+            print("ポイント取得に失敗")
+            return
+        }
         // Realmにデータを保存
-
+        let realm = try! Realm()
+        let task = setTaskItem(contents: realm.objects(TaskItem.self), name: selectTask, point: point)
+        try! realm.write {
+            realm.add(task)
+            print("新しいリスト追加：\(task)")
+        }
 
         // Firestoreにデータを送信
         sendFirestore()
         self.indicator.stopAnimating()
-//        self.showDoneImage()
-        sleep(1)
         showSuccessAlert()
     }
 
@@ -82,7 +88,6 @@ extension HomeViewController {
     private func setListener() {
         self.taskListener = db.collection( "task" ).addSnapshotListener { snapshot, e in
                 if let snapshot = snapshot {
-
                     self.groupTasks = snapshot.documents.map { task -> GroupTask in
                         let data = task.data()
                         return GroupTask(group: data["group"] as! String, name: data["name"] as! String, point: data["point"] as! Int)
@@ -108,15 +113,14 @@ extension HomeViewController {
         }
     }
 
-    private func setTaskItem(contents: Results<TaskItem>, user: String, point: Int) -> TaskItem {
+    private func setTaskItem(contents: Results<TaskItem>, name: String, point: Int) -> TaskItem {
         let task = TaskItem()
         task.taskId = contents.count + 1
-        task.name = user
+        task.name = name
         task.point = point
 
         return task
     }
-
 
     private func sendFirestore() {
         let user = userDefaults.object(forKey: "User") as! String
@@ -154,7 +158,6 @@ extension HomeViewController {
         indicator.center = view.center
         indicator.style = .whiteLarge
         indicator.color = .darkGray
-
         indicator.startAnimating()
     }
 
@@ -179,12 +182,11 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
         let cell = tableView.dequeueReusableCell(withIdentifier: "TaskCell", for: indexPath) as! TaskTableViewCell
-
         guard let groupTasks = groupTasks else { return cell }
         cell.configure(taskName: groupTasks[indexPath.row].name,
                        point: groupTasks[indexPath.row].point)
+
         return cell
     }
 

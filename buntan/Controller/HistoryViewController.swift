@@ -9,6 +9,7 @@ import UIKit
 import RealmSwift
 
 class HistoryViewController: UIViewController {
+
     private var taskList: Results<TaskItem>!
     private var realm: Realm!
     private var token: NotificationToken?
@@ -43,7 +44,8 @@ extension HistoryViewController {
     }
 }
 
-// MARK - UITextFieldDelegate
+// MARK - UITableViewDelegate
+
 extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let taskList = taskList else {
@@ -58,12 +60,13 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
 
         // カスタムセルにRealmの情報を反映
         cell.configure(taskName: taskList[indexPath.row].name,
-                       taskNum: taskList[indexPath.row].taskId)
+                       taskNum: taskList[indexPath.row].point)
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("選択中のタスクは\(taskList[indexPath.row])")
         selectTask = taskList[indexPath.row].name
+
      }
 }

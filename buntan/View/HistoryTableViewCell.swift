@@ -13,6 +13,6 @@ class HistoryTableViewCell: UITableViewCell {
 
     func configure(taskName: String, taskNum: Int) {
         taskNameLabel.text = taskName
-        taskNumberLabel.text = "No. \(taskNum)"
+        taskNumberLabel.text = "\(taskNum)pt"
     }
 }
