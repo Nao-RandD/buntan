@@ -88,7 +88,8 @@ extension SignupViewController {
     }
 }
 
-/// MARK - UICollectionViewDelegate
+// MARK - UIPickerViewDelegate
+
 extension SignupViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1

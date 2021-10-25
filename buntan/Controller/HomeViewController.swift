@@ -44,20 +44,13 @@ class HomeViewController: UIViewController {
     }
 
     @IBAction func tappedSendButton(_ sender: Any) {
-        showIndicator()
-
         /// TODO -
         guard let point = groupTasks?[0].point else {
             print("ポイント取得に失敗")
             return
         }
         // Realmにデータを保存
-        let realm = try! Realm()
-        let task = setTaskItem(contents: realm.objects(TaskItem.self), name: selectTask, point: point)
-        try! realm.write {
-            realm.add(task)
-            print("新しいリスト追加：\(task)")
-        }
+        RealmManager().writeTaskItem(task: selectTask, point: point)
 
         // Firestoreにデータを送信
         sendFirestore()
@@ -70,15 +63,6 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController {
     private func settingTableView() {
-        indicator = UIActivityIndicatorView()
-        view.addSubview(indicator)
-
-//        realm = try! Realm()
-//        taskList = realm.objects(TaskItem.self)
-//        token = taskList.observe { [weak self] _ in
-//          self?.reload()
-//        }
-
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "TaskTableViewCell", bundle: nil),
@@ -98,10 +82,6 @@ extension HomeViewController {
             }
     }
 
-    private func saveToRealm() {
-
-    }
-
     private func getTaskList() {
         let group = userDefaults.object(forKey: "Group") as! String
         let taskCollection = db.collection("task")
@@ -111,15 +91,6 @@ extension HomeViewController {
                 return
             }
         }
-    }
-
-    private func setTaskItem(contents: Results<TaskItem>, name: String, point: Int) -> TaskItem {
-        let task = TaskItem()
-        task.taskId = contents.count + 1
-        task.name = name
-        task.point = point
-
-        return task
     }
 
     private func sendFirestore() {
@@ -143,24 +114,6 @@ extension HomeViewController {
         tableView.reloadData()
     }
 
-    private func showDoneImage() {
-        let image = UIImage(named: "Done")
-        let imageView = UIImageView(image: image)
-
-        imageView.center = CGPoint(x: view.frame.size.width/2, y: view.frame.size.height/2)
-        view.addSubview(imageView)
-    }
-
-    private func showIndicator() {
-        guard let indicator = indicator else {
-            return
-        }
-        indicator.center = view.center
-        indicator.style = .whiteLarge
-        indicator.color = .darkGray
-        indicator.startAnimating()
-    }
-
     private func showSuccessAlert() {
         let alert = UIAlertController(title: "タスクの送信完了",
                                       message:  "お疲れさまでした",
@@ -174,6 +127,8 @@ extension HomeViewController {
         present(alert, animated: true, completion: nil)
     }
 }
+
+// MARK - UITableViewDelegate
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -196,3 +151,24 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         selectTask = groupTasks[indexPath.row].name
      }
 }
+
+
+
+
+//private func showDoneImage() {
+//    let image = UIImage(named: "Done")
+//    let imageView = UIImageView(image: image)
+//
+//    imageView.center = CGPoint(x: view.frame.size.width/2, y: view.frame.size.height/2)
+//    view.addSubview(imageView)
+//}
+//
+//private func showIndicator() {
+//    guard let indicator = indicator else {
+//        return
+//    }
+//    indicator.center = view.center
+//    indicator.style = .whiteLarge
+//    indicator.color = .darkGray
+//    indicator.startAnimating()
+//}
