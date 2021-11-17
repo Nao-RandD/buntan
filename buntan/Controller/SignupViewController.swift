@@ -2,109 +2,91 @@
 //  SignupViewController.swift
 //  buntan
 //
-//  Created by Naoyuki Kan on 2021/09/20.
+//  Created by Naoyuki Kan on 2021/11/16.
 //
 
-import UIKit
 import Firebase
+import UIKit
 
 class SignupViewController: UIViewController {
-    @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var houseGroupTextField: UITextField!
-    @IBOutlet weak var groupTextField: UITextField!
+    @IBOutlet private weak var nameTextField: UITextField!
+    @IBOutlet private weak var emailTextField: UITextField!
+    @IBOutlet private weak var passwordTextField: UITextField!
 
     private let userDefaults = UserDefaults.standard
-    private var groupPickerView: UIPickerView!
-    /// FIXME - 仮置として追加
-    private var groupList = ["山本ハウス", "太田夫妻宅"]
-    private let db = Firestore.firestore()
 
     override func viewDidLoad() {
-        super.viewDidLoad()
-        // groupPickerViewを設定
-        groupPickerView = UIPickerView()
-        groupPickerView.delegate = self
-        groupPickerView.dataSource = self
-        groupTextField.inputView = groupPickerView
 
-        let collectionReference = db.collection("group")
-        collectionReference.getDocuments { (_snapshot, _error) in
-            if let error = _error {
-                print(error.localizedDescription)
-                return
-            }
-
-            let datas = _snapshot!.documents.compactMap { $0.data() }
-            let groups = datas.map {
-                $0["name"]
-            } as? [String]
-            self.groupList = groups ?? ["ハウス", "自宅"]
-            print(self.groupList)
-        }
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-            self.view.endEditing(true)
+        self.view.endEditing(true)
     }
 
-    @IBAction func tappedSingupButton(_ sender: Any) {
-        guard let name = nameTextField.text, !name.isEmpty else {
-            showAlert(title: "必須項目の入力漏れ",
-                      message: "ユーザー名を入力してください")
-            return
+    @IBAction private func didTapSignUpButton() {
+        let email = emailTextField.text ?? ""
+        let password = passwordTextField.text ?? ""
+        let name = nameTextField.text ?? ""
+
+        signUp(email: email, password: password, name: name)
+    }
+}
+
+// MARK - Private Function -
+
+extension SignupViewController {
+    private func signUp(email: String, password: String, name: String) {
+        print("メール：\(email)、パスワード\(password)、ユーザー名\(name)を登録")
+        Auth.auth().createUser(withEmail: email, password: password) { [weak self] result, error in
+            print("\(String(describing: result))")
+            guard let self = self else { return }
+            if let user = result?.user {
+                print("メールアドレス登録完了")
+                self.updateDisplayName(name, of: user)
+            }
+            self.showError(error)
         }
-        guard let group = groupTextField.text, !group.isEmpty else {
-            showAlert(title: "必須項目の入力漏れ",
-                      message: "参加するグループを選択してください")
-            return
+    }
+
+    private func updateDisplayName(_ name: String, of user: User) {
+        let request = user.createProfileChangeRequest()
+        request.displayName = name
+        request.commitChanges() { [weak self] error in
+            guard let self = self else { return }
+            if error != nil {
+                print("ユーザー名登録完了")
+                self.sendEmailVerification(to: user, name: name)
+            }
+            self.showError(error)
         }
+    }
+
+    private func sendEmailVerification(to user: User, name: String) {
+        user.sendEmailVerification() { [weak self] error in
+            guard let self = self else { return }
+            if error != nil {
+                print("アクティベート含めた登録完了")
+                self.nextScreen(name: name)
+            }
+            self.showError(error)
+        }
+    }
+    
+    private func showError(_ errorOrNil: Error?) {
+        // エラーがなければ何もしません
+        guard errorOrNil != nil else { return }
+
+        let message = "エラーが起きました" // ここは後述しますが、とりあえず固定文字列
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+
+    private func nextScreen(name: String) {
+        self.userDefaults.set(name, forKey: "User")
 
         let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "TabBarController") as! TabBarController
         secondViewController.modalPresentationStyle = .fullScreen
         self.present(secondViewController, animated: false, completion: nil)
-
-        userDefaults.set(name, forKey: "User")
-        userDefaults.set(group, forKey: "Group")
-
-        let data: [String: Any] = ["name": name, "group": group, "point": 0]
-        db.collection("users").document(name).setData(data, merge: true)
-        print("userDefaultsを更新")
-        print("ユーザー名：\(name), グループ：\(group)としてSign Up完了")
-    }
-}
-
-extension SignupViewController {
-    private func showAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title,
-                                      message:  message,
-                                      preferredStyle:  UIAlertController.Style.alert)
-        let confirmAction = UIAlertAction(title: "OK",
-                                          style: UIAlertAction.Style.default,
-                                          handler: {
-                                            (action: UIAlertAction!) -> Void in
-        })
-        alert.addAction(confirmAction)
-        present(alert, animated: true, completion: nil)
-    }
-}
-
-// MARK - UIPickerViewDelegate
-
-extension SignupViewController: UIPickerViewDelegate, UIPickerViewDataSource {
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        groupList.count
-    }
-
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let user = groupList[row]
-        groupTextField.text = user
-    }
-
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        groupList[row]
     }
 }

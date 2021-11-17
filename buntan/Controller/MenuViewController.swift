@@ -10,6 +10,7 @@ import UIKit
 class MenuViewController: UIViewController {
     @IBOutlet weak var menuView: UIView!
     @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var pointLabel: UILabel!
 
     private let userDefaults = UserDefaults.standard
 
@@ -30,6 +31,8 @@ class MenuViewController: UIViewController {
             completion: { bool in
         })
         userNameLabel.text = userDefaults.object(forKey: "User") as? String
+        let pointTotal = RealmManager.shared.getTotalPoint()
+        pointLabel.text = "\(pointTotal) pt"
     }
 
     // メニューエリア以外タップ時の処理

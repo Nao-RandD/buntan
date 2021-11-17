@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ncD-Xa-r1W">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ncD-Xa-r1W">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -56,7 +58,8 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="TXA-pa-BCx">
-                        <barButtonItem key="leftBarButtonItem" image="line.horizontal.3" catalog="system" id="wXc-Qc-dqe">
+                        <barButtonItem key="leftBarButtonItem" title="Item" style="done" id="wXc-Qc-dqe">
+                            <imageReference key="image" image="line.horizontal.3" catalog="system" symbolScale="large" renderingMode="template"/>
                             <connections>
                                 <segue destination="gyr-9J-u7d" kind="presentation" identifier="showMenu" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="hWN-ag-QZD"/>
                             </connections>
@@ -153,7 +156,7 @@
                                                 <rect key="frame" x="0.0" y="276.5" width="151" height="38"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="timer" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="R6H-6J-Vje">
-                                                        <rect key="frame" x="0.0" y="1" width="38" height="37"/>
+                                                        <rect key="frame" x="0.0" y="0.5" width="38" height="37"/>
                                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="R6H-6J-Vje" secondAttribute="height" multiplier="1:1" id="Pbb-pf-u2s"/>
@@ -197,6 +200,7 @@
                     </view>
                     <connections>
                         <outlet property="menuView" destination="iLM-JO-3da" id="4dk-Vm-fCM"/>
+                        <outlet property="pointLabel" destination="iur-zG-Glc" id="Szh-gs-SKw"/>
                         <outlet property="userNameLabel" destination="KVK-Rq-VJG" id="hz8-pI-oiN"/>
                     </connections>
                 </viewController>
@@ -625,23 +629,23 @@
             </objects>
             <point key="canvasLocation" x="603" y="-619"/>
         </scene>
-        <!--Signup View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="VpC-qf-8wW">
             <objects>
-                <viewController id="ncD-Xa-r1W" customClass="SignupViewController" customModule="buntan" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ncD-Xa-r1W" customClass="LoginViewController" customModule="buntan" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mz1-ZN-bzg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="HXE-Nd-edO">
-                                <rect key="frame" x="60" y="80" width="294" height="24"/>
+                                <rect key="frame" x="38" y="80" width="338" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="294" id="kBb-qG-qkn"/>
                                 </constraints>
                                 <attributedString key="attributedText">
-                                    <fragment content="Welcome to ブンタン ！">
+                                    <fragment content="Welcome back to ブンタン ！">
                                         <attributes>
-                                            <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <font key="NSFont" size="24" name="HiraMaruProN-W4"/>
                                         </attributes>
                                     </fragment>
@@ -769,10 +773,74 @@
             </objects>
             <point key="canvasLocation" x="-1213.0434782608697" y="188.83928571428569"/>
         </scene>
-        <!--MyUI Navigation Controller View Controller-->
+        <!--Signup View Controller-->
+        <scene sceneID="wMB-pu-t5s">
+            <objects>
+                <viewController id="4GQ-TY-2LL" customClass="SignupViewController" customModule="buntan" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4Zb-i2-TUy">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7EX-Gy-18C">
+                                <rect key="frame" x="112.5" y="90" width="189" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="189" id="2RI-zd-sPQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="46R-RN-N67">
+                                <rect key="frame" x="112.5" y="229" width="189" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="189" id="d9x-gz-R6e"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kyO-fo-deU">
+                                <rect key="frame" x="169.5" y="681" width="75" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Sign Up"/>
+                                <connections>
+                                    <action selector="didTapSignUpButton" destination="4GQ-TY-2LL" eventType="touchUpInside" id="f7X-kY-k9g"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bI2-lh-Uwr">
+                                <rect key="frame" x="112.5" y="351" width="189" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="189" id="wkh-OJ-4sm"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="b4c-j3-GiL"/>
+                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                        <constraints>
+                            <constraint firstItem="kyO-fo-deU" firstAttribute="centerX" secondItem="4Zb-i2-TUy" secondAttribute="centerX" id="1d3-qQ-bBM"/>
+                            <constraint firstItem="bI2-lh-Uwr" firstAttribute="centerX" secondItem="4Zb-i2-TUy" secondAttribute="centerX" id="BK8-NC-SSj"/>
+                            <constraint firstItem="7EX-Gy-18C" firstAttribute="centerX" secondItem="4Zb-i2-TUy" secondAttribute="centerX" id="M1b-o9-fDG"/>
+                            <constraint firstItem="46R-RN-N67" firstAttribute="centerX" secondItem="4Zb-i2-TUy" secondAttribute="centerX" id="PIf-cH-kVz"/>
+                            <constraint firstItem="46R-RN-N67" firstAttribute="top" secondItem="7EX-Gy-18C" secondAttribute="bottom" constant="105" id="PjD-Fc-aoo"/>
+                            <constraint firstItem="bI2-lh-Uwr" firstAttribute="top" secondItem="46R-RN-N67" secondAttribute="bottom" constant="88" id="SrQ-Un-ZR7"/>
+                            <constraint firstItem="7EX-Gy-18C" firstAttribute="top" secondItem="b4c-j3-GiL" secondAttribute="top" constant="46" id="i2X-c8-6rn"/>
+                            <constraint firstItem="b4c-j3-GiL" firstAttribute="bottom" secondItem="kyO-fo-deU" secondAttribute="bottom" constant="150" id="im6-1p-Aye"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="46R-RN-N67" id="7Q4-Uq-Ro5"/>
+                        <outlet property="nameTextField" destination="7EX-Gy-18C" id="giO-hv-DlL"/>
+                        <outlet property="passwordTextField" destination="bI2-lh-Uwr" id="y2s-cX-0Jn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VPf-qr-DOZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1191.304347826087" y="1014.5089285714286"/>
+        </scene>
+        <!--ユーザー情報-->
         <scene sceneID="9jg-Mk-Cj7">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Tet-7B-xAZ" customClass="MyUINavigationControllerViewController" customModule="buntan" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController title="ユーザー情報" automaticallyAdjustsScrollViewInsets="NO" id="Tet-7B-xAZ" customClass="MyUINavigationControllerViewController" customModule="buntan" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2vD-yZ-QWt">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -787,10 +855,10 @@
             </objects>
             <point key="canvasLocation" x="3721.739130434783" y="188.83928571428569"/>
         </scene>
-        <!--MyUI Navigation Controller View Controller-->
+        <!--タスク履歴-->
         <scene sceneID="hDb-5S-bVI">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MWV-O3-ZdX" customClass="MyUINavigationControllerViewController" customModule="buntan" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController title="タスク履歴" automaticallyAdjustsScrollViewInsets="NO" id="MWV-O3-ZdX" customClass="MyUINavigationControllerViewController" customModule="buntan" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="BgZ-jx-1Md">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -807,7 +875,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="uEM-v4-Rju"/>
+        <segue reference="hWN-ag-QZD"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Dashboard" width="33.5" height="33.5"/>
@@ -824,6 +892,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

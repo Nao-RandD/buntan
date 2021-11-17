@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		9B01D43BA0476047EE09C930 /* Pods_buntan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E2FED4ED7A2635244999AC9 /* Pods_buntan.framework */; };
 		9F7F135426F7692100AF0543 /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7F135326F7692100AF0543 /* AddTaskViewController.swift */; };
-		9F7F135626F83CCF00AF0543 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7F135526F83CCF00AF0543 /* SignupViewController.swift */; };
+		9F7F135626F83CCF00AF0543 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7F135526F83CCF00AF0543 /* LoginViewController.swift */; };
 		9F7F135826F83F5700AF0543 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7F135726F83F5700AF0543 /* TabBarController.swift */; };
 		9F7F135A26FB596A00AF0543 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7F135926FB596900AF0543 /* ProfileViewController.swift */; };
 		9F7F135C26FFFEE700AF0543 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7F135B26FFFEE700AF0543 /* HistoryViewController.swift */; };
@@ -17,9 +17,12 @@
 		9F7F1364270007A400AF0543 /* HistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F7F1362270007A400AF0543 /* HistoryTableViewCell.xib */; };
 		9F8E376426F369FD00084709 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8E376226F369FD00084709 /* TaskTableViewCell.swift */; };
 		9F8E376526F369FD00084709 /* TaskTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F8E376326F369FD00084709 /* TaskTableViewCell.xib */; };
-		9F8E376726F36F9C00084709 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9F8E376626F36F9C00084709 /* GoogleService-Info.plist */; };
 		9F8E376926F576FB00084709 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8E376826F576FB00084709 /* MenuViewController.swift */; };
+		9F99668D2743DBD800FF6AD5 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F99668C2743DBD800FF6AD5 /* SignupViewController.swift */; };
+		9F99668F2743E39F00FF6AD5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9F99668E2743E39E00FF6AD5 /* GoogleService-Info.plist */; };
 		9FB2F7EA26F21961006CDF73 /* MyUINavigationControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB2F7E926F21961006CDF73 /* MyUINavigationControllerViewController.swift */; };
+		9FB55899271A8D5A00906151 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB55898271A8D5A00906151 /* RealmManager.swift */; };
+		9FB5589B272D128F00906151 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB5589A272D128F00906151 /* FirebaseManager.swift */; };
 		9FEC417426E8E2CC00B55299 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEC417326E8E2CC00B55299 /* AppDelegate.swift */; };
 		9FEC417626E8E2CC00B55299 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEC417526E8E2CC00B55299 /* SceneDelegate.swift */; };
 		9FEC417826E8E2CC00B55299 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEC417726E8E2CC00B55299 /* HomeViewController.swift */; };
@@ -37,7 +40,7 @@
 		0E2FED4ED7A2635244999AC9 /* Pods_buntan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_buntan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		204CB05096C6FB6120184E08 /* Pods-buntan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-buntan.release.xcconfig"; path = "Target Support Files/Pods-buntan/Pods-buntan.release.xcconfig"; sourceTree = "<group>"; };
 		9F7F135326F7692100AF0543 /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
-		9F7F135526F83CCF00AF0543 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		9F7F135526F83CCF00AF0543 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9F7F135726F83F5700AF0543 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TabBarController.swift; path = buntan/Controller/TabBarController.swift; sourceTree = SOURCE_ROOT; };
 		9F7F135926FB596900AF0543 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		9F7F135B26FFFEE700AF0543 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
@@ -45,9 +48,12 @@
 		9F7F1362270007A400AF0543 /* HistoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryTableViewCell.xib; sourceTree = "<group>"; };
 		9F8E376226F369FD00084709 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		9F8E376326F369FD00084709 /* TaskTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskTableViewCell.xib; sourceTree = "<group>"; };
-		9F8E376626F36F9C00084709 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9F8E376826F576FB00084709 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		9F99668C2743DBD800FF6AD5 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		9F99668E2743E39E00FF6AD5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9FB2F7E926F21961006CDF73 /* MyUINavigationControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyUINavigationControllerViewController.swift; sourceTree = "<group>"; };
+		9FB55898271A8D5A00906151 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		9FB5589A272D128F00906151 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		9FEC417026E8E2CC00B55299 /* buntan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = buntan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FEC417326E8E2CC00B55299 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9FEC417526E8E2CC00B55299 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -105,7 +111,7 @@
 		9FEC417226E8E2CC00B55299 /* buntan */ = {
 			isa = PBXGroup;
 			children = (
-				9F8E376626F36F9C00084709 /* GoogleService-Info.plist */,
+				9F99668E2743E39E00FF6AD5 /* GoogleService-Info.plist */,
 				9FEC419626F0B80B00B55299 /* Contents */,
 				9FEC418D26F0B12200B55299 /* View */,
 				9FEC418826E8EE6700B55299 /* Model */,
@@ -127,9 +133,10 @@
 				9FEC419426F0B65B00B55299 /* DashboardViewController.swift */,
 				9F8E376826F576FB00084709 /* MenuViewController.swift */,
 				9F7F135326F7692100AF0543 /* AddTaskViewController.swift */,
-				9F7F135526F83CCF00AF0543 /* SignupViewController.swift */,
+				9F7F135526F83CCF00AF0543 /* LoginViewController.swift */,
 				9F7F135926FB596900AF0543 /* ProfileViewController.swift */,
 				9F7F135B26FFFEE700AF0543 /* HistoryViewController.swift */,
+				9F99668C2743DBD800FF6AD5 /* SignupViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -138,6 +145,8 @@
 			isa = PBXGroup;
 			children = (
 				9FEC418B26EF5E4100B55299 /* TaskItem.swift */,
+				9FB55898271A8D5A00906151 /* RealmManager.swift */,
+				9FB5589A272D128F00906151 /* FirebaseManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -239,7 +248,7 @@
 				9FEC417B26E8E2CC00B55299 /* Main.storyboard in Resources */,
 				9FEC419326F0B35E00B55299 /* DashboardTableViewCell.xib in Resources */,
 				9F7F1364270007A400AF0543 /* HistoryTableViewCell.xib in Resources */,
-				9F8E376726F36F9C00084709 /* GoogleService-Info.plist in Resources */,
+				9F99668F2743E39F00FF6AD5 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,11 +307,14 @@
 				9F8E376926F576FB00084709 /* MenuViewController.swift in Sources */,
 				9F7F135C26FFFEE700AF0543 /* HistoryViewController.swift in Sources */,
 				9F7F135A26FB596A00AF0543 /* ProfileViewController.swift in Sources */,
+				9FB55899271A8D5A00906151 /* RealmManager.swift in Sources */,
 				9FEC418F26F0B15D00B55299 /* DashboardTableViewCell.swift in Sources */,
+				9F99668D2743DBD800FF6AD5 /* SignupViewController.swift in Sources */,
 				9FEC418C26EF5E4100B55299 /* TaskItem.swift in Sources */,
 				9FEC419826F0B84900B55299 /* UserInfo.swift in Sources */,
-				9F7F135626F83CCF00AF0543 /* SignupViewController.swift in Sources */,
+				9F7F135626F83CCF00AF0543 /* LoginViewController.swift in Sources */,
 				9F7F1363270007A400AF0543 /* HistoryTableViewCell.swift in Sources */,
+				9FB5589B272D128F00906151 /* FirebaseManager.swift in Sources */,
 				9FEC417826E8E2CC00B55299 /* HomeViewController.swift in Sources */,
 				9FEC417426E8E2CC00B55299 /* AppDelegate.swift in Sources */,
 				9FB2F7EA26F21961006CDF73 /* MyUINavigationControllerViewController.swift in Sources */,
