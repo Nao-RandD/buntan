@@ -14,7 +14,6 @@ class HomeViewController: UIViewController {
     
     private var indicator: UIActivityIndicatorView!
     private var taskList: [String: Int] = ["タスク": 0]
-    private var realm: Realm!
     private var token: NotificationToken?
     private let db = Firestore.firestore()
     private let userDefaults = UserDefaults.standard
@@ -29,7 +28,6 @@ class HomeViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-
         getTaskList()
         settingTableView()
         setListener()
@@ -37,24 +35,23 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
 
+        let group = self.userDefaults.object(forKey: "Group") as! String
+        self.navigationItem.title = group
         getTaskList()
         settingTableView()
     }
 
     @IBAction func tappedSendButton(_ sender: Any) {
-        /// TODO -
         guard let point = groupTasks?[0].point else {
             print("ポイント取得に失敗")
             return
         }
         // Realmにデータを保存
-        RealmManager().writeTaskItem(task: selectTask, point: point)
+        RealmManager.shared.writeTaskItem(task: selectTask, point: point)
 
         // Firestoreにデータを送信
         sendFirestore()
-        self.indicator.stopAnimating()
         showSuccessAlert()
     }
 
@@ -70,20 +67,22 @@ extension HomeViewController {
     }
 
     private func setListener() {
-        self.taskListener = db.collection( "task" ).addSnapshotListener { snapshot, e in
+        self.taskListener = db.collection("task").addSnapshotListener { snapshot, e in
                 if let snapshot = snapshot {
-                    self.groupTasks = snapshot.documents.map { task -> GroupTask in
+                    let group = self.userDefaults.object(forKey: "Group") as! String
+                    let tasks = snapshot.documents.filter { $0.data()["group"] as! String == group }
+                    self.groupTasks = tasks.map { task -> GroupTask in
                         let data = task.data()
                         return GroupTask(group: data["group"] as! String, name: data["name"] as! String, point: data["point"] as! Int)
                     }
-                    print("中身は\(self.groupTasks)")
+                    print("中身は\(String(describing: self.groupTasks))")
                     self.tableView.reloadData()
                 }
             }
     }
 
     private func getTaskList() {
-        let group = userDefaults.object(forKey: "Group") as! String
+//        let group = userDefaults.object(forKey: "Group") as! String
         let taskCollection = db.collection("task")
         taskCollection.getDocuments { (_snapshot, _error) in
             if let error = _error {
@@ -95,19 +94,21 @@ extension HomeViewController {
 
     private func sendFirestore() {
         let user = userDefaults.object(forKey: "User") as! String
-        let gourp = userDefaults.object(forKey: "Group") as! String
-        let point = getTotalPoint()
-        let data: [String: Any] = ["name": user, "group": gourp, "point": point]
+        let group = userDefaults.object(forKey: "Group") as! String
+        let point = RealmManager.shared.getTotalPoint()
+//        let data: [String: Any] = ["name": user, "group": group, "point": point]
 
-        self.db.collection("task").addDocument(data: data)
-    }
-
-    private func getTotalPoint() -> Int {
-        var total = 0
-//        for task in taskList {
-//            total += task.point
-//        }
-        return total
+        self.db.collection("users").document(user).setData([
+            "name": user,
+            "group": group,
+            "point": point
+        ]) { err in
+            if let err = err {
+                print("Error writing document: \(err)")
+            } else {
+                print("Document successfully written!")
+            }
+        }
     }
 
     private func reload() {

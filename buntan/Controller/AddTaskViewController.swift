@@ -29,6 +29,7 @@ class AddTaskViewController: UIViewController {
             print("書き込み失敗")
             return
         }
+
         try! realm.write {
             realm.add(taskItem)
             print("新しいリスト追加：\(name)")

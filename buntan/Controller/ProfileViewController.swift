@@ -16,6 +16,7 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.navigationItem.title = "ユーザー情報"
         nameTextField.text = userDefaults.object(forKey: "User") as? String
         groupLabel.text = userDefaults.object(forKey: "Group") as? String
         nameTextField.delegate = self
