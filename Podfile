@@ -8,7 +8,7 @@ target 'buntan' do
   pod 'Firebase/Analytics'
   pod 'Firebase/Core'
   pod 'Firebase/Firestore'
-
+  pod 'Firebase/Auth'
   # Pods for buntan
 
 end
