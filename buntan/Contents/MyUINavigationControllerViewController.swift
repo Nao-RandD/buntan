@@ -24,6 +24,12 @@ class MyUINavigationControllerViewController: UINavigationController {
             // 文字の色
             .foregroundColor: UIColor.white
         ]
+
+        if #available(iOS 15.0, *) {
+                let appearance = UINavigationBarAppearance()
+            appearance.backgroundColor = #colorLiteral(red: 1, green: 0.6067512035, blue: 0, alpha: 1)
+            UINavigationBar.appearance().scrollEdgeAppearance = appearance
+        }
     }
     
 
