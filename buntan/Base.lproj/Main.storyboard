@@ -116,7 +116,7 @@
                                                             </label>
                                                         </subviews>
                                                     </stackView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="90 pt" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iur-zG-Glc">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="90 pt" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="iur-zG-Glc">
                                                         <rect key="frame" x="80" y="0.0" width="71" height="80.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                         <nil key="textColor"/>
@@ -235,13 +235,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Group" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gjn-Sg-jyp">
-                                <rect key="frame" x="173.5" y="562.5" width="67" height="30"/>
+                                <rect key="frame" x="173.5" y="541.5" width="67" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="House" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BI7-3G-rf2">
-                                <rect key="frame" x="158" y="628.5" width="98" height="42"/>
+                                <rect key="frame" x="158" y="607.5" width="98" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -255,7 +255,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OiX-Z8-1Gj">
-                                <rect key="frame" x="147" y="595.5" width="120" height="0.5"/>
+                                <rect key="frame" x="147" y="574.5" width="120" height="0.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="Bqn-js-4OM"/>
@@ -264,7 +264,7 @@
                                 </constraints>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="UserName" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1eg-Ev-jxD">
-                                <rect key="frame" x="127" y="430.5" width="160" height="60"/>
+                                <rect key="frame" x="127" y="409.5" width="160" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="10D-T4-igb"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="klN-hG-kfa"/>
@@ -279,7 +279,7 @@
                         <constraints>
                             <constraint firstItem="gjn-Sg-jyp" firstAttribute="top" secondItem="1eg-Ev-jxD" secondAttribute="bottom" constant="72" id="4ef-2M-pY6"/>
                             <constraint firstItem="BI7-3G-rf2" firstAttribute="top" secondItem="gjn-Sg-jyp" secondAttribute="bottom" constant="36" id="5ot-32-yiD"/>
-                            <constraint firstItem="1eg-Ev-jxD" firstAttribute="top" secondItem="rqI-D9-1Sj" secondAttribute="bottom" constant="36" id="8Ng-0i-y58"/>
+                            <constraint firstItem="1eg-Ev-jxD" firstAttribute="top" secondItem="rqI-D9-1Sj" secondAttribute="bottom" constant="15" id="8Ng-0i-y58"/>
                             <constraint firstItem="rqI-D9-1Sj" firstAttribute="centerX" secondItem="Aqj-0u-Hbo" secondAttribute="centerX" id="9Pn-Bx-KSn"/>
                             <constraint firstItem="OiX-Z8-1Gj" firstAttribute="centerX" secondItem="Aqj-0u-Hbo" secondAttribute="centerX" id="Jlp-CW-apN"/>
                             <constraint firstItem="wKd-gF-OYb" firstAttribute="top" secondItem="0Dd-Es-57A" secondAttribute="top" constant="36" id="K3t-Dq-B8y"/>
