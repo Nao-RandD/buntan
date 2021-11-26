@@ -6,11 +6,15 @@
 //
 
 import UIKit
+import Firebase
 import RealmSwift
 
 class AddTaskViewController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var pointTextField: UITextField!
+
+    private let db = Firestore.firestore()
+    private let userDefaults = UserDefaults.standard
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,17 +28,7 @@ class AddTaskViewController: UIViewController {
         guard let name = nameTextField.text, !name.isEmpty else { return }
         guard let point = pointTextField.text, !point.isEmpty else { return }
 
-        let realm = try! Realm()
-        guard let taskItem = setTaskItem(contents: realm.objects(TaskItem.self), name: name, point: point) else {
-            print("書き込み失敗")
-            return
-        }
-
-        try! realm.write {
-            realm.add(taskItem)
-            print("新しいリスト追加：\(name)")
-            self.dismiss(animated: true, completion: nil)
-        }
+        sendFirestore(name: name, point: Int(point) ?? 0)
     }
 
     private func setTaskItem(contents: Results<TaskItem>, name: String, point: String) -> TaskItem? {
@@ -44,5 +38,29 @@ class AddTaskViewController: UIViewController {
         taskItem.point = Int(point) ?? 0
 
         return taskItem
+    }
+}
+
+// MARK - Private Func -
+
+extension AddTaskViewController {
+    private func sendFirestore(name: String, point: Int) {
+        let group = self.userDefaults.object(forKey: "Group") as! String
+
+        db.collection("task").addDocument(data: [
+            "group": group,
+            "name": name,
+            "point": point
+        ]) { err in
+            DispatchQueue.main.async {
+                if let err = err {
+                    print("Error writing document: \(err)")
+                } else {
+                    self.nameTextField.text = ""
+                    self.pointTextField.text = ""
+                    self.dismiss(animated: true, completion: nil)
+                }
+            }
+        }
     }
 }
