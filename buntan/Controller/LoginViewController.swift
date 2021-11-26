@@ -21,6 +21,15 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        if (userDefaults.object(forKey: "User") as? String) != nil {
+            print("すでにログイン済み")
+            DispatchQueue.main.async {
+                self.nextScreen()
+            }
+            return
+        }
+
         // groupPickerViewを設定
         groupPickerView = UIPickerView()
         groupPickerView.delegate = self
