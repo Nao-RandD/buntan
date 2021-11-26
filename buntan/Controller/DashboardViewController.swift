@@ -17,9 +17,7 @@ class DashboardViewController: UIViewController {
     private let userDefaults = UserDefaults.standard
 
     private var userPointList: [UserInfo] = [
-        UserInfo(name: "Shin", point: 20),
-        UserInfo(name: "Nao", point: 40),
-        UserInfo(name: "Ryoya", point: 30)
+        UserInfo(name: "ほげ", point: 20)
     ]
 
     override func viewDidLoad() {
@@ -31,13 +29,6 @@ class DashboardViewController: UIViewController {
                                    forCellReuseIdentifier: "DashboardCell")
 
         setListener()
-//        let user1 = User(name: "Shin", point: 20)
-//        let user2 = User(name: "Nao", point: 40)
-//        let user3 = User(name: "Ryoya", point: 30)
-//
-//        userPointList.append(user1)
-//        userPointList.append(user2)
-//        userPointList.append(user3)
     }
 }
 
@@ -48,15 +39,10 @@ extension DashboardViewController {
                     let group = self.userDefaults.object(forKey: "Group") as! String
                     let tasks = snapshot.documents.filter { $0["group"] as! String == group }
 
-                    var i = 0
-                    for user in self.userPointList {
-                        for task in tasks {
-                            if task["name"] as! String == user.name {
-                                self.userPointList[i].point = task["point"] as! Int
-                            }
-                        }
-                        i += 1
+                    self.userPointList = tasks.map { task -> UserInfo in
+                        return UserInfo(name: task["name"] as! String, point: task["point"] as! Int)
                     }
+
                     self.tableView.reloadData()
                 }
             }

@@ -150,24 +150,3 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
 }
-
-
-
-
-//private func showDoneImage() {
-//    let image = UIImage(named: "Done")
-//    let imageView = UIImageView(image: image)
-//
-//    imageView.center = CGPoint(x: view.frame.size.width/2, y: view.frame.size.height/2)
-//    view.addSubview(imageView)
-//}
-//
-//private func showIndicator() {
-//    guard let indicator = indicator else {
-//        return
-//    }
-//    indicator.center = view.center
-//    indicator.style = .whiteLarge
-//    indicator.color = .darkGray
-//    indicator.startAnimating()
-//}
