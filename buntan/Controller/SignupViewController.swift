@@ -2,24 +2,90 @@
 //  SignupViewController.swift
 //  buntan
 //
-//  Created by Naoyuki Kan on 2021/09/20.
+//  Created by Naoyuki Kan on 2021/11/16.
 //
 
+import Firebase
 import UIKit
 
 class SignupViewController: UIViewController {
+    @IBOutlet private weak var nameTextField: UITextField!
+    @IBOutlet private weak var emailTextField: UITextField!
+    @IBOutlet private weak var passwordTextField: UITextField!
+
+    private let userDefaults = UserDefaults.standard
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-            self.view.endEditing(true)
+        self.view.endEditing(true)
     }
 
-    @IBAction func tappedSingupButton(_ sender: Any) {
+    @IBAction private func didTapSignUpButton() {
+        let email = emailTextField.text ?? ""
+        let password = passwordTextField.text ?? ""
+        let name = nameTextField.text ?? ""
+
+        signUp(email: email, password: password, name: name)
+    }
+}
+
+// MARK - Private Function -
+
+extension SignupViewController {
+    private func signUp(email: String, password: String, name: String) {
+        print("メール：\(email)、パスワード\(password)、ユーザー名\(name)を登録")
+        Auth.auth().createUser(withEmail: email, password: password) { [weak self] result, error in
+            print("\(String(describing: result))")
+            guard let self = self else { return }
+            if let user = result?.user {
+                print("メールアドレス登録完了")
+                self.updateDisplayName(name, of: user)
+            }
+            self.showError(error)
+        }
+    }
+
+    private func updateDisplayName(_ name: String, of user: User) {
+        let request = user.createProfileChangeRequest()
+        request.displayName = name
+        request.commitChanges() { [weak self] error in
+            guard let self = self else { return }
+            if error != nil {
+                print("ユーザー名登録完了")
+                self.sendEmailVerification(to: user, name: name)
+            }
+            self.showError(error)
+        }
+    }
+
+    private func sendEmailVerification(to user: User, name: String) {
+        user.sendEmailVerification() { [weak self] error in
+            guard let self = self else { return }
+            if error != nil {
+                print("アクティベート含めた登録完了")
+                self.nextScreen(name: name)
+            }
+            self.showError(error)
+        }
+    }
+    
+    private func showError(_ errorOrNil: Error?) {
+        // エラーがなければ何もしません
+        guard errorOrNil != nil else { return }
+
+        let message = "エラーが起きました" // ここは後述しますが、とりあえず固定文字列
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+
+    private func nextScreen(name: String) {
+        self.userDefaults.set(name, forKey: "User")
+
         let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "TabBarController") as! TabBarController
         secondViewController.modalPresentationStyle = .fullScreen
         self.present(secondViewController, animated: false, completion: nil)

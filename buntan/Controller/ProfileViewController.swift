@@ -8,7 +8,6 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
-
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var groupLabel: UILabel!
 
@@ -17,13 +16,18 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.navigationItem.title = "ユーザー情報"
         nameTextField.text = userDefaults.object(forKey: "User") as? String
         groupLabel.text = userDefaults.object(forKey: "Group") as? String
         nameTextField.delegate = self
     }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+            self.view.endEditing(true)
+    }
 }
 
-/// MARK - UITextFieldDelegate
+// MARK - UITextFieldDelegate
 extension ProfileViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         nameTextField = textField
