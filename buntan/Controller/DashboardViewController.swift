@@ -11,6 +11,7 @@ import UIKit
 
 class DashboardViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var groupLabel: UILabel!
 
     private let db = Firestore.firestore()
     private var taskListener: ListenerRegistration?
@@ -29,6 +30,10 @@ class DashboardViewController: UIViewController {
                                    forCellReuseIdentifier: "DashboardCell")
 
         setListener()
+
+        // グループ名を設定
+        let group = self.userDefaults.object(forKey: "Group") as! String
+        groupLabel.text = group
     }
 }
 

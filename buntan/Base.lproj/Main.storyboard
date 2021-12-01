@@ -412,6 +412,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="groupLabel" destination="2li-6n-I2s" id="CBN-0e-zW6"/>
                         <outlet property="tableView" destination="IiV-Mh-RBh" id="kFz-se-fI6"/>
                     </connections>
                 </viewController>
@@ -875,7 +876,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="hWN-ag-QZD"/>
+        <segue reference="uEM-v4-Rju"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Dashboard" width="33.5" height="33.5"/>
