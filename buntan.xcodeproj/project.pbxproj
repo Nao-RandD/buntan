@@ -20,6 +20,7 @@
 		9F8E376926F576FB00084709 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8E376826F576FB00084709 /* MenuViewController.swift */; };
 		9F99668D2743DBD800FF6AD5 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F99668C2743DBD800FF6AD5 /* SignupViewController.swift */; };
 		9F99668F2743E39F00FF6AD5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9F99668E2743E39E00FF6AD5 /* GoogleService-Info.plist */; };
+		9FB0157D2760D48800D63230 /* Contents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB0157C2760D48800D63230 /* Contents.swift */; };
 		9FB2F7EA26F21961006CDF73 /* MyUINavigationControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB2F7E926F21961006CDF73 /* MyUINavigationControllerViewController.swift */; };
 		9FB55899271A8D5A00906151 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB55898271A8D5A00906151 /* RealmManager.swift */; };
 		9FB5589B272D128F00906151 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB5589A272D128F00906151 /* FirebaseManager.swift */; };
@@ -51,6 +52,7 @@
 		9F8E376826F576FB00084709 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		9F99668C2743DBD800FF6AD5 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		9F99668E2743E39E00FF6AD5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9FB0157C2760D48800D63230 /* Contents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contents.swift; sourceTree = "<group>"; };
 		9FB2F7E926F21961006CDF73 /* MyUINavigationControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyUINavigationControllerViewController.swift; sourceTree = "<group>"; };
 		9FB55898271A8D5A00906151 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		9FB5589A272D128F00906151 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				9F7F135726F83F5700AF0543 /* TabBarController.swift */,
 				9FEC419726F0B84800B55299 /* UserInfo.swift */,
 				9FB2F7E926F21961006CDF73 /* MyUINavigationControllerViewController.swift */,
+				9FB0157C2760D48800D63230 /* Contents.swift */,
 			);
 			path = Contents;
 			sourceTree = "<group>";
@@ -312,6 +315,7 @@
 				9F99668D2743DBD800FF6AD5 /* SignupViewController.swift in Sources */,
 				9FEC418C26EF5E4100B55299 /* TaskItem.swift in Sources */,
 				9FEC419826F0B84900B55299 /* UserInfo.swift in Sources */,
+				9FB0157D2760D48800D63230 /* Contents.swift in Sources */,
 				9F7F135626F83CCF00AF0543 /* LoginViewController.swift in Sources */,
 				9F7F1363270007A400AF0543 /* HistoryTableViewCell.swift in Sources */,
 				9FB5589B272D128F00906151 /* FirebaseManager.swift in Sources */,

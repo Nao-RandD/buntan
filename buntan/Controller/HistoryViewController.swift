@@ -11,7 +11,6 @@ import RealmSwift
 class HistoryViewController: UIViewController {
 
     private var taskList: Results<TaskItem>!
-    private var realm: Realm!
 //    private var token: NotificationToken?
     private var selectTask: String = ""
 
@@ -40,6 +39,12 @@ extension HistoryViewController {
     private func reload() {
         tableView.reloadData()
     }
+
+    private func deleteTaskItem(at index: Int) {
+        RealmManager.shared.deleteTaskItem(item: taskList[index])
+        taskList = RealmManager.shared.getTaskInRealm()
+        tableView.reloadData()
+    }
 }
 
 // MARK - UITableViewDelegate
@@ -64,4 +69,17 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
         print("選択中のタスクは\(taskList[indexPath.row])")
         selectTask = taskList[indexPath.row].name
      }
+
+    //セルの編集許可
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCell.EditingStyle.delete {
+            deleteTaskItem(at: indexPath.row)
+//            groupTasks.remove(at: indexPath.row)
+//            tableView.deleteRows(at: [indexPath as IndexPath], with: UITableView.RowAnimation.automatic)
+        }
+    }
 }

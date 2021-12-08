@@ -12,7 +12,7 @@ final class RealmManager {
 
     public static let shared = RealmManager()
 
-    private var realm: Realm!
+    private var realm: Realm
 
     private init() {
         realm = try! Realm()
@@ -43,14 +43,36 @@ final class RealmManager {
         }
     }
 
+    func deleteTaskItem(item: ObjectBase) {
+        try! realm.write {
+            print("\(item)を削除")
+            realm.delete(item)
+        }
+    }
+
     private func setTaskItem(task: String,
                      point: Int) -> TaskItem {
         let taskItem = TaskItem()
-        let taskNum = getTaskNumber()
         taskItem.name = task
         taskItem.point = point
-        taskItem.taskId = taskNum + 1
+        taskItem.time = getTime()
+        taskItem.taskId = getPrimaryKey()
 
         return taskItem
+    }
+
+    private func getPrimaryKey() -> String {
+        let uuid = UUID()
+        let uniqueIdString = uuid.uuidString
+        return uniqueIdString
+    }
+
+    private func getTime() -> String {
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyyMMddHHmmss"
+        let strDate = formatter.string(from: date)
+
+        return strDate
     }
 }

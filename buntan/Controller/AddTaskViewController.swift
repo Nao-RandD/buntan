@@ -34,7 +34,7 @@ class AddTaskViewController: UIViewController {
     private func setTaskItem(contents: Results<TaskItem>, name: String, point: String) -> TaskItem? {
         let taskItem = TaskItem()
         taskItem.name = name
-        taskItem.taskId = contents.count + 1
+//        taskItem.taskId = contents.count + 1
         taskItem.point = Int(point) ?? 0
 
         return taskItem

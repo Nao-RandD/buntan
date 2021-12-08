@@ -54,6 +54,8 @@ class HomeViewController: UIViewController {
         // Firestoreにデータを送信
         sendFirestore()
         showSuccessAlert()
+
+        FirebaseManager.shared.getDocument()
     }
 
     @IBAction private func exit(segue: UIStoryboardSegue) {}
@@ -69,17 +71,17 @@ extension HomeViewController {
 
     private func setListener() {
         self.taskListener = db.collection("task").addSnapshotListener { snapshot, e in
-                if let snapshot = snapshot {
-                    let group = self.userDefaults.object(forKey: "Group") as! String
-                    let tasks = snapshot.documents.filter { $0.data()["group"] as! String == group }
-                    self.groupTasks = tasks.map { task -> GroupTask in
-                        let data = task.data()
-                        return GroupTask(group: data["group"] as! String, name: data["name"] as! String, point: data["point"] as! Int)
-                    }
-                    print("中身は\(String(describing: self.groupTasks))")
-                    self.tableView.reloadData()
+            if let snapshot = snapshot {
+                let group = self.userDefaults.object(forKey: "Group") as! String
+                let tasks = snapshot.documents.filter { $0.data()["group"] as! String == group }
+                self.groupTasks = tasks.map { task -> GroupTask in
+                    let data = task.data()
+                    return GroupTask(group: data["group"] as! String, name: data["name"] as! String, point: data["point"] as! Int)
                 }
+                print("中身は\(String(describing: self.groupTasks))")
+                self.tableView.reloadData()
             }
+        }
     }
 
     private func sendFirestore() {
@@ -87,17 +89,7 @@ extension HomeViewController {
         let group = userDefaults.object(forKey: "Group") as! String
         let point = RealmManager.shared.getTotalPoint()
 
-        self.db.collection("users").document(user).setData([
-            "name": user,
-            "group": group,
-            "point": point
-        ]) { err in
-            if let err = err {
-                print("Error writing document: \(err)")
-            } else {
-                print("Document successfully written!")
-            }
-        }
+        FirebaseManager.shared.sendDoneTask(user: user, group: group, point: point)
     }
 
     private func reload() {

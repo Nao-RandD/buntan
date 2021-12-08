@@ -405,7 +405,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="KdG-O8-gSw">
-                        <barButtonItem key="leftBarButtonItem" image="line.horizontal.3" catalog="system" id="bGe-Su-ba8">
+                        <barButtonItem key="leftBarButtonItem" image="line.3.horizontal" catalog="system" id="bGe-Su-ba8">
                             <connections>
                                 <segue destination="gyr-9J-u7d" kind="presentation" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="uEM-v4-Rju"/>
                             </connections>
@@ -782,18 +782,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7EX-Gy-18C">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ユーザー名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7EX-Gy-18C">
                                 <rect key="frame" x="112.5" y="90" width="189" height="34"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="189" id="2RI-zd-sPQ"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="189" id="2RI-zd-sPQ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="46R-RN-N67">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="メールアドレス" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="46R-RN-N67">
                                 <rect key="frame" x="112.5" y="229" width="189" height="34"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="189" id="d9x-gz-R6e"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="189" id="d9x-gz-R6e"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -806,10 +806,10 @@
                                     <action selector="didTapSignUpButton" destination="4GQ-TY-2LL" eventType="touchUpInside" id="f7X-kY-k9g"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bI2-lh-Uwr">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="パスワード" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bI2-lh-Uwr">
                                 <rect key="frame" x="112.5" y="351" width="189" height="34"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="189" id="wkh-OJ-4sm"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="189" id="wkh-OJ-4sm"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -884,6 +884,7 @@
         <image name="arrow.backward" catalog="system" width="128" height="98"/>
         <image name="arrow.left" catalog="system" width="128" height="98"/>
         <image name="homekit" catalog="system" width="128" height="106"/>
+        <image name="line.3.horizontal" catalog="system" width="128" height="64"/>
         <image name="line.horizontal.3" catalog="system" width="128" height="64"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="plus" catalog="system" width="128" height="113"/>
