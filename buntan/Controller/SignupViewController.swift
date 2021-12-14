@@ -17,7 +17,7 @@ class SignupViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -30,6 +30,30 @@ class SignupViewController: UIViewController {
         let name = nameTextField.text ?? ""
 
         signUp(email: email, password: password, name: name)
+//        signUpMail(email: email)
+    }
+
+    private func signUpMail(email: String) {
+        let actionCodeSettings = ActionCodeSettings()
+        actionCodeSettings.url = URL(string: "https://buntan.page.link")
+        // The sign-in operation has to always be completed in the app.
+        actionCodeSettings.handleCodeInApp = true
+        actionCodeSettings.setIOSBundleID(Bundle.main.bundleIdentifier!)
+
+        Auth.auth().sendSignInLink(toEmail: email,
+                                   actionCodeSettings: actionCodeSettings) { error in
+          // ...
+            if let error = error {
+//              self.showDialog(error.localizedDescription)
+              return
+            }
+            // The link was successfully sent. Inform the user.
+            // Save the email locally so you don't need to ask the user for it again
+            // if they open the link on the same device.
+            UserDefaults.standard.set(email, forKey: "Email")
+//            self.showDialog("Check your email for link")
+            // ...
+        }
     }
 }
 
@@ -43,6 +67,7 @@ extension SignupViewController {
             guard let self = self else { return }
             if let user = result?.user {
                 print("メールアドレス登録完了")
+//                self.sendEmailVerification(to: user, name: name)
                 self.updateDisplayName(name, of: user)
             }
             self.showError(error)
@@ -50,11 +75,12 @@ extension SignupViewController {
     }
 
     private func updateDisplayName(_ name: String, of user: User) {
+        print("表示名の更新")
         let request = user.createProfileChangeRequest()
         request.displayName = name
         request.commitChanges() { [weak self] error in
             guard let self = self else { return }
-            if error != nil {
+            if error == nil {
                 print("ユーザー名登録完了")
                 self.sendEmailVerification(to: user, name: name)
             }
@@ -64,20 +90,37 @@ extension SignupViewController {
 
     private func sendEmailVerification(to user: User, name: String) {
         user.sendEmailVerification() { [weak self] error in
+            print("ここは呼ばれている")
             guard let self = self else { return }
-            if error != nil {
+            print("ここも呼ばれている")
+            print("エラーは\(error?.localizedDescription)")
+            if error == nil {
                 print("アクティベート含めた登録完了")
-                self.nextScreen(name: name)
+                DispatchQueue.main.async {
+                    self.showDialog("メールアプリから認証を完了してください", user: name)
+                }
             }
             self.showError(error)
         }
+    }
+
+    private func showDialog(_ message: String, user user: String) {
+        let alert = UIAlertController(title: "メール認証", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK",
+                                      style: .default,
+                                      handler: {
+                                              (action: UIAlertAction!) -> Void in
+            self.nextScreen(name: user)
+                                          }))
+        present(alert, animated: true, completion: nil)
     }
     
     private func showError(_ errorOrNil: Error?) {
         // エラーがなければ何もしません
         guard errorOrNil != nil else { return }
+        print("エラー内容は\(errorOrNil)")
 
-        let message = "エラーが起きました" // ここは後述しますが、とりあえず固定文字列
+        let message = errorOrNil?.localizedDescription
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
@@ -86,7 +129,7 @@ extension SignupViewController {
     private func nextScreen(name: String) {
         self.userDefaults.set(name, forKey: "User")
 
-        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "TabBarController") as! TabBarController
+        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! StartAppViewController
         secondViewController.modalPresentationStyle = .fullScreen
         self.present(secondViewController, animated: false, completion: nil)
     }
