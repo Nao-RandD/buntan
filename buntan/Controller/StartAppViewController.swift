@@ -22,12 +22,17 @@ class StartAppViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if (userDefaults.object(forKey: "User") as? String) != nil {
-            print("すでにログイン済み")
+        if userDefaults.object(forKey: "isSetup") as? Bool ?? false {
+            print("すでにセットアップ済み")
             DispatchQueue.main.async {
                 self.nextScreen()
             }
             return
+        }
+
+        // SignUpしてすぐのログインにはすでに名前を自動入力するようにする
+        if let _name = userDefaults.object(forKey: "isSetup") as? String {
+            nameTextField.text = _name
         }
 
         // groupPickerViewを設定
@@ -74,7 +79,8 @@ class StartAppViewController: UIViewController {
         let data: [String: Any] = ["name": name, "group": group, "point": 0]
         db.collection("users").document(name).setData(data, merge: true)
         print("userDefaultsを更新")
-        print("ユーザー名：\(name), グループ：\(group)としてSign Up完了")
+        print("ユーザー名：\(name), グループ：\(group)としてセットアップ完了")
+        self.userDefaults.set(true, forKey: "isSetup")
         nextScreen()
     }
 }

@@ -18,6 +18,14 @@ class SignupViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if userDefaults.object(forKey: "isSignup") as? Bool ?? false ||
+            userDefaults.object(forKey: "isLogin") as? Bool ?? false {
+            print("すでにサインアップ済み")
+            DispatchQueue.main.async {
+                self.nextScreen()
+            }
+            return
+        }
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -30,30 +38,10 @@ class SignupViewController: UIViewController {
         let name = nameTextField.text ?? ""
 
         signUp(email: email, password: password, name: name)
-//        signUpMail(email: email)
     }
 
-    private func signUpMail(email: String) {
-        let actionCodeSettings = ActionCodeSettings()
-        actionCodeSettings.url = URL(string: "https://buntan.page.link")
-        // The sign-in operation has to always be completed in the app.
-        actionCodeSettings.handleCodeInApp = true
-        actionCodeSettings.setIOSBundleID(Bundle.main.bundleIdentifier!)
-
-        Auth.auth().sendSignInLink(toEmail: email,
-                                   actionCodeSettings: actionCodeSettings) { error in
-          // ...
-            if let error = error {
-//              self.showDialog(error.localizedDescription)
-              return
-            }
-            // The link was successfully sent. Inform the user.
-            // Save the email locally so you don't need to ask the user for it again
-            // if they open the link on the same device.
-            UserDefaults.standard.set(email, forKey: "Email")
-//            self.showDialog("Check your email for link")
-            // ...
-        }
+    @IBAction func didTapToLoginButton(_ sender: Any) {
+        nextScreen()
     }
 }
 
@@ -90,10 +78,7 @@ extension SignupViewController {
 
     private func sendEmailVerification(to user: User, name: String) {
         user.sendEmailVerification() { [weak self] error in
-            print("ここは呼ばれている")
             guard let self = self else { return }
-            print("ここも呼ばれている")
-            print("エラーは\(error?.localizedDescription)")
             if error == nil {
                 print("アクティベート含めた登録完了")
                 DispatchQueue.main.async {
@@ -110,7 +95,7 @@ extension SignupViewController {
                                       style: .default,
                                       handler: {
                                               (action: UIAlertAction!) -> Void in
-            self.nextScreen(name: user)
+            self.nextScreen()
                                           }))
         present(alert, animated: true, completion: nil)
     }
@@ -126,10 +111,10 @@ extension SignupViewController {
         present(alert, animated: true, completion: nil)
     }
 
-    private func nextScreen(name: String) {
-        self.userDefaults.set(name, forKey: "User")
+    private func nextScreen() {
+        self.userDefaults.set(true, forKey: "isSignup")
 
-        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! StartAppViewController
+        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
         secondViewController.modalPresentationStyle = .fullScreen
         self.present(secondViewController, animated: false, completion: nil)
     }
