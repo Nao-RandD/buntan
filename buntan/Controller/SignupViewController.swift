@@ -40,8 +40,11 @@ class SignupViewController: UIViewController {
         signUp(email: email, password: password, name: name)
     }
 
+    // ログイン画面への繊維
     @IBAction func didTapToLoginButton(_ sender: Any) {
-        nextScreen()
+        DispatchQueue.main.async {
+            self.nextScreen()
+        }
     }
 }
 
@@ -62,6 +65,7 @@ extension SignupViewController {
         }
     }
 
+    // 認証メールに表示する名前を更新する
     private func updateDisplayName(_ name: String, of user: User) {
         print("表示名の更新")
         let request = user.createProfileChangeRequest()
@@ -76,6 +80,7 @@ extension SignupViewController {
         }
     }
 
+    // 登録したメールアドレスに向けて認証URLを送る
     private func sendEmailVerification(to user: User, name: String) {
         user.sendEmailVerification() { [weak self] error in
             guard let self = self else { return }
@@ -89,6 +94,7 @@ extension SignupViewController {
         }
     }
 
+    // 指定のダイアログを表示する
     private func showDialog(_ message: String, user user: String) {
         let alert = UIAlertController(title: "メール認証", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK",
@@ -99,7 +105,8 @@ extension SignupViewController {
                                           }))
         present(alert, animated: true, completion: nil)
     }
-    
+
+    // エラー内容をダイアログで表示する
     private func showError(_ errorOrNil: Error?) {
         // エラーがなければ何もしません
         guard errorOrNil != nil else { return }
@@ -111,6 +118,7 @@ extension SignupViewController {
         present(alert, animated: true, completion: nil)
     }
 
+    // isSignupのフラグが立っていたら次の画面に遷移する
     private func nextScreen() {
         self.userDefaults.set(true, forKey: "isSignup")
 
