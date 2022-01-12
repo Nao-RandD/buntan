@@ -38,8 +38,10 @@ class LoginViewController: UIViewController {
         Auth.auth().signIn(withEmail: email, password: password) { [weak self] result, error in
             guard let self = self else { return }
             if (result?.user) != nil {
-                self.userDefaults.set(true, forKey: "isLogin")
-                self.nextScreen()
+                DispatchQueue.main.async {
+                    self.userDefaults.set(true, forKey: "isLogin")
+                    self.nextScreen()
+                }
             }
             self.showErrorIfNeeded(error)
         }

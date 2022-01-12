@@ -11,7 +11,8 @@ import RealmSwift
 
 class HomeViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
-    
+    @IBOutlet weak var taskAddButton: UIBarButtonItem!
+
     private var indicator: UIActivityIndicatorView!
     private let db = Firestore.firestore()
     private let userDefaults = UserDefaults.standard
@@ -25,17 +26,28 @@ class HomeViewController: UIViewController {
         var point: Int
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        settingTableView()
-        setListener()
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
         let group = self.userDefaults.object(forKey: "Group") as! String
         self.navigationItem.title = group
         settingTableView()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        settingTableView()
+        setListener()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+//            print("1秒後の処理")
+//            self.showTutorial()
+            let isShowTutorial = self.userDefaults.object(forKey: "isShowTutorial") as? Bool ?? false
+            if !isShowTutorial {
+                self.showTutorial()
+            }
+        }
     }
 
     @IBAction func tappedSendButton(_ sender: Any) {
@@ -107,6 +119,18 @@ extension HomeViewController {
         })
         alert.addAction(confirmAction)
         present(alert, animated: true, completion: nil)
+    }
+
+    private func showTutorial() {
+        guard var frame = self.navigationController?.navigationBar.frame else { return }
+        print(dump(frame))
+
+        let addButtonview = UIView()
+        addButtonview.frame = frame
+
+        print("チュートリアルを表示")
+        let vc = TutorialViewController()
+        vc.showTutorial(from: self.navigationController!, target: addButtonview)
     }
 }
 

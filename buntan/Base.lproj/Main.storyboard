@@ -73,6 +73,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="lkI-8q-35L" id="v1P-G4-5Cr"/>
+                        <outlet property="taskAddButton" destination="jOW-88-307" id="gZC-mn-MD6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -974,7 +975,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="uEM-v4-Rju"/>
+        <segue reference="hWN-ag-QZD"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Dashboard" width="33.5" height="33.5"/>

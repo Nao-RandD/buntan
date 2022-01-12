@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9B01D43BA0476047EE09C930 /* Pods_buntan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E2FED4ED7A2635244999AC9 /* Pods_buntan.framework */; };
+		9F091C0327894AAB0098DE85 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F091C0227894AAA0098DE85 /* TutorialViewController.swift */; };
 		9F7F135426F7692100AF0543 /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7F135326F7692100AF0543 /* AddTaskViewController.swift */; };
 		9F7F135626F83CCF00AF0543 /* StartAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7F135526F83CCF00AF0543 /* StartAppViewController.swift */; };
 		9F7F135826F83F5700AF0543 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7F135726F83F5700AF0543 /* TabBarController.swift */; };
@@ -41,6 +42,7 @@
 /* Begin PBXFileReference section */
 		0E2FED4ED7A2635244999AC9 /* Pods_buntan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_buntan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		204CB05096C6FB6120184E08 /* Pods-buntan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-buntan.release.xcconfig"; path = "Target Support Files/Pods-buntan/Pods-buntan.release.xcconfig"; sourceTree = "<group>"; };
+		9F091C0227894AAA0098DE85 /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		9F7F135326F7692100AF0543 /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
 		9F7F135526F83CCF00AF0543 /* StartAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartAppViewController.swift; sourceTree = "<group>"; };
 		9F7F135726F83F5700AF0543 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TabBarController.swift; path = buntan/Controller/TabBarController.swift; sourceTree = SOURCE_ROOT; };
@@ -142,6 +144,7 @@
 				9F7F135B26FFFEE700AF0543 /* HistoryViewController.swift */,
 				9F99668C2743DBD800FF6AD5 /* SignupViewController.swift */,
 				9FB0157E27677CE900D63230 /* LoginViewController.swift */,
+				9F091C0227894AAA0098DE85 /* TutorialViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 				9FEC417426E8E2CC00B55299 /* AppDelegate.swift in Sources */,
 				9FB2F7EA26F21961006CDF73 /* MyUINavigationControllerViewController.swift in Sources */,
 				9F8E376426F369FD00084709 /* TaskTableViewCell.swift in Sources */,
+				9F091C0327894AAB0098DE85 /* TutorialViewController.swift in Sources */,
 				9FEC417626E8E2CC00B55299 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -478,14 +482,16 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 44SQBVTPVY;
 				INFOPLIST_FILE = buntan/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.naorandd.buntan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -498,14 +504,16 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 44SQBVTPVY;
 				INFOPLIST_FILE = buntan/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.naorandd.buntan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
