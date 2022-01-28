@@ -32,6 +32,12 @@ class HomeViewController: UIViewController {
         let group = self.userDefaults.object(forKey: "Group") as! String
         self.navigationItem.title = group
         settingTableView()
+
+        /// NotificationCenterを登録
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.reloadScreen),
+                                               name: .notifyName,
+                                               object: nil)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -74,6 +80,15 @@ class HomeViewController: UIViewController {
 }
 
 extension HomeViewController {
+    @objc func reloadScreen(notification: Notification?) {
+        print("\(String(describing: notification))からの通知でグループが変更されたのでリロード")
+        let group = self.userDefaults.object(forKey: "Group") as! String
+        self.navigationItem.title = group
+        RealmManager.shared.deleteAllTaskItem()
+        setListener()
+        reload()
+    }
+
     private func settingTableView() {
         tableView.delegate = self
         tableView.dataSource = self
@@ -91,7 +106,7 @@ extension HomeViewController {
                     return GroupTask(group: data["group"] as! String, name: data["name"] as! String, point: data["point"] as! Int)
                 }
                 print("中身は\(String(describing: self.groupTasks))")
-                self.tableView.reloadData()
+                self.reload()
             }
         }
     }
@@ -165,4 +180,9 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 //            tableView.deleteRows(at: [indexPath as IndexPath], with: UITableView.RowAnimation.automatic)
 //        }
 //    }
+}
+
+// Notification CenterのExtention
+extension Notification.Name {
+    static let notifyName = Notification.Name("notifyName")
 }

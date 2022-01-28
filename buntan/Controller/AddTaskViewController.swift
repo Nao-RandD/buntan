@@ -34,6 +34,14 @@ class AddTaskViewController: UIViewController, IndicatorInfoProvider {
         sendFirestore(name: name, point: Int(point) ?? 0)
     }
 
+    func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
+        return itemInfo
+    }
+}
+
+// MARK - Private Func -
+
+extension AddTaskViewController {
     private func setTaskItem(contents: Results<TaskItem>, name: String, point: String) -> TaskItem? {
         let taskItem = TaskItem()
         taskItem.name = name
@@ -43,14 +51,6 @@ class AddTaskViewController: UIViewController, IndicatorInfoProvider {
         return taskItem
     }
 
-    func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return itemInfo
-    }
-}
-
-// MARK - Private Func -
-
-extension AddTaskViewController {
     private func sendFirestore(name: String, point: Int) {
         let group = self.userDefaults.object(forKey: "Group") as! String
 

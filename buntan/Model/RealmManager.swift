@@ -50,6 +50,13 @@ final class RealmManager {
         }
     }
 
+    func deleteAllTaskItem() {
+        try! realm.write {
+            print("すべてのタスクデータを削除")
+            realm.deleteAll()
+        }
+    }
+
     private func setTaskItem(task: String,
                      point: Int) -> TaskItem {
         let taskItem = TaskItem()
