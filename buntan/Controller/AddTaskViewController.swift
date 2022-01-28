@@ -8,13 +8,16 @@
 import UIKit
 import Firebase
 import RealmSwift
+import XLPagerTabStrip
 
-class AddTaskViewController: UIViewController {
+class AddTaskViewController: UIViewController, IndicatorInfoProvider {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var pointTextField: UITextField!
 
     private let db = Firestore.firestore()
     private let userDefaults = UserDefaults.standard
+
+    var itemInfo: IndicatorInfo = "Task"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +41,10 @@ class AddTaskViewController: UIViewController {
         taskItem.point = Int(point) ?? 0
 
         return taskItem
+    }
+
+    func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
+        return itemInfo
     }
 }
 

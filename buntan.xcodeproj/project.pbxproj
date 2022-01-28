@@ -21,6 +21,8 @@
 		9F8E376926F576FB00084709 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8E376826F576FB00084709 /* MenuViewController.swift */; };
 		9F99668D2743DBD800FF6AD5 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F99668C2743DBD800FF6AD5 /* SignupViewController.swift */; };
 		9F99668F2743E39F00FF6AD5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9F99668E2743E39E00FF6AD5 /* GoogleService-Info.plist */; };
+		9FA2207A27A40EDE00CFD239 /* AddAllViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA2207927A40EDE00CFD239 /* AddAllViewController.swift */; };
+		9FA2207C27A4139300CFD239 /* AddGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA2207B27A4139300CFD239 /* AddGroupViewController.swift */; };
 		9FB0157D2760D48800D63230 /* Contents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB0157C2760D48800D63230 /* Contents.swift */; };
 		9FB0157F27677CE900D63230 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB0157E27677CE900D63230 /* LoginViewController.swift */; };
 		9FB2F7EA26F21961006CDF73 /* MyUINavigationControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB2F7E926F21961006CDF73 /* MyUINavigationControllerViewController.swift */; };
@@ -55,6 +57,8 @@
 		9F8E376826F576FB00084709 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		9F99668C2743DBD800FF6AD5 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		9F99668E2743E39E00FF6AD5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9FA2207927A40EDE00CFD239 /* AddAllViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAllViewController.swift; sourceTree = "<group>"; };
+		9FA2207B27A4139300CFD239 /* AddGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroupViewController.swift; sourceTree = "<group>"; };
 		9FB0157C2760D48800D63230 /* Contents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contents.swift; sourceTree = "<group>"; };
 		9FB0157E27677CE900D63230 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9FB2F7E926F21961006CDF73 /* MyUINavigationControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyUINavigationControllerViewController.swift; sourceTree = "<group>"; };
@@ -145,6 +149,8 @@
 				9F99668C2743DBD800FF6AD5 /* SignupViewController.swift */,
 				9FB0157E27677CE900D63230 /* LoginViewController.swift */,
 				9F091C0227894AAA0098DE85 /* TutorialViewController.swift */,
+				9FA2207927A40EDE00CFD239 /* AddAllViewController.swift */,
+				9FA2207B27A4139300CFD239 /* AddGroupViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -314,6 +320,7 @@
 				9FEC419526F0B65B00B55299 /* DashboardViewController.swift in Sources */,
 				9F7F135826F83F5700AF0543 /* TabBarController.swift in Sources */,
 				9F7F135426F7692100AF0543 /* AddTaskViewController.swift in Sources */,
+				9FA2207C27A4139300CFD239 /* AddGroupViewController.swift in Sources */,
 				9F8E376926F576FB00084709 /* MenuViewController.swift in Sources */,
 				9F7F135C26FFFEE700AF0543 /* HistoryViewController.swift in Sources */,
 				9F7F135A26FB596A00AF0543 /* ProfileViewController.swift in Sources */,
@@ -328,6 +335,7 @@
 				9FB5589B272D128F00906151 /* FirebaseManager.swift in Sources */,
 				9FEC417826E8E2CC00B55299 /* HomeViewController.swift in Sources */,
 				9FEC417426E8E2CC00B55299 /* AppDelegate.swift in Sources */,
+				9FA2207A27A40EDE00CFD239 /* AddAllViewController.swift in Sources */,
 				9FB2F7EA26F21961006CDF73 /* MyUINavigationControllerViewController.swift in Sources */,
 				9F8E376426F369FD00084709 /* TaskTableViewCell.swift in Sources */,
 				9F091C0327894AAB0098DE85 /* TutorialViewController.swift in Sources */,

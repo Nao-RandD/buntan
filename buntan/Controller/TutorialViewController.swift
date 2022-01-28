@@ -16,11 +16,6 @@ class TutorialViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        let testView = UIView()
-//        testView.frame = targetFrame
-//        print(dump(targetFrame))
-//        testView.backgroundColor = .red
-//        view.addSubview(testView)
         // Do any additional setup after loading the view.
         view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
         imageView = UIImageView(frame: targetFrame)
