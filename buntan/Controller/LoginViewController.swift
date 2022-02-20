@@ -1,122 +1,91 @@
 //
-//  SignupViewController.swift
+//  LoginViewController.swift
 //  buntan
 //
-//  Created by Naoyuki Kan on 2021/09/20.
+//  Created by Naoyuki Kan on 2021/12/13.
 //
 
 import UIKit
 import Firebase
 
 class LoginViewController: UIViewController {
-    @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var houseGroupTextField: UITextField!
-    @IBOutlet weak var groupTextField: UITextField!
+
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
 
     private let userDefaults = UserDefaults.standard
-    private var groupPickerView: UIPickerView!
-    /// FIXME - 仮置として追加
-    private var groupList = [""]
-    private let db = Firestore.firestore()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if (userDefaults.object(forKey: "User") as? String) != nil {
+        if userDefaults.object(forKey: "isLogin") as? Bool ?? false {
             print("すでにログイン済み")
             DispatchQueue.main.async {
                 self.nextScreen()
             }
             return
         }
-
-        // groupPickerViewを設定
-        groupPickerView = UIPickerView()
-        groupPickerView.delegate = self
-        groupPickerView.dataSource = self
-        groupTextField.inputView = groupPickerView
-
-        let collectionReference = db.collection("group")
-        collectionReference.getDocuments { (_snapshot, _error) in
-            if let error = _error {
-                print(error.localizedDescription)
-                return
-            }
-
-            let datas = _snapshot!.documents.compactMap { $0.data() }
-            let groups = datas.map {
-                $0["name"]
-            } as? [String]
-            self.groupList = groups ?? ["ハウス", "自宅"]
-            print(self.groupList)
-        }
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-            self.view.endEditing(true)
+        self.view.endEditing(true)
     }
 
-    @IBAction func tappedSingupButton(_ sender: Any) {
-        guard let name = nameTextField.text, !name.isEmpty else {
-            showAlert(title: "必須項目の入力漏れ",
-                      message: "ユーザー名を入力してください")
-            return
-        }
-        guard let group = groupTextField.text, !group.isEmpty else {
-            showAlert(title: "必須項目の入力漏れ",
-                      message: "参加するグループを選択してください")
-            return
-        }
+    @IBAction func tappedSignInButton(_ sender: Any) {
+        let email = emailTextField.text ?? ""
+        let password = passwordTextField.text ?? ""
 
-        userDefaults.set(name, forKey: "User")
-        userDefaults.set(group, forKey: "Group")
-
-        let data: [String: Any] = ["name": name, "group": group, "point": 0]
-        db.collection("users").document(name).setData(data, merge: true)
-        print("userDefaultsを更新")
-        print("ユーザー名：\(name), グループ：\(group)としてSign Up完了")
-        nextScreen()
+        Auth.auth().signIn(withEmail: email, password: password) { [weak self] result, error in
+            guard let self = self else { return }
+            if (result?.user) != nil {
+                DispatchQueue.main.async {
+                    self.userDefaults.set(true, forKey: "isLogin")
+                    self.nextScreen()
+                }
+            }
+            self.showErrorIfNeeded(error)
+        }
     }
 }
 
+// MARK - Private Function -
+
 extension LoginViewController {
     private func nextScreen() {
-        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "TabBarController") as! TabBarController
+//        self.userDefaults.set(name, forKey: "User")
+
+        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "StartAppViewController") as! StartAppViewController
         secondViewController.modalPresentationStyle = .fullScreen
         self.present(secondViewController, animated: false, completion: nil)
     }
 
-    private func showAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title,
-                                      message:  message,
-                                      preferredStyle:  UIAlertController.Style.alert)
-        let confirmAction = UIAlertAction(title: "OK",
-                                          style: UIAlertAction.Style.default,
-                                          handler: {
-                                            (action: UIAlertAction!) -> Void in
-        })
-        alert.addAction(confirmAction)
+    private func showErrorIfNeeded(_ errorOrNil: Error?) {
+        // エラーがなければ何もしません
+        guard let error = errorOrNil else { return }
+
+        let message = errorMessage(of: error) // エラーメッセージを取得
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
     }
-}
 
-// MARK - UIPickerViewDelegate
+    private func errorMessage(of error: Error) -> String {
+        var message = "エラーが発生しました"
+        guard let errorCode = AuthErrorCode(rawValue: (error as NSError).code) else {
+            return message
+        }
 
-extension LoginViewController: UIPickerViewDelegate, UIPickerViewDataSource {
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        groupList.count
-    }
-
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let user = groupList[row]
-        groupTextField.text = user
-    }
-
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        groupList[row]
+        switch errorCode {
+        case .networkError: message = "ネットワークに接続できません"
+        case .userNotFound: message = "ユーザが見つかりません"
+        case .invalidEmail: message = "不正なメールアドレスです"
+        case .emailAlreadyInUse: message = "このメールアドレスは既に使われています"
+        case .wrongPassword: message = "入力した認証情報でサインインできません"
+        case .userDisabled: message = "このアカウントは無効です"
+        case .weakPassword: message = "パスワードが脆弱すぎます"
+        // これは一例です。必要に応じて増減させてください
+        default: break
+        }
+        return message
     }
 }

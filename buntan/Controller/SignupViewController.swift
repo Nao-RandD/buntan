@@ -17,7 +17,15 @@ class SignupViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        if userDefaults.object(forKey: "isSignup") as? Bool ?? false ||
+            userDefaults.object(forKey: "isLogin") as? Bool ?? false {
+            print("すでにサインアップ済み")
+            DispatchQueue.main.async {
+                self.nextScreen()
+            }
+            return
+        }
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -31,6 +39,13 @@ class SignupViewController: UIViewController {
 
         signUp(email: email, password: password, name: name)
     }
+
+    // ログイン画面への繊維
+    @IBAction func didTapToLoginButton(_ sender: Any) {
+        DispatchQueue.main.async {
+            self.nextScreen()
+        }
+    }
 }
 
 // MARK - Private Function -
@@ -43,18 +58,21 @@ extension SignupViewController {
             guard let self = self else { return }
             if let user = result?.user {
                 print("メールアドレス登録完了")
+//                self.sendEmailVerification(to: user, name: name)
                 self.updateDisplayName(name, of: user)
             }
             self.showError(error)
         }
     }
 
+    // 認証メールに表示する名前を更新する
     private func updateDisplayName(_ name: String, of user: User) {
+        print("表示名の更新")
         let request = user.createProfileChangeRequest()
         request.displayName = name
         request.commitChanges() { [weak self] error in
             guard let self = self else { return }
-            if error != nil {
+            if error == nil {
                 print("ユーザー名登録完了")
                 self.sendEmailVerification(to: user, name: name)
             }
@@ -62,31 +80,49 @@ extension SignupViewController {
         }
     }
 
+    // 登録したメールアドレスに向けて認証URLを送る
     private func sendEmailVerification(to user: User, name: String) {
         user.sendEmailVerification() { [weak self] error in
             guard let self = self else { return }
-            if error != nil {
+            if error == nil {
                 print("アクティベート含めた登録完了")
-                self.nextScreen(name: name)
+                DispatchQueue.main.async {
+                    self.showDialog("メールアプリから認証を完了してください", user: name)
+                }
             }
             self.showError(error)
         }
     }
-    
+
+    // 指定のダイアログを表示する
+    private func showDialog(_ message: String, user user: String) {
+        let alert = UIAlertController(title: "メール認証", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK",
+                                      style: .default,
+                                      handler: {
+                                              (action: UIAlertAction!) -> Void in
+            self.nextScreen()
+                                          }))
+        present(alert, animated: true, completion: nil)
+    }
+
+    // エラー内容をダイアログで表示する
     private func showError(_ errorOrNil: Error?) {
         // エラーがなければ何もしません
         guard errorOrNil != nil else { return }
+        print("エラー内容は\(errorOrNil)")
 
-        let message = "エラーが起きました" // ここは後述しますが、とりあえず固定文字列
+        let message = errorOrNil?.localizedDescription
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
     }
 
-    private func nextScreen(name: String) {
-        self.userDefaults.set(name, forKey: "User")
+    // isSignupのフラグが立っていたら次の画面に遷移する
+    private func nextScreen() {
+        self.userDefaults.set(true, forKey: "isSignup")
 
-        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "TabBarController") as! TabBarController
+        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
         secondViewController.modalPresentationStyle = .fullScreen
         self.present(secondViewController, animated: false, completion: nil)
     }

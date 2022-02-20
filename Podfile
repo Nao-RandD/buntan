@@ -10,5 +10,6 @@ target 'buntan' do
   pod 'Firebase/Firestore'
   pod 'Firebase/Auth'
   # Pods for buntan
+  pod 'XLPagerTabStrip', :git => 'https://github.com/xmartlabs/XLPagerTabStrip', :branch => 'master'
 
 end
