@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A660CACE448831BDD8E0950 /* Pods_buntanTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CE0DD626EE342DA6F052591 /* Pods_buntanTests.framework */; };
 		9B01D43BA0476047EE09C930 /* Pods_buntan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E2FED4ED7A2635244999AC9 /* Pods_buntan.framework */; };
 		9F091C0327894AAB0098DE85 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F091C0227894AAA0098DE85 /* TutorialViewController.swift */; };
 		9F7F135426F7692100AF0543 /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7F135326F7692100AF0543 /* AddTaskViewController.swift */; };
@@ -19,6 +20,7 @@
 		9F8E376426F369FD00084709 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8E376226F369FD00084709 /* TaskTableViewCell.swift */; };
 		9F8E376526F369FD00084709 /* TaskTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F8E376326F369FD00084709 /* TaskTableViewCell.xib */; };
 		9F8E376926F576FB00084709 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8E376826F576FB00084709 /* MenuViewController.swift */; };
+		9F97729E27E1BD1B00F1190A /* buntanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F97729D27E1BD1B00F1190A /* buntanTests.swift */; };
 		9F99668D2743DBD800FF6AD5 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F99668C2743DBD800FF6AD5 /* SignupViewController.swift */; };
 		9F99668F2743E39F00FF6AD5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9F99668E2743E39E00FF6AD5 /* GoogleService-Info.plist */; };
 		9FA2207A27A40EDE00CFD239 /* AddAllViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA2207927A40EDE00CFD239 /* AddAllViewController.swift */; };
@@ -41,9 +43,22 @@
 		9FEC419826F0B84900B55299 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEC419726F0B84800B55299 /* UserInfo.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		9F97729F27E1BD1B00F1190A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9FEC416826E8E2CB00B55299 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9FEC416F26E8E2CC00B55299;
+			remoteInfo = buntan;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		0E2FED4ED7A2635244999AC9 /* Pods_buntan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_buntan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1CE0DD626EE342DA6F052591 /* Pods_buntanTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_buntanTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		204CB05096C6FB6120184E08 /* Pods-buntan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-buntan.release.xcconfig"; path = "Target Support Files/Pods-buntan/Pods-buntan.release.xcconfig"; sourceTree = "<group>"; };
+		582A46FAE6B9B26F6C7F082A /* Pods-buntanTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-buntanTests.release.xcconfig"; path = "Target Support Files/Pods-buntanTests/Pods-buntanTests.release.xcconfig"; sourceTree = "<group>"; };
+		72EA9A850438DA3D734141A9 /* Pods-buntanTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-buntanTests.debug.xcconfig"; path = "Target Support Files/Pods-buntanTests/Pods-buntanTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9F091C0227894AAA0098DE85 /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		9F7F135326F7692100AF0543 /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
 		9F7F135526F83CCF00AF0543 /* StartAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartAppViewController.swift; sourceTree = "<group>"; };
@@ -55,6 +70,8 @@
 		9F8E376226F369FD00084709 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		9F8E376326F369FD00084709 /* TaskTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskTableViewCell.xib; sourceTree = "<group>"; };
 		9F8E376826F576FB00084709 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		9F97729B27E1BD1B00F1190A /* buntanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = buntanTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F97729D27E1BD1B00F1190A /* buntanTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = buntanTests.swift; sourceTree = "<group>"; };
 		9F99668C2743DBD800FF6AD5 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		9F99668E2743E39E00FF6AD5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9FA2207927A40EDE00CFD239 /* AddAllViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAllViewController.swift; sourceTree = "<group>"; };
@@ -83,6 +100,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		9F97729827E1BD1B00F1190A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1A660CACE448831BDD8E0950 /* Pods_buntanTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9FEC416D26E8E2CC00B55299 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -98,14 +123,24 @@
 			isa = PBXGroup;
 			children = (
 				0E2FED4ED7A2635244999AC9 /* Pods_buntan.framework */,
+				1CE0DD626EE342DA6F052591 /* Pods_buntanTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9F97729C27E1BD1B00F1190A /* buntanTests */ = {
+			isa = PBXGroup;
+			children = (
+				9F97729D27E1BD1B00F1190A /* buntanTests.swift */,
+			);
+			path = buntanTests;
 			sourceTree = "<group>";
 		};
 		9FEC416726E8E2CB00B55299 = {
 			isa = PBXGroup;
 			children = (
 				9FEC417226E8E2CC00B55299 /* buntan */,
+				9F97729C27E1BD1B00F1190A /* buntanTests */,
 				9FEC417126E8E2CC00B55299 /* Products */,
 				A6CD8567C968D8EF79B08B73 /* Pods */,
 				1021102835AC627E5C6AEB3E /* Frameworks */,
@@ -116,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				9FEC417026E8E2CC00B55299 /* buntan.app */,
+				9F97729B27E1BD1B00F1190A /* buntanTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -198,6 +234,8 @@
 			children = (
 				DF870C7356CAFC3777A38F9F /* Pods-buntan.debug.xcconfig */,
 				204CB05096C6FB6120184E08 /* Pods-buntan.release.xcconfig */,
+				72EA9A850438DA3D734141A9 /* Pods-buntanTests.debug.xcconfig */,
+				582A46FAE6B9B26F6C7F082A /* Pods-buntanTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -205,6 +243,26 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		9F97729A27E1BD1B00F1190A /* buntanTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9F9772A127E1BD1B00F1190A /* Build configuration list for PBXNativeTarget "buntanTests" */;
+			buildPhases = (
+				1A8BA13DDCA9E970EA8233EB /* [CP] Check Pods Manifest.lock */,
+				9F97729727E1BD1B00F1190A /* Sources */,
+				9F97729827E1BD1B00F1190A /* Frameworks */,
+				9F97729927E1BD1B00F1190A /* Resources */,
+				23DDBD2B4FAF75863570BDAE /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9F9772A027E1BD1B00F1190A /* PBXTargetDependency */,
+			);
+			name = buntanTests;
+			productName = buntanTests;
+			productReference = 9F97729B27E1BD1B00F1190A /* buntanTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		9FEC416F26E8E2CC00B55299 /* buntan */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9FEC418426E8E2D000B55299 /* Build configuration list for PBXNativeTarget "buntan" */;
@@ -230,9 +288,13 @@
 		9FEC416826E8E2CB00B55299 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1250;
+				LastSwiftUpdateCheck = 1310;
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
+					9F97729A27E1BD1B00F1190A = {
+						CreatedOnToolsVersion = 13.1;
+						TestTargetID = 9FEC416F26E8E2CC00B55299;
+					};
 					9FEC416F26E8E2CC00B55299 = {
 						CreatedOnToolsVersion = 12.5.1;
 					};
@@ -252,11 +314,19 @@
 			projectRoot = "";
 			targets = (
 				9FEC416F26E8E2CC00B55299 /* buntan */,
+				9F97729A27E1BD1B00F1190A /* buntanTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		9F97729927E1BD1B00F1190A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9FEC416E26E8E2CC00B55299 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -296,6 +366,28 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		1A8BA13DDCA9E970EA8233EB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-buntanTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		213254C2F87F5E349650009E /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -313,9 +405,34 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-buntan/Pods-buntan-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		23DDBD2B4FAF75863570BDAE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-buntanTests/Pods-buntanTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-buntanTests/Pods-buntanTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-buntanTests/Pods-buntanTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		9F97729727E1BD1B00F1190A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9F97729E27E1BD1B00F1190A /* buntanTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9FEC416C26E8E2CC00B55299 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -349,6 +466,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		9F9772A027E1BD1B00F1190A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9FEC416F26E8E2CC00B55299 /* buntan */;
+			targetProxy = 9F97729F27E1BD1B00F1190A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		9FEC417926E8E2CC00B55299 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -369,6 +494,58 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		9F9772A227E1BD1B00F1190A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 72EA9A850438DA3D734141A9 /* Pods-buntanTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 44SQBVTPVY;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.naorandd.buntanTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/buntan.app/buntan";
+			};
+			name = Debug;
+		};
+		9F9772A327E1BD1B00F1190A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 582A46FAE6B9B26F6C7F082A /* Pods-buntanTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 44SQBVTPVY;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.naorandd.buntanTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/buntan.app/buntan";
+			};
+			name = Release;
+		};
 		9FEC418226E8E2D000B55299 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -536,6 +713,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		9F9772A127E1BD1B00F1190A /* Build configuration list for PBXNativeTarget "buntanTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9F9772A227E1BD1B00F1190A /* Debug */,
+				9F9772A327E1BD1B00F1190A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		9FEC416B26E8E2CB00B55299 /* Build configuration list for PBXProject "buntan" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

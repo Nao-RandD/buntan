@@ -12,4 +12,9 @@ target 'buntan' do
   # Pods for buntan
   pod 'XLPagerTabStrip', :git => 'https://github.com/xmartlabs/XLPagerTabStrip', :branch => 'master'
 
+  target  'buntanTests' do
+          inherit! :search_paths
+          pod 'Firebase'
+      end
+
 end

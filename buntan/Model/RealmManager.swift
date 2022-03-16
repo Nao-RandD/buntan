@@ -74,7 +74,7 @@ final class RealmManager {
         return uniqueIdString
     }
 
-    private func getTime() -> String {
+    func getTime() -> String {
         let date = Date()
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyyMMddHHmmss"
