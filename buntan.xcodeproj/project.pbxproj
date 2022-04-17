@@ -17,6 +17,7 @@
 		9F7F135C26FFFEE700AF0543 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7F135B26FFFEE700AF0543 /* HistoryViewController.swift */; };
 		9F7F1363270007A400AF0543 /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7F1361270007A400AF0543 /* HistoryTableViewCell.swift */; };
 		9F7F1364270007A400AF0543 /* HistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F7F1362270007A400AF0543 /* HistoryTableViewCell.xib */; };
+		9F8D3F9E280C59E800D13868 /* NFCManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8D3F9D280C59E800D13868 /* NFCManager.swift */; };
 		9F8E376426F369FD00084709 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8E376226F369FD00084709 /* TaskTableViewCell.swift */; };
 		9F8E376526F369FD00084709 /* TaskTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F8E376326F369FD00084709 /* TaskTableViewCell.xib */; };
 		9F8E376926F576FB00084709 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8E376826F576FB00084709 /* MenuViewController.swift */; };
@@ -67,6 +68,7 @@
 		9F7F135B26FFFEE700AF0543 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		9F7F1361270007A400AF0543 /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
 		9F7F1362270007A400AF0543 /* HistoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryTableViewCell.xib; sourceTree = "<group>"; };
+		9F8D3F9D280C59E800D13868 /* NFCManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCManager.swift; sourceTree = "<group>"; };
 		9F8E376226F369FD00084709 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		9F8E376326F369FD00084709 /* TaskTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskTableViewCell.xib; sourceTree = "<group>"; };
 		9F8E376826F576FB00084709 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 				9FEC418B26EF5E4100B55299 /* TaskItem.swift */,
 				9FB55898271A8D5A00906151 /* RealmManager.swift */,
 				9FB5589A272D128F00906151 /* FirebaseManager.swift */,
+				9F8D3F9D280C59E800D13868 /* NFCManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -453,6 +456,7 @@
 				9FB0157D2760D48800D63230 /* Contents.swift in Sources */,
 				9F7F135626F83CCF00AF0543 /* StartAppViewController.swift in Sources */,
 				9F7F1363270007A400AF0543 /* HistoryTableViewCell.swift in Sources */,
+				9F8D3F9E280C59E800D13868 /* NFCManager.swift in Sources */,
 				9FB5589B272D128F00906151 /* FirebaseManager.swift in Sources */,
 				9FEC417826E8E2CC00B55299 /* HomeViewController.swift in Sources */,
 				9FEC417426E8E2CC00B55299 /* AppDelegate.swift in Sources */,
@@ -669,6 +673,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = buntan/buntan.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.0.1;
 				DEVELOPMENT_TEAM = 44SQBVTPVY;
@@ -681,6 +686,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.naorandd.buntan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
