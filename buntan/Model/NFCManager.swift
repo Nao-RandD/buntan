@@ -20,12 +20,12 @@ class NFCManager: NSObject {
     var message: NFCNDEFMessage?
     var state: ReaderState = .standBy
 
-    var text: String = ""
+    var text: String = "app://com.naorandd.buntan:"
 
     func startSession(state: ReaderState) {
         self.state = state
         guard NFCNDEFReaderSession.readingAvailable else {
-            Swift.print("NFCはつかえないよ．")
+            print("NFCはつかえないよ．")
             return
         }
         session = NFCNDEFReaderSession(delegate: self, queue: nil, invalidateAfterFirstRead: false)
@@ -87,7 +87,7 @@ extension NFCManager: NFCNDEFReaderSessionDelegate {
     }
 
     func readerSession(_ session: NFCNDEFReaderSession, didInvalidateWithError error: Error) {
-        Swift.print(error.localizedDescription)
+        print(error.localizedDescription)
     }
 
     func readerSession(_ session: NFCNDEFReaderSession, didDetectNDEFs messages: [NFCNDEFMessage]) {
@@ -119,7 +119,7 @@ extension NFCManager: NFCNDEFReaderSessionDelegate {
                     return
                 }
                 if let payload = NFCNDEFPayload.wellKnownTypeTextPayload(string: self.text, locale: Locale(identifier: "en")) {
-                    let urlPayload = NFCNDEFPayload.wellKnownTypeURIPayload(string: "https://kyome.io/")!
+                    let urlPayload = NFCNDEFPayload.wellKnownTypeURIPayload(string: "app://com.naorandd.buntan:")!
                     self.message = NFCNDEFMessage(records: [payload, urlPayload])
                     if self.message!.length > capacity {
                         self.stopSession(error: "容量オーバーで書き込めないぞ！\n容量は\(capacity)bytesらしいぞ．")
