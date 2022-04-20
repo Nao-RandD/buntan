@@ -27,7 +27,7 @@
 			<string>com.naorandd.buntan</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>app</string>
+				<string>myapp</string>
 			</array>
 		</dict>
 	</array>

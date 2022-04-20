@@ -20,7 +20,7 @@ class NFCManager: NSObject {
     var message: NFCNDEFMessage?
     var state: ReaderState = .standBy
 
-    var text: String = "app://com.naorandd.buntan:"
+    var text: String = "myapp://history"
 
     func startSession(state: ReaderState) {
         self.state = state
@@ -119,7 +119,7 @@ extension NFCManager: NFCNDEFReaderSessionDelegate {
                     return
                 }
                 if let payload = NFCNDEFPayload.wellKnownTypeTextPayload(string: self.text, locale: Locale(identifier: "en")) {
-                    let urlPayload = NFCNDEFPayload.wellKnownTypeURIPayload(string: "app://com.naorandd.buntan:")!
+                    let urlPayload = NFCNDEFPayload.wellKnownTypeURIPayload(string: "myapp://history")!
                     self.message = NFCNDEFMessage(records: [payload, urlPayload])
                     if self.message!.length > capacity {
                         self.stopSession(error: "容量オーバーで書き込めないぞ！\n容量は\(capacity)bytesらしいぞ．")

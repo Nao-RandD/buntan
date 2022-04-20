@@ -14,7 +14,7 @@
         <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="buntan" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="homeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="HomeViewController" customModule="buntan" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -335,7 +335,7 @@
         <!--History View Controller-->
         <scene sceneID="Qf8-cT-LSU">
             <objects>
-                <viewController id="ifa-kg-1o9" customClass="HistoryViewController" customModule="buntan" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="historyViewController" id="ifa-kg-1o9" customClass="HistoryViewController" customModule="buntan" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9gA-lS-aVy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1074,32 +1074,38 @@
                                     <action selector="tappedWriteButton:" destination="3an-XB-cL1" eventType="touchUpInside" id="qXW-w9-aP8"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NOB-sT-FDD">
-                                <rect key="frame" x="88" y="349" width="238" height="44"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XUn-p5-uHD">
+                                <rect key="frame" x="104" y="344" width="206" height="49"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain">
+                                <buttonConfiguration key="configuration" style="filled">
                                     <attributedString key="attributedTitle">
-                                        <fragment content="NFCの読み取り">
+                                        <fragment content="NFC">
+                                            <attributes>
+                                                <font key="NSFont" size="30" name="Helvetica"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                        <fragment content="読み取り">
                                             <attributes>
                                                 <font key="NSFont" size="30" name="HiraginoSans-W3"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                             </attributes>
                                         </fragment>
                                     </attributedString>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="tappedReadButton:" destination="3an-XB-cL1" eventType="touchUpInside" id="dnP-aA-CDF"/>
+                                    <action selector="tappedReadButton:" destination="3an-XB-cL1" eventType="touchUpInside" id="wvJ-Pf-Yg5"/>
                                 </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6II-Mi-gXl"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="XUn-p5-uHD" firstAttribute="centerX" secondItem="TlK-0w-ksR" secondAttribute="centerX" id="FfM-sw-XyW"/>
                             <constraint firstItem="dXT-dW-qnH" firstAttribute="centerX" secondItem="TlK-0w-ksR" secondAttribute="centerX" id="P8c-Y8-vx7"/>
+                            <constraint firstItem="dXT-dW-qnH" firstAttribute="top" secondItem="XUn-p5-uHD" secondAttribute="bottom" constant="87" id="PPB-ND-eZP"/>
                             <constraint firstItem="6II-Mi-gXl" firstAttribute="bottom" secondItem="dXT-dW-qnH" secondAttribute="bottom" constant="338" id="R4G-ll-vx8"/>
-                            <constraint firstItem="NOB-sT-FDD" firstAttribute="centerX" secondItem="TlK-0w-ksR" secondAttribute="centerX" id="ZaZ-ga-ra7"/>
-                            <constraint firstItem="NOB-sT-FDD" firstAttribute="top" secondItem="6II-Mi-gXl" secondAttribute="top" constant="261" id="pnb-aP-mq3"/>
-                            <constraint firstItem="dXT-dW-qnH" firstAttribute="centerX" secondItem="NOB-sT-FDD" secondAttribute="centerX" id="qLL-fx-I9I"/>
-                            <constraint firstItem="dXT-dW-qnH" firstAttribute="top" secondItem="NOB-sT-FDD" secondAttribute="bottom" constant="87" id="wlX-SX-lnN"/>
+                            <constraint firstItem="XUn-p5-uHD" firstAttribute="top" secondItem="6II-Mi-gXl" secondAttribute="top" constant="256" id="sN7-lg-O95"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="WTm-UW-B0T"/>

@@ -12,7 +12,6 @@ class NFCViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // NFCマネージャー
         manager = NFCManager()
     }
