@@ -14,7 +14,7 @@
         <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="buntan" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="homeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="HomeViewController" customModule="buntan" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -93,7 +93,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="281" height="813"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="74" translatesAutoresizingMaskIntoConstraints="NO" id="g4r-HL-uJE">
-                                        <rect key="frame" x="65" y="69" width="151" height="314.5"/>
+                                        <rect key="frame" x="65" y="69" width="151" height="419.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="fP5-1R-2gJ">
                                                 <rect key="frame" x="0.0" y="0.0" width="151" height="80.5"/>
@@ -180,6 +180,19 @@
                                                     <constraint firstItem="R6H-6J-Vje" firstAttribute="top" secondItem="wAU-63-QIp" secondAttribute="top" id="lhX-GA-7lx"/>
                                                     <constraint firstAttribute="bottom" secondItem="R6H-6J-Vje" secondAttribute="bottom" id="sXW-h4-rXb"/>
                                                 </constraints>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P8A-aD-kaA">
+                                                <rect key="frame" x="0.0" y="388.5" width="151" height="31"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kKf-s9-sVy">
+                                                        <rect key="frame" x="0.0" y="0.0" width="151" height="31"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="tinted" title="NFCをあれこれ"/>
+                                                        <connections>
+                                                            <segue destination="pRD-FF-DN8" kind="presentation" modalPresentationStyle="overFullScreen" id="h12-z3-fwD"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
                                             </stackView>
                                         </subviews>
                                     </stackView>
@@ -322,7 +335,7 @@
         <!--History View Controller-->
         <scene sceneID="Qf8-cT-LSU">
             <objects>
-                <viewController id="ifa-kg-1o9" customClass="HistoryViewController" customModule="buntan" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="historyViewController" id="ifa-kg-1o9" customClass="HistoryViewController" customModule="buntan" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9gA-lS-aVy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1036,6 +1049,86 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nsJ-FF-s1P" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3721.739130434783" y="1066.7410714285713"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="ufW-W3-ccm">
+            <objects>
+                <viewController id="3an-XB-cL1" customClass="NFCViewController" customModule="buntan" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TlK-0w-ksR">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dXT-dW-qnH">
+                                <rect key="frame" x="103" y="480" width="208" height="44"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="gray">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="NFC書き込み">
+                                            <attributes>
+                                                <font key="NSFont" size="30" name="HiraginoSans-W3"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="tappedWriteButton:" destination="3an-XB-cL1" eventType="touchUpInside" id="qXW-w9-aP8"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XUn-p5-uHD">
+                                <rect key="frame" x="104" y="344" width="206" height="49"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="NFC">
+                                            <attributes>
+                                                <font key="NSFont" size="30" name="Helvetica"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                        <fragment content="読み取り">
+                                            <attributes>
+                                                <font key="NSFont" size="30" name="HiraginoSans-W3"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="tappedReadButton:" destination="3an-XB-cL1" eventType="touchUpInside" id="wvJ-Pf-Yg5"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6II-Mi-gXl"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="XUn-p5-uHD" firstAttribute="centerX" secondItem="TlK-0w-ksR" secondAttribute="centerX" id="FfM-sw-XyW"/>
+                            <constraint firstItem="dXT-dW-qnH" firstAttribute="centerX" secondItem="TlK-0w-ksR" secondAttribute="centerX" id="P8c-Y8-vx7"/>
+                            <constraint firstItem="dXT-dW-qnH" firstAttribute="top" secondItem="XUn-p5-uHD" secondAttribute="bottom" constant="87" id="PPB-ND-eZP"/>
+                            <constraint firstItem="6II-Mi-gXl" firstAttribute="bottom" secondItem="dXT-dW-qnH" secondAttribute="bottom" constant="338" id="R4G-ll-vx8"/>
+                            <constraint firstItem="XUn-p5-uHD" firstAttribute="top" secondItem="6II-Mi-gXl" secondAttribute="top" constant="256" id="sN7-lg-O95"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="WTm-UW-B0T"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Ye-3b-1Of" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4136" y="1931"/>
+        </scene>
+        <!--MyUI Navigation Controller View Controller-->
+        <scene sceneID="1eG-nx-KRg">
+            <objects>
+                <navigationController id="pRD-FF-DN8" customClass="MyUINavigationControllerViewController" customModule="buntan" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="30C-c5-73u">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="3an-XB-cL1" kind="relationship" relationship="rootViewController" id="Jfd-8a-ULt"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kk1-Vd-neD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3226" y="1931"/>
         </scene>
         <!--Add Group View Controller-->
         <scene sceneID="qTt-bD-9TM">

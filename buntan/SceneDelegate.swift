@@ -16,7 +16,44 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+        if let url = connectionOptions.urlContexts.first?.url {
+            debugPrint("openUrl \(url)")
+            let _ = processLink(url: url)
+        }
         guard let _ = (scene as? UIWindowScene) else { return }
+    }
+
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        guard let url = URLContexts.first?.url else {
+            return
+        }
+        processLink(url: url)
+    }
+
+    func processLink(url: URL) {
+        print("url : \(url.absoluteString)")
+        print("scheme : \(url.scheme!)")
+        print("host : \(url.host!)")
+//        print("port : \(url.port!)")
+//        print("query : \(url.query!)")
+
+        window = UIWindow()
+
+        // リクエストされたURLの中からhostの値を取得して代入
+        let urlHost: String = url.host as String? ?? ""
+
+        // 遷移させたいViewControllerが格納されている
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+
+        // urlHostにHomeが入っていた場合はmainStoryboard
+        if(urlHost == "home") {
+            let resultVC: HomeViewController = mainStoryboard.instantiateViewController(withIdentifier: "homeViewController") as! HomeViewController
+            window?.rootViewController = resultVC
+        } else if (urlHost == "history") {
+            let resultVC: HistoryViewController = mainStoryboard.instantiateViewController(withIdentifier: "historyViewController") as! HistoryViewController
+            window?.rootViewController = resultVC
+        }
+        window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

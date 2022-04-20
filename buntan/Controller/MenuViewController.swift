@@ -12,6 +12,7 @@ class MenuViewController: UIViewController {
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var pointLabel: UILabel!
 
+
     private let userDefaults = UserDefaults.standard
 
     override func viewWillAppear(_ animated: Bool) {
