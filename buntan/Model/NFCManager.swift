@@ -25,7 +25,7 @@ class NFCManager: NSObject {
     func startSession(state: ReaderState) {
         self.state = state
         guard NFCNDEFReaderSession.readingAvailable else {
-            print("NFCはつかえないよ．")
+            print("NFCはご利用できません")
             return
         }
         session = NFCNDEFReaderSession(delegate: self, queue: nil, invalidateAfterFirstRead: false)
@@ -96,7 +96,7 @@ extension NFCManager: NFCNDEFReaderSessionDelegate {
 
     func readerSession(_ session: NFCNDEFReaderSession, didDetect tags: [NFCNDEFTag]) {
         if tags.count > 1 {
-            session.alertMessage = "読み込ませるNFCタグは1枚にしてください．"
+            session.alertMessage = "読み込ませるNFCタグは1枚にしてください"
             tagRemovalDetect(tags.first!)
             return
         }
@@ -110,19 +110,19 @@ extension NFCManager: NFCNDEFReaderSessionDelegate {
 
         tag.queryNDEFStatus { (status, capacity, error) in
             if status == .notSupported {
-                self.stopSession(error: "このNFCタグは対応していないみたい．")
+                self.stopSession(error: "このNFCタグは対応していません")
                 return
             }
             if self.state == .write {
                 if status == .readOnly {
-                    self.stopSession(error: "このNFCタグには書き込みできないぞ")
+                    self.stopSession(error: "このNFCタグには書き込みできません")
                     return
                 }
                 if let payload = NFCNDEFPayload.wellKnownTypeTextPayload(string: self.text, locale: Locale(identifier: "en")) {
                     let urlPayload = NFCNDEFPayload.wellKnownTypeURIPayload(string: "myapp://history")!
                     self.message = NFCNDEFMessage(records: [payload, urlPayload])
                     if self.message!.length > capacity {
-                        self.stopSession(error: "容量オーバーで書き込めないぞ！\n容量は\(capacity)bytesらしいぞ．")
+                        self.stopSession(error: "容量オーバーで書き込めません。\n容量は\(capacity)bytesです")
                         return
                     }
                     tag.writeNDEF(self.message!) { (error) in
@@ -130,7 +130,7 @@ extension NFCManager: NFCNDEFReaderSessionDelegate {
                             // self.printTimestamp()
                             self.stopSession(error: error!.localizedDescription)
                         } else {
-                            self.stopSession(alert: "書き込み成功＼(^o^)／")
+                            self.stopSession(alert: "書き込み成功しました")
                         }
                     }
                 }
@@ -141,7 +141,7 @@ extension NFCManager: NFCNDEFReaderSessionDelegate {
                         return
                     }
                     if !self.updateMessage(message!) {
-                        self.stopSession(error: "このNFCタグは対応していないみたい．")
+                        self.stopSession(error: "このNFCタグは対応していません")
                     }
                 }
             }
