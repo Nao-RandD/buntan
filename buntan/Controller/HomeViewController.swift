@@ -29,6 +29,24 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if #available(iOS 15.0, *) {
+            // disable UINavigation bar transparent
+            let navigationBarAppearance = UINavigationBarAppearance()
+            navigationBarAppearance.configureWithDefaultBackground()
+            UINavigationBar.appearance().standardAppearance = navigationBarAppearance
+            UINavigationBar.appearance().compactAppearance = navigationBarAppearance
+            UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
+        }
+
+        if #available(iOS 15.0, *) {
+            // disable UITab bar transparent
+            let tabBarAppearance: UITabBarAppearance = UITabBarAppearance()
+            tabBarAppearance.configureWithDefaultBackground()
+            UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
+            UITabBar.appearance().standardAppearance = tabBarAppearance
+        }
+
+
         let group = self.userDefaults.object(forKey: "Group") as! String
         self.navigationItem.title = group
         settingTableView()
@@ -137,7 +155,7 @@ extension HomeViewController {
     }
 
     private func showTutorial() {
-        guard var frame = self.navigationController?.navigationBar.frame else { return }
+        guard let frame = self.navigationController?.navigationBar.frame else { return }
         print(dump(frame))
 
         let addButtonview = UIView()
