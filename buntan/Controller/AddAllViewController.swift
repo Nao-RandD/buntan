@@ -23,7 +23,7 @@ class AddAllViewController: ButtonBarPagerTabStripViewController {
         settings.style.selectedBarBackgroundColor = UIColor(red: 254/255, green: 0, blue: 124/255, alpha: 1)
         settings.style.buttonBarMinimumLineSpacing = 5.0
 
-        changeCurrentIndexProgressive = { [weak self] (oldCell: ButtonBarViewCell?, newCell: ButtonBarViewCell?, progressPercentage: CGFloat, changeCurrentIndex: Bool, animated: Bool) -> Void in
+        changeCurrentIndexProgressive = { (oldCell: ButtonBarViewCell?, newCell: ButtonBarViewCell?, progressPercentage: CGFloat, changeCurrentIndex: Bool, animated: Bool) -> Void in
             guard changeCurrentIndex == true else {
                 newCell?.label.textColor = .white
                 newCell?.label.font = UIFont.systemFont(ofSize: 20)

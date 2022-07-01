@@ -95,7 +95,7 @@ extension SignupViewController {
     }
 
     // 指定のダイアログを表示する
-    private func showDialog(_ message: String, user user: String) {
+    private func showDialog(_ message: String, user: String) {
         let alert = UIAlertController(title: "メール認証", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK",
                                       style: .default,
@@ -110,7 +110,7 @@ extension SignupViewController {
     private func showError(_ errorOrNil: Error?) {
         // エラーがなければ何もしません
         guard errorOrNil != nil else { return }
-        print("エラー内容は\(errorOrNil)")
+        print("エラー内容は\(errorOrNil!)")
 
         let message = errorOrNil?.localizedDescription
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)

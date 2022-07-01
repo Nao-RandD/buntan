@@ -137,7 +137,7 @@ extension HomeViewController {
     }
 
     private func showTutorial() {
-        guard var frame = self.navigationController?.navigationBar.frame else { return }
+        guard let frame = self.navigationController?.navigationBar.frame else { return }
         print(dump(frame))
 
         let addButtonview = UIView()
