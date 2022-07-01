@@ -60,7 +60,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="TXA-pa-BCx">
                         <barButtonItem key="leftBarButtonItem" title="Item" style="done" id="wXc-Qc-dqe">
-                            <imageReference key="image" image="line.horizontal.3" catalog="system" symbolScale="large" renderingMode="template"/>
+                            <imageReference key="image" image="line.3.horizontal" catalog="system" symbolScale="large" renderingMode="template"/>
                             <connections>
                                 <segue destination="gyr-9J-u7d" kind="presentation" identifier="showMenu" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="hWN-ag-QZD"/>
                             </connections>
@@ -110,7 +110,7 @@
                                                                     <constraint firstAttribute="width" secondItem="lJV-AW-wCg" secondAttribute="height" multiplier="1:1" id="oEK-Vk-O2G"/>
                                                                 </constraints>
                                                             </imageView>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KVK-Rq-VJG">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="KVK-Rq-VJG">
                                                                 <rect key="frame" x="0.0" y="60" width="60" height="20.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
@@ -342,7 +342,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="caj-U1-pro">
-                        <barButtonItem key="leftBarButtonItem" image="arrow.backward" catalog="system" id="qdS-g8-aoe">
+                        <barButtonItem key="leftBarButtonItem" image="arrow.left" catalog="system" id="qdS-g8-aoe">
                             <connections>
                                 <segue destination="WKu-R6-oHo" kind="unwind" unwindAction="exitWithSegue:" id="oAN-sf-5Qi"/>
                             </connections>
@@ -356,22 +356,6 @@
                 <exit id="WKu-R6-oHo" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4631.884057971015" y="1066.7410714285713"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="M58-ZP-b4q">
-            <objects>
-                <viewController id="zvI-n1-EmA" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Qxl-f6-sN1">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="boV-s1-QTP"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="Ck6-kP-Z8E"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zJG-gH-L3y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1513" y="1096"/>
         </scene>
         <!--Dashboard View Controller-->
         <scene sceneID="pLB-Yt-CAE">
@@ -603,7 +587,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="vi3-lE-9qO">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="colllection" id="vi3-lE-9qO">
                                         <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="4bg-Nc-SBg">
@@ -639,7 +623,7 @@
         <scene sceneID="7ZK-vE-7zN">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xme-wt-ymz" customClass="MyUINavigationControllerViewController" customModule="buntan" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="homekit" catalog="system" id="olE-vI-krD">
+                    <tabBarItem key="tabBarItem" title="" image="house.fill" catalog="system" id="olE-vI-krD">
                         <color key="badgeColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBarItem>
                     <toolbarItems/>
@@ -731,7 +715,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="snP-qO-ZXZ">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="snP-qO-ZXZ">
                                 <rect key="frame" x="151.5" y="369" width="111" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="111" id="SlV-9n-Ihw"/>
@@ -761,7 +745,7 @@
                                     <action selector="tappedSingupButton:" destination="ncD-Xa-r1W" eventType="touchUpInside" id="m5r-c4-LRv"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="afo-l4-RdV">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="afo-l4-RdV">
                                 <rect key="frame" x="124.5" y="529.5" width="165" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="165" id="QFU-fc-Zpl"/>
@@ -1168,16 +1152,14 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="hWN-ag-QZD"/>
+        <segue reference="uEM-v4-Rju"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Dashboard" width="33.5" height="33.5"/>
         <image name="Logo" width="666.5" height="666.5"/>
-        <image name="arrow.backward" catalog="system" width="128" height="98"/>
         <image name="arrow.left" catalog="system" width="128" height="98"/>
-        <image name="homekit" catalog="system" width="128" height="106"/>
+        <image name="house.fill" catalog="system" width="128" height="106"/>
         <image name="line.3.horizontal" catalog="system" width="128" height="64"/>
-        <image name="line.horizontal.3" catalog="system" width="128" height="64"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="timer" catalog="system" width="128" height="121"/>
