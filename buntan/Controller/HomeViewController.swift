@@ -77,7 +77,6 @@ class HomeViewController: UIViewController {
 
         // Firestoreにデータを送信
         sendFirestore()
-        showSuccessAlert()
 
         FirebaseManager.shared.getDocument()
     }
@@ -137,11 +136,15 @@ extension HomeViewController {
     }
 
     private func sendFirestore() {
-        let user = userDefaults.object(forKey: "User") as! String
+        let name = userDefaults.object(forKey: "User") as! String
         let group = userDefaults.object(forKey: "Group") as! String
         let point = RealmManager.shared.getTotalPoint()
 
-        FirebaseManager.shared.sendDoneTask(user: user, group: group, point: point)
+        FirebaseManager.shared.sendDoneTask(name: name, group: group, point: point, completion: {
+            DispatchQueue.main.async {
+                self.showSuccessAlert()
+            }
+        })
     }
 
     private func reload() {

@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Firebase
 import RealmSwift
 import XLPagerTabStrip
 
@@ -14,7 +13,6 @@ class AddTaskViewController: UIViewController, IndicatorInfoProvider {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var pointTextField: UITextField!
 
-    private let db = Firestore.firestore()
     private let userDefaults = UserDefaults.standard
 
     var itemInfo: IndicatorInfo = "Task"
@@ -45,7 +43,6 @@ extension AddTaskViewController {
     private func setTaskItem(contents: Results<TaskItem>, name: String, point: String) -> TaskItem? {
         let taskItem = TaskItem()
         taskItem.name = name
-//        taskItem.taskId = contents.count + 1
         taskItem.point = Int(point) ?? 0
 
         return taskItem
@@ -54,20 +51,15 @@ extension AddTaskViewController {
     private func sendFirestore(name: String, point: Int) {
         let group = self.userDefaults.object(forKey: "Group") as! String
 
-        db.collection("task").addDocument(data: [
-            "group": group,
-            "name": name,
-            "point": point
-        ]) { err in
+        FirebaseManager.shared.addTask(name: name,
+                                            group: group,
+                                            point: point,
+                                            completion: {
             DispatchQueue.main.async {
-                if let err = err {
-                    print("Error writing document: \(err)")
-                } else {
-                    self.nameTextField.text = ""
-                    self.pointTextField.text = ""
-                    self.dismiss(animated: true, completion: nil)
-                }
+                self.nameTextField.text = ""
+                self.pointTextField.text = ""
+                self.dismiss(animated: true, completion: nil)
             }
-        }
+        })
     }
 }

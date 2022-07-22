@@ -24,15 +24,26 @@ class FirebaseManager {
         
     }
 
-    func sendDoneTask(user: String, group: String, point: Int) {
-        db.collection("users").document(user).setData([
-            "name": user,
+    func addTask(name: String, group: String, point: Int, completion: @escaping () -> Void) {
+        db.collection("task").addDocument(data: [
+            "group": group,
+            "name": name,
+            "point": point
+        ]) { err in
+            completion()
+        }
+    }
+
+    func sendDoneTask(name: String, group: String, point: Int, completion: @escaping () -> Void) {
+        db.collection("users").document(name).setData([
+            "name": name,
             "group": group,
             "point": point
         ]) { err in
             if let err = err {
                 print("Error writing document: \(err)")
             } else {
+                completion()
                 print("Document successfully written!")
             }
         }
