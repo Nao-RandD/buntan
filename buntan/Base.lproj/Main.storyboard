@@ -261,8 +261,8 @@
                                     <constraint firstAttribute="height" constant="0.5" id="Pbq-ci-8RT"/>
                                 </constraints>
                             </view>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="UserName" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1eg-Ev-jxD">
-                                <rect key="frame" x="127" y="413.5" width="160" height="60"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="UserName" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1eg-Ev-jxD">
+                                <rect key="frame" x="123" y="413.5" width="168" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="10D-T4-igb"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="klN-hG-kfa"/>
@@ -271,8 +271,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Group名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xoR-Ls-uR1">
-                                <rect key="frame" x="143" y="620" width="128.5" height="60"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Group名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xoR-Ls-uR1">
+                                <rect key="frame" x="139" y="620" width="136.5" height="60"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="Bix-N4-KXq"/>

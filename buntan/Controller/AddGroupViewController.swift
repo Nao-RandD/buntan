@@ -6,14 +6,11 @@
 //
 
 import UIKit
-import Firebase
 import XLPagerTabStrip
 
 class AddGroupViewController: UIViewController, IndicatorInfoProvider {
-
-    private let db = Firestore.firestore()
-
     @IBOutlet weak var groupNameTextField: UITextField!
+
     var itemInfo: IndicatorInfo = "Group"
 
     override func viewDidLoad() {
@@ -38,17 +35,11 @@ class AddGroupViewController: UIViewController, IndicatorInfoProvider {
 
 extension AddGroupViewController {
     private func sendFirestore(name: String) {
-        db.collection("group").document(name).setData([
-            "name": name,
-        ]) { err in
+        FirebaseManager.shared.addGroup(name: name, completion: {
             DispatchQueue.main.async {
-                if let err = err {
-                    print("Error writing document: \(err)")
-                } else {
-                    self.groupNameTextField.text = ""
-                    self.dismiss(animated: true, completion: nil)
-                }
+                self.groupNameTextField.text = ""
+                self.dismiss(animated: true, completion: nil)
             }
-        }
+        })
     }
 }

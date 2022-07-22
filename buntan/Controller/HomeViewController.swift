@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Firebase
 import RealmSwift
 
 class HomeViewController: UIViewController {
@@ -14,10 +13,8 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var taskAddButton: UIBarButtonItem!
 
     private var indicator: UIActivityIndicatorView!
-    private let db = Firestore.firestore()
     private let userDefaults = UserDefaults.standard
     private var selectTask: String = ""
-    private var taskListener: ListenerRegistration?
     private var groupTasks : [GroupTask] = [GroupTask(group: "ハウス", name: "ほげ", point: 10)]
 
     struct GroupTask {
@@ -30,15 +27,6 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
 
         if #available(iOS 15.0, *) {
-            // disable UINavigation bar transparent
-            let navigationBarAppearance = UINavigationBarAppearance()
-            navigationBarAppearance.configureWithDefaultBackground()
-            UINavigationBar.appearance().standardAppearance = navigationBarAppearance
-            UINavigationBar.appearance().compactAppearance = navigationBarAppearance
-            UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
-        }
-
-        if #available(iOS 15.0, *) {
             // disable UITab bar transparent
             let tabBarAppearance: UITabBarAppearance = UITabBarAppearance()
             tabBarAppearance.configureWithDefaultBackground()
@@ -46,7 +34,7 @@ class HomeViewController: UIViewController {
             UITabBar.appearance().standardAppearance = tabBarAppearance
         }
 
-
+        /// ホームのグループ名を取得してNavigation Barに設定
         let group = self.userDefaults.object(forKey: "Group") as! String
         self.navigationItem.title = group
         settingTableView()
@@ -89,13 +77,14 @@ class HomeViewController: UIViewController {
 
         // Firestoreにデータを送信
         sendFirestore()
-        showSuccessAlert()
 
         FirebaseManager.shared.getDocument()
     }
 
     @IBAction private func exit(segue: UIStoryboardSegue) {}
 }
+
+// MARK: - Private Func
 
 extension HomeViewController {
     @objc func reloadScreen(notification: Notification?) {
@@ -107,6 +96,24 @@ extension HomeViewController {
         reload()
     }
 
+    /// 吹き出しメニューを作成する
+    private func makeContextMenu(index: Int) -> UIMenu {
+        let edit = UIAction(title: "編集", image: UIImage(systemName: "figure.wave")) { action in
+            print("編集")
+            let editVC = self.storyboard?.instantiateViewController(withIdentifier: "EditViewController") as! AddTaskViewController
+//            editVC.configure(type: .edit(index: index))
+            self.present(editVC, animated: true, completion: nil)
+        }
+
+        let delete = UIAction(title: "削除", image: UIImage(systemName: "bag")) { action in
+            print("削除")
+            // Firebaseのタスクを削除するようにする
+
+        }
+
+        return UIMenu(title: "Menu", children: [edit, delete])
+    }
+
     private func settingTableView() {
         tableView.delegate = self
         tableView.dataSource = self
@@ -115,26 +122,29 @@ extension HomeViewController {
     }
 
     private func setListener() {
-        self.taskListener = db.collection("task").addSnapshotListener { snapshot, e in
-            if let snapshot = snapshot {
-                let group = self.userDefaults.object(forKey: "Group") as! String
-                let tasks = snapshot.documents.filter { $0.data()["group"] as! String == group }
-                self.groupTasks = tasks.map { task -> GroupTask in
-                    let data = task.data()
-                    return GroupTask(group: data["group"] as! String, name: data["name"] as! String, point: data["point"] as! Int)
-                }
-                print("中身は\(String(describing: self.groupTasks))")
-                self.reload()
+        FirebaseManager.shared.setListener(completion: { snapshot in
+            let group = self.userDefaults.object(forKey: "Group") as! String
+            let tasks = snapshot.documents.filter { $0.data()["group"] as! String == group }
+            self.groupTasks = tasks.map { task -> GroupTask in
+                let data = task.data()
+                let task = GroupTask(group: data["group"] as! String, name: data["name"] as! String, point: data["point"] as! Int)
+                return task
             }
-        }
+            print("中身は\(String(describing: self.groupTasks))")
+            self.reload()
+        })
     }
 
     private func sendFirestore() {
-        let user = userDefaults.object(forKey: "User") as! String
+        let name = userDefaults.object(forKey: "User") as! String
         let group = userDefaults.object(forKey: "Group") as! String
         let point = RealmManager.shared.getTotalPoint()
 
-        FirebaseManager.shared.sendDoneTask(user: user, group: group, point: point)
+        FirebaseManager.shared.sendDoneTask(name: name, group: group, point: point, completion: {
+            DispatchQueue.main.async {
+                self.showSuccessAlert()
+            }
+        })
     }
 
     private func reload() {
@@ -167,7 +177,7 @@ extension HomeViewController {
     }
 }
 
-// MARK - UITableViewDelegate
+// MARK: - UITableViewDelegate
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -185,22 +195,22 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("選択中のタスクは\(groupTasks[indexPath.row])")
         selectTask = groupTasks[indexPath.row].name
-     }
+    }
 
-//    //セルの編集許可
-//    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-//       return true
-//    }
-//
-//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == UITableViewCell.EditingStyle.delete {
-//            groupTasks.remove(at: indexPath.row)
-//            tableView.deleteRows(at: [indexPath as IndexPath], with: UITableView.RowAnimation.automatic)
-//        }
-//    }
+    func tableView(_ tableView: UITableView,
+                   contextMenuConfigurationForRowAt indexPath: IndexPath,
+                   point: CGPoint) -> UIContextMenuConfiguration? {
+        let index = indexPath.row
+        return UIContextMenuConfiguration(identifier: nil,
+                                          previewProvider: nil,
+                                          actionProvider: { suggestedActions in
+            return self.makeContextMenu(index: index)
+        })
+    }
+
 }
 
-// Notification CenterのExtention
+// MARK: - Notification Center Extention
 extension Notification.Name {
     static let notifyName = Notification.Name("notifyName")
 }

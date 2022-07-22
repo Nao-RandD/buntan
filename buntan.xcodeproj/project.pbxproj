@@ -128,6 +128,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		9F9647E228794C2E00B7244E /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				9FB55898271A8D5A00906151 /* RealmManager.swift */,
+				9FB5589A272D128F00906151 /* FirebaseManager.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		9F97729C27E1BD1B00F1190A /* buntanTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -163,6 +172,7 @@
 				9FA2207D27A512D800CFD239 /* buntan.entitlements */,
 				9F99668E2743E39E00FF6AD5 /* GoogleService-Info.plist */,
 				9FEC419626F0B80B00B55299 /* Contents */,
+				9F9647E228794C2E00B7244E /* Utils */,
 				9FEC418D26F0B12200B55299 /* View */,
 				9FEC418826E8EE6700B55299 /* Model */,
 				9FEC418726E8EE5900B55299 /* Controller */,
@@ -198,9 +208,8 @@
 		9FEC418826E8EE6700B55299 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9FEC419726F0B84800B55299 /* UserInfo.swift */,
 				9FEC418B26EF5E4100B55299 /* TaskItem.swift */,
-				9FB55898271A8D5A00906151 /* RealmManager.swift */,
-				9FB5589A272D128F00906151 /* FirebaseManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -222,7 +231,6 @@
 			isa = PBXGroup;
 			children = (
 				9F7F135726F83F5700AF0543 /* TabBarController.swift */,
-				9FEC419726F0B84800B55299 /* UserInfo.swift */,
 				9FB2F7E926F21961006CDF73 /* MyUINavigationControllerViewController.swift */,
 				9FB0157C2760D48800D63230 /* Contents.swift */,
 			);
