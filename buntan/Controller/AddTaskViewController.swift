@@ -39,7 +39,7 @@ class AddTaskViewController: UIViewController, IndicatorInfoProvider {
     }
 }
 
-// MARK - Private Func -
+// MARK: - Private Func -
 
 extension AddTaskViewController {
     private func setTaskItem(contents: Results<TaskItem>, name: String, point: String) -> TaskItem? {
