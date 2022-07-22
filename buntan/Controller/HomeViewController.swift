@@ -30,15 +30,6 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
 
         if #available(iOS 15.0, *) {
-            // disable UINavigation bar transparent
-            let navigationBarAppearance = UINavigationBarAppearance()
-            navigationBarAppearance.configureWithDefaultBackground()
-            UINavigationBar.appearance().standardAppearance = navigationBarAppearance
-            UINavigationBar.appearance().compactAppearance = navigationBarAppearance
-            UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
-        }
-
-        if #available(iOS 15.0, *) {
             // disable UITab bar transparent
             let tabBarAppearance: UITabBarAppearance = UITabBarAppearance()
             tabBarAppearance.configureWithDefaultBackground()
@@ -167,7 +158,7 @@ extension HomeViewController {
     }
 }
 
-// MARK - UITableViewDelegate
+// MARK: - UITableViewDelegate
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -187,20 +178,9 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         selectTask = groupTasks[indexPath.row].name
      }
 
-//    //セルの編集許可
-//    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-//       return true
-//    }
-//
-//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == UITableViewCell.EditingStyle.delete {
-//            groupTasks.remove(at: indexPath.row)
-//            tableView.deleteRows(at: [indexPath as IndexPath], with: UITableView.RowAnimation.automatic)
-//        }
-//    }
 }
 
-// Notification CenterのExtention
+// MARK: - Notification Center Extention
 extension Notification.Name {
     static let notifyName = Notification.Name("notifyName")
 }
