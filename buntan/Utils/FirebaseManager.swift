@@ -12,6 +12,7 @@ class FirebaseManager {
     public static let shared = FirebaseManager()
 
     private let db = Firestore.firestore()
+    private var listener: ListenerRegistration?
 
     private init() {}
 
@@ -41,8 +42,12 @@ class FirebaseManager {
 
     }
 
-    func getListener() {
-
+    func setListener(completion: @escaping (QuerySnapshot) -> Void) {
+        listener = db.collection("task").addSnapshotListener { snapshot, e in
+            if let snapshot = snapshot {
+                completion(snapshot)
+            }
+        }
     }
 
     func getDocument() {
