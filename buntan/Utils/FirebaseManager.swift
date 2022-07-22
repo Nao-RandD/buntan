@@ -34,6 +34,19 @@ class FirebaseManager {
         }
     }
 
+    func addGroup(name: String, completion: @escaping () -> Void) {
+        db.collection("group").document(name).setData([
+            "name": name,
+        ]) { err in
+            if let err = err {
+                print("Error writing document: \(err)")
+            } else {
+                completion()
+                print("Document successfully written!")
+            }
+        }
+    }
+
     func sendDoneTask(name: String, group: String, point: Int, completion: @escaping () -> Void) {
         db.collection("users").document(name).setData([
             "name": name,
