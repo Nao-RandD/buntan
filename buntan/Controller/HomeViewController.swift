@@ -14,14 +14,8 @@ class HomeViewController: UIViewController {
 
     private var indicator: UIActivityIndicatorView!
     private let userDefaults = UserDefaults.standard
-    private var selectTask: String = ""
+    private var selectIndex: Int?  = nil
     private var groupTasks : [GroupTask] = [GroupTask(group: "ハウス", name: "ほげ", point: 10)]
-
-    struct GroupTask {
-        var group: String
-        var name: String
-        var point: Int
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,8 +47,6 @@ class HomeViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-//            print("1秒後の処理")
-//            self.showTutorial()
             let isShowTutorial = self.userDefaults.object(forKey: "isShowTutorial") as? Bool ?? false
             if !isShowTutorial {
                 self.showTutorial()
@@ -63,17 +55,14 @@ class HomeViewController: UIViewController {
     }
 
     @IBAction func tappedSendButton(_ sender: Any) {
-        let point: Int = {
-            for task in groupTasks {
-                if task.name == selectTask {
-                    return task.point
-                }
-            }
-            print("指定のポイントがありませんでした")
-            return 0
-        }()
+        guard let index = selectIndex else {
+            showAlert(title: "選択エラー", message: "タスクを選択してください")
+            return
+        }
+        let point: Int = groupTasks[index].point
+        let task: String = groupTasks[index].name
         // Realmにデータを保存
-        RealmManager.shared.writeTaskItem(task: selectTask, point: point)
+        RealmManager.shared.writeTaskItem(task: task, point: point)
 
         // Firestoreにデータを送信
         sendFirestore()
@@ -101,7 +90,6 @@ extension HomeViewController {
         let edit = UIAction(title: "編集", image: UIImage(systemName: "figure.wave")) { action in
             print("編集")
             let editVC = self.storyboard?.instantiateViewController(withIdentifier: "EditViewController") as! AddTaskViewController
-//            editVC.configure(type: .edit(index: index))
             self.present(editVC, animated: true, completion: nil)
         }
 
@@ -142,7 +130,12 @@ extension HomeViewController {
 
         FirebaseManager.shared.sendDoneTask(name: name, group: group, point: point, completion: {
             DispatchQueue.main.async {
-                self.showSuccessAlert()
+                self.showAlert(title: "タスクの送信完了", message: "お疲れさまでした")
+                // メソッド呼び出し前にselectIndexがnilでないことは保証されているため強制アンラップ
+                let indexPath = IndexPath(row: self.selectIndex!, section: 0)
+                // セルの選択を解除
+                self.tableView.deselectRow(at: indexPath, animated: true)
+                self.selectIndex = nil
             }
         })
     }
@@ -151,9 +144,9 @@ extension HomeViewController {
         tableView.reloadData()
     }
 
-    private func showSuccessAlert() {
-        let alert = UIAlertController(title: "タスクの送信完了",
-                                      message:  "お疲れさまでした",
+    private func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title,
+                                      message:  message,
                                       preferredStyle:  UIAlertController.Style.alert)
         let confirmAction = UIAlertAction(title: "OK",
                                           style: UIAlertAction.Style.default,
@@ -194,7 +187,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("選択中のタスクは\(groupTasks[indexPath.row])")
-        selectTask = groupTasks[indexPath.row].name
+        selectIndex = indexPath.row
     }
 
     func tableView(_ tableView: UITableView,
