@@ -14,7 +14,7 @@ class HomeViewController: UIViewController {
 
     private var indicator: UIActivityIndicatorView!
     private let userDefaults = UserDefaults.standard
-    private var selectIndex: Int = 0
+    private var selectIndex: Int?  = nil
     private var groupTasks : [GroupTask] = [GroupTask(group: "ハウス", name: "ほげ", point: 10)]
 
     override func viewDidLoad() {
@@ -55,8 +55,12 @@ class HomeViewController: UIViewController {
     }
 
     @IBAction func tappedSendButton(_ sender: Any) {
-        let point: Int = groupTasks[selectIndex].point
-        let task: String = groupTasks[selectIndex].name
+        guard let index = selectIndex else {
+            showAlert(title: "選択エラー", message: "タスクを選択してください")
+            return
+        }
+        let point: Int = groupTasks[index].point
+        let task: String = groupTasks[index].name
         // Realmにデータを保存
         RealmManager.shared.writeTaskItem(task: task, point: point)
 
@@ -126,10 +130,12 @@ extension HomeViewController {
 
         FirebaseManager.shared.sendDoneTask(name: name, group: group, point: point, completion: {
             DispatchQueue.main.async {
-                self.showSuccessAlert()
-                let indexPath = IndexPath(row: self.selectIndex, section: 0)
+                self.showAlert(title: "タスクの送信完了", message: "お疲れさまでした")
+                // メソッド呼び出し前にselectIndexがnilでないことは保証されているため強制アンラップ
+                let indexPath = IndexPath(row: self.selectIndex!, section: 0)
                 // セルの選択を解除
                 self.tableView.deselectRow(at: indexPath, animated: true)
+                self.selectIndex = nil
             }
         })
     }
@@ -138,9 +144,9 @@ extension HomeViewController {
         tableView.reloadData()
     }
 
-    private func showSuccessAlert() {
-        let alert = UIAlertController(title: "タスクの送信完了",
-                                      message:  "お疲れさまでした",
+    private func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title,
+                                      message:  message,
                                       preferredStyle:  UIAlertController.Style.alert)
         let confirmAction = UIAlertAction(title: "OK",
                                           style: UIAlertAction.Style.default,
