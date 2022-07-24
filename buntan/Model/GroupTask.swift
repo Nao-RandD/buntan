@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+struct GroupTask {
+    var group: String
+    var name: String
+    var point: Int
+}

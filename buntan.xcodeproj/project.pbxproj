@@ -10,6 +10,7 @@
 		1A660CACE448831BDD8E0950 /* Pods_buntanTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CE0DD626EE342DA6F052591 /* Pods_buntanTests.framework */; };
 		9B01D43BA0476047EE09C930 /* Pods_buntan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E2FED4ED7A2635244999AC9 /* Pods_buntan.framework */; };
 		9F091C0327894AAB0098DE85 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F091C0227894AAA0098DE85 /* TutorialViewController.swift */; };
+		9F33E539288BBC7A00DC972C /* GroupTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F33E538288BBC7900DC972C /* GroupTask.swift */; };
 		9F7F135426F7692100AF0543 /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7F135326F7692100AF0543 /* AddTaskViewController.swift */; };
 		9F7F135626F83CCF00AF0543 /* StartAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7F135526F83CCF00AF0543 /* StartAppViewController.swift */; };
 		9F7F135826F83F5700AF0543 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7F135726F83F5700AF0543 /* TabBarController.swift */; };
@@ -60,6 +61,7 @@
 		582A46FAE6B9B26F6C7F082A /* Pods-buntanTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-buntanTests.release.xcconfig"; path = "Target Support Files/Pods-buntanTests/Pods-buntanTests.release.xcconfig"; sourceTree = "<group>"; };
 		72EA9A850438DA3D734141A9 /* Pods-buntanTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-buntanTests.debug.xcconfig"; path = "Target Support Files/Pods-buntanTests/Pods-buntanTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9F091C0227894AAA0098DE85 /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
+		9F33E538288BBC7900DC972C /* GroupTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTask.swift; sourceTree = "<group>"; };
 		9F7F135326F7692100AF0543 /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
 		9F7F135526F83CCF00AF0543 /* StartAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartAppViewController.swift; sourceTree = "<group>"; };
 		9F7F135726F83F5700AF0543 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TabBarController.swift; path = buntan/Controller/TabBarController.swift; sourceTree = SOURCE_ROOT; };
@@ -210,6 +212,7 @@
 			children = (
 				9FEC419726F0B84800B55299 /* UserInfo.swift */,
 				9FEC418B26EF5E4100B55299 /* TaskItem.swift */,
+				9F33E538288BBC7900DC972C /* GroupTask.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -460,6 +463,7 @@
 				9FEC419826F0B84900B55299 /* UserInfo.swift in Sources */,
 				9FB0157D2760D48800D63230 /* Contents.swift in Sources */,
 				9F7F135626F83CCF00AF0543 /* StartAppViewController.swift in Sources */,
+				9F33E539288BBC7A00DC972C /* GroupTask.swift in Sources */,
 				9F7F1363270007A400AF0543 /* HistoryTableViewCell.swift in Sources */,
 				9FB5589B272D128F00906151 /* FirebaseManager.swift in Sources */,
 				9FEC417826E8E2CC00B55299 /* HomeViewController.swift in Sources */,
@@ -512,7 +516,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 44SQBVTPVY;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -538,7 +542,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 44SQBVTPVY;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
