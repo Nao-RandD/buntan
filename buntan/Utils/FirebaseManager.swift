@@ -7,6 +7,13 @@
 
 import Firebase
 
+enum FirebaseError: Error {
+    case editError
+    case addTaskError
+    case addGroupError
+    case sendDoneError
+}
+
 class FirebaseManager {
 
     public static let shared = FirebaseManager()
@@ -30,7 +37,12 @@ class FirebaseManager {
             "name": name,
             "point": point
         ]) { err in
-            completion()
+            if let err = err {
+                print("Error writing document: \(err)")
+            } else {
+                completion()
+                print("Document successfully written!")
+            }
         }
     }
 
@@ -86,6 +98,42 @@ class FirebaseManager {
 
         }
     }
+
+    func deleteDocument(target task: GroupTask,
+                        completion: @escaping () -> Void) {
+        var targetId = ""
+        db.collection("task").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    let data = document.data()
+                    if let _name = data["name"] as? String, _name == task.name,
+                       let _group = data["group"] as? String, _group == task.group {
+                        print("変更対象のタスクIDは", document.documentID)
+                        targetId = document.documentID
+                    }
+                    print("\(document.documentID) => \(document.data())")
+                }
+
+                guard !targetId.isEmpty else {
+                    print("一致するIDが見つかりませんでした")
+                    return
+                }
+
+                self.db.collection("task").document(targetId).delete() { err in
+                    if let err = err {
+                        print("Error removing document: \(err)")
+                    } else {
+                        print("Document successfully removed!")
+                        completion()
+                    }
+                }
+            }
+        }
+    }
+        
+
     func editDocument(before beforeTask: GroupTask,
                       after afterTask: GroupTask,
                       completion: @escaping () -> Void) {
@@ -133,9 +181,5 @@ class FirebaseManager {
             }
 
         }
-    }
-
-    private func editTask(task: GroupTask) {
-
     }
 }
