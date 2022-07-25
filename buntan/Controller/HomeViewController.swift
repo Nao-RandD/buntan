@@ -89,7 +89,10 @@ extension HomeViewController {
     private func makeContextMenu(index: Int) -> UIMenu {
         let edit = UIAction(title: "編集", image: UIImage(systemName: "figure.wave")) { action in
             print("編集")
-            let editVC = self.storyboard?.instantiateViewController(withIdentifier: "EditViewController") as! AddTaskViewController
+            let name = self.groupTasks[index].name
+            let point = self.groupTasks[index].point
+            let editVC = self.storyboard?.instantiateViewController(withIdentifier: "Edit") as! EditViewController
+            editVC.setTaskItem(name: name, point: point)
             self.present(editVC, animated: true, completion: nil)
         }
 
