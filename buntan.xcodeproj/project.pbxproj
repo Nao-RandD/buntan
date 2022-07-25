@@ -11,6 +11,7 @@
 		9B01D43BA0476047EE09C930 /* Pods_buntan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E2FED4ED7A2635244999AC9 /* Pods_buntan.framework */; };
 		9F091C0327894AAB0098DE85 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F091C0227894AAA0098DE85 /* TutorialViewController.swift */; };
 		9F33E539288BBC7A00DC972C /* GroupTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F33E538288BBC7900DC972C /* GroupTask.swift */; };
+		9F7EFE6D288E45530011540E /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7EFE6C288E45530011540E /* EditViewController.swift */; };
 		9F7F135426F7692100AF0543 /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7F135326F7692100AF0543 /* AddTaskViewController.swift */; };
 		9F7F135626F83CCF00AF0543 /* StartAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7F135526F83CCF00AF0543 /* StartAppViewController.swift */; };
 		9F7F135826F83F5700AF0543 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7F135726F83F5700AF0543 /* TabBarController.swift */; };
@@ -62,6 +63,7 @@
 		72EA9A850438DA3D734141A9 /* Pods-buntanTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-buntanTests.debug.xcconfig"; path = "Target Support Files/Pods-buntanTests/Pods-buntanTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9F091C0227894AAA0098DE85 /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		9F33E538288BBC7900DC972C /* GroupTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTask.swift; sourceTree = "<group>"; };
+		9F7EFE6C288E45530011540E /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		9F7F135326F7692100AF0543 /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
 		9F7F135526F83CCF00AF0543 /* StartAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartAppViewController.swift; sourceTree = "<group>"; };
 		9F7F135726F83F5700AF0543 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TabBarController.swift; path = buntan/Controller/TabBarController.swift; sourceTree = SOURCE_ROOT; };
@@ -203,6 +205,7 @@
 				9F091C0227894AAA0098DE85 /* TutorialViewController.swift */,
 				9FA2207927A40EDE00CFD239 /* AddAllViewController.swift */,
 				9FA2207B27A4139300CFD239 /* AddGroupViewController.swift */,
+				9F7EFE6C288E45530011540E /* EditViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -448,6 +451,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F7EFE6D288E45530011540E /* EditViewController.swift in Sources */,
 				9FB0157F27677CE900D63230 /* LoginViewController.swift in Sources */,
 				9FEC419526F0B65B00B55299 /* DashboardViewController.swift in Sources */,
 				9F7F135826F83F5700AF0543 /* TabBarController.swift in Sources */,

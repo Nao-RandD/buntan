@@ -86,4 +86,56 @@ class FirebaseManager {
 
         }
     }
+    func editDocument(before beforeTask: GroupTask,
+                      after afterTask: GroupTask,
+                      completion: @escaping () -> Void) {
+        var targetId = ""
+        db.collection("task").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    let data = document.data()
+                    if let _name = data["name"] as? String, _name == beforeTask.name,
+                       let _group = data["group"] as? String, _group == beforeTask.group {
+                        print("変更対象のタスクIDは", document.documentID)
+                        targetId = document.documentID
+                    }
+                    print("\(document.documentID) => \(document.data())")
+                }
+
+                guard !targetId.isEmpty else {
+                    print("一致するIDが見つかりませんでした")
+                    return
+                }
+
+                // 取得したIDをもとに修正
+                let sfReference = self.db.collection("task").document(targetId)
+
+                self.db.runTransaction({ (transaction, errorPointer) -> Any? in
+                    transaction.updateData(["name": afterTask.name], forDocument: sfReference)
+                    transaction.updateData(["group": afterTask.group], forDocument: sfReference)
+                    transaction.updateData(["point": afterTask.point], forDocument: sfReference)
+
+                    print("書き換え前：", beforeTask.name)
+                    print("書き換え後：", afterTask.name)
+
+                    completion()
+
+                    return nil
+                }, completion: { (object, error) in
+                    if let error = error {
+                        print("Transaction failed: \(error)")
+                    } else {
+                        print("Transaction successfully committed!")
+                    }
+                })
+            }
+
+        }
+    }
+
+    private func editTask(task: GroupTask) {
+
+    }
 }
