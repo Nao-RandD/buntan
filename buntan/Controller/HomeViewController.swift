@@ -98,8 +98,18 @@ extension HomeViewController {
 
         let delete = UIAction(title: "削除", image: UIImage(systemName: "bag")) { action in
             print("削除")
-            // Firebaseのタスクを削除するようにする
+            let name = self.groupTasks[index].name
+            let point = self.groupTasks[index].point
+            let group = self.userDefaults.object(forKey: "Group") as! String
+            let task = GroupTask(group: group, name: name, point: point)
+            // Firebaseのタスクを削除
+            FirebaseManager.shared.deleteDocument(target: task,
+                                                  completion: {
 
+                DispatchQueue.main.async {
+                    self.showAlert(title: "削除", message: "タスクの削除に成功しました")
+                }
+            })
         }
 
         return UIMenu(title: "Menu", children: [edit, delete])
