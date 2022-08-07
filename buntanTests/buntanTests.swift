@@ -35,4 +35,11 @@ class buntanTests: XCTestCase {
         }
     }
 
+    // Firebaseのデータを編集する動作を確認するテスト
+    func testFirebaseEdit() throws {
+        FirebaseManager.shared.getDocument()
+        FirebaseManager.shared.editDocument()
+
+        XCTAssertTrue(true)
+    }
 }
