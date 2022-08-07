@@ -20,3 +20,7 @@ profile
 #CocoaPod
 Pods/*
 Podfile.lock
+
+# Private File
+*.entitlements
+GoogleService-Info.plist
