@@ -37,16 +37,24 @@ final class RealmManager {
     func writeTaskItem(task: String, point: Int) {
         let item = setTaskItem(task: task, point: point)
 
-        try! realm.write {
-            realm.add(item)
-            print("新しいリスト追加：\(task)")
+        do {
+            try realm.write {
+                realm.add(item)
+                print("新しいリスト追加：\(task)")
+            }
+        } catch {
+            print("Realmでの追加に失敗")
         }
     }
 
     func deleteTaskItem(item: ObjectBase) {
-        try! realm.write {
-            print("\(item)を削除")
-            realm.delete(item)
+        do {
+            try realm.write {
+                print("\(item)を削除")
+                realm.delete(item)
+            }
+        } catch {
+            print("Realmでの削除に失敗")
         }
     }
 
