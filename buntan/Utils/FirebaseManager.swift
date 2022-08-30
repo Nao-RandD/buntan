@@ -46,9 +46,9 @@ class FirebaseManager {
         }
     }
 
-    func addGroup(name: String, completion: @escaping () -> Void) {
+    func addGroup(name: String, password: String?, completion: @escaping () -> Void) {
         db.collection("group").document(name).setData([
-            "name": name,
+            "name": name, "isPassword": password != nil, "password": password ?? ""
         ]) { err in
             if let err = err {
                 print("Error writing document: \(err)")
