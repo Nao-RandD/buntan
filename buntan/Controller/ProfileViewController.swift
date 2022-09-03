@@ -16,6 +16,12 @@ class ProfileViewController: UIViewController {
     private var groupList = [""]
     private let db = Firestore.firestore()
     private var groupPickerView: UIPickerView!
+    private var selectGroupNum: Int = 0
+    private var inputPassword: String = ""
+
+    enum GroupInfo: String {
+        case name, isPassword, password
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,7 +76,7 @@ extension ProfileViewController: UITextFieldDelegate {
     }
 }
 
-// MARK - UIPickerViewDelegate
+// MARK: - UIPickerViewDelegate
 
 extension ProfileViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
