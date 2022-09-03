@@ -89,14 +89,15 @@ extension ProfileViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let user = groupList[row]
-        groupTextField.text = user
-        userDefaults.set(user, forKey: "Group")
-        // 通知を送りたい箇所でこのように記述
-        NotificationCenter.default.post(name: .notifyName, object: nil)
+        selectGroupNum = row
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        groupList[row]
+        let isPassword = groupList[row][GroupInfo.isPassword]
+        if isPassword == "true" {
+            return "🔓　\(groupList[row][GroupInfo.name]!)"
+        } else {
+            return groupList[row][GroupInfo.name]
+        }
     }
 }
