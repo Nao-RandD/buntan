@@ -58,7 +58,8 @@ class ProfileViewController: UIViewController {
     }
 }
 
-// MARK - UITextFieldDelegate
+// MARK: - UITextFieldDelegate
+
 extension ProfileViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         nameTextField = textField
@@ -67,7 +68,7 @@ extension ProfileViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         // Keyを指定して保存
         userDefaults.set(textField.text, forKey: "User")
-        print("userDefaultsを更新")
+        print("UserのuserDefaultsを更新")
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
