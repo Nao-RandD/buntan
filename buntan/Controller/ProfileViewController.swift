@@ -31,6 +31,13 @@ class ProfileViewController: UIViewController {
         groupTextField.text = userDefaults.object(forKey: "Group") as? String
         nameTextField.delegate = self
 
+        // グループ選択用のピッカーを設定
+        setGroupPickerView()
+
+        // Firebaseからグループ一覧を取得してセット
+        setGroupList()
+    }
+
     @objc func tappedDone() {
         let name = groupList[selectGroupNum][GroupInfo.name]!
         let isPassword = groupList[selectGroupNum][GroupInfo.isPassword]!
@@ -70,12 +77,33 @@ class ProfileViewController: UIViewController {
     @objc func tappedCancel() {
         self.view.endEditing(true)
     }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+}
+
+// MARK: - Private Func
+
+extension ProfileViewController {
+    private func setGroupPickerView() {
         // groupPickerViewを設定
         groupPickerView = UIPickerView()
         groupPickerView.delegate = self
         groupPickerView.dataSource = self
-        groupTextField.inputView = groupPickerView
 
+        let toolbar = UIToolbar()
+        let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(ProfileViewController.tappedDone))
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(ProfileViewController.tappedCancel))
+
+        toolbar.items = [space, cancelButton, doneButton]
+        toolbar.sizeToFit()
+        groupTextField.inputView = groupPickerView
+        groupTextField.inputAccessoryView = toolbar
+    }
+
+    private func setGroupList() {
         let collectionReference = db.collection("group")
         collectionReference.getDocuments { (_snapshot, _error) in
             if let error = _error {
@@ -84,11 +112,27 @@ class ProfileViewController: UIViewController {
             }
 
             let datas = _snapshot!.documents.compactMap { $0.data() }
-            let groups = datas.map {
-                $0["name"]
-            } as? [String]
-            self.groupList = groups ?? ["ハウス", "自宅"]
-            print(self.groupList)
+            datas.forEach {
+                var name: String = "house"
+                if $0[GroupInfo.name.rawValue] != nil {
+                    name = $0[GroupInfo.name.rawValue] as! String
+                }
+
+                var isPassword: String = "false"
+                if let _isPassword = $0[GroupInfo.isPassword.rawValue] {
+                    isPassword = (_isPassword as! Int == 1) ? "true": "false"
+                }
+
+                var password: String = ""
+                if $0[GroupInfo.password.rawValue] != nil {
+                    password = $0[GroupInfo.password.rawValue] as! String
+                }
+
+                self.groupList.append([
+                    GroupInfo.name: name,
+                    GroupInfo.isPassword: isPassword,
+                    GroupInfo.password: password])
+            }
         }
     }
 
