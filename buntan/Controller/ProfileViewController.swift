@@ -13,7 +13,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var groupTextField: UITextField!
 
     private let userDefaults = UserDefaults.standard
-    private var groupList = [""]
+    private var groupList: [[GroupInfo: String]] = []
     private let db = Firestore.firestore()
     private var groupPickerView: UIPickerView!
     private var selectGroupNum: Int = 0
@@ -31,6 +31,45 @@ class ProfileViewController: UIViewController {
         groupTextField.text = userDefaults.object(forKey: "Group") as? String
         nameTextField.delegate = self
 
+    @objc func tappedDone() {
+        let name = groupList[selectGroupNum][GroupInfo.name]!
+        let isPassword = groupList[selectGroupNum][GroupInfo.isPassword]!
+
+        if isPassword == "true" {
+            let password = groupList[selectGroupNum][GroupInfo.password]!
+            showPasswordAlert(password: password,
+                              completion: {
+                self.showAlert(title: "グループ変更",
+                                                    message: "\(name)にグループを変更すると、今のグループのタスクデータは削除されます。\nよろしいですか？",
+                                                    positiveHandler: {
+                                              self.groupTextField.text = name
+                                              self.userDefaults.set(name, forKey: "Group")
+                                              // 通知を送りたい箇所でこのように記述
+                                              NotificationCenter.default.post(name: .notifyName, object: nil)
+                                          },
+                                                    negativeHandler: {
+                    self.dismiss(animated: false)
+                                          })
+            })
+        } else {
+            showAlert(title: "グループ変更",
+                      message: "\(name)にグループを変更すると、今のグループのタスクデータは削除されます。\nよろしいですか？",
+                      positiveHandler: {
+                self.groupTextField.text = name
+                self.userDefaults.set(name, forKey: "Group")
+                print("GroupのuserDefaultsを更新")
+                // 通知を送りたい箇所でこのように記述
+                NotificationCenter.default.post(name: .notifyName, object: nil)
+            },
+                      negativeHandler: {
+                self.dismiss(animated: false)
+            })
+        }
+    }
+
+    @objc func tappedCancel() {
+        self.view.endEditing(true)
+    }
         // groupPickerViewを設定
         groupPickerView = UIPickerView()
         groupPickerView.delegate = self
@@ -53,8 +92,73 @@ class ProfileViewController: UIViewController {
         }
     }
 
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    private func showPasswordAlert(password: String, completion: @escaping () -> Void) {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
+        alert.title = "パスワード入力"
+        alert.message = "選択したグループにはパスワードが設定されています。グループオーナーからパスワードを共有してもらってください。"
+        alert.textFields?.first?.placeholder = "パスワード"
+        alert.addTextField(configurationHandler: nil)
+        alert.textFields?.first?.addTarget(self, action: #selector(textFieldDidChange), for: .allEditingEvents)
+
+        //追加ボタン
+        alert.addAction(
+            UIAlertAction(
+                title: "決定",
+                style: .default,
+                handler: { _ -> Void in
+                    if self.inputPassword == password {
+                        print("パスワード一致")
+                        alert.dismiss(animated: false)
+                        completion()
+                    } else {
+                        print("パスワード不一致")
+                        alert.dismiss(animated: false)
+                    }
+                })
+        )
+
+        //キャンセルボタン
+        alert.addAction(
+            UIAlertAction(
+                title: "キャンセル",
+                style: .cancel,
+                handler: {(action) -> Void in
+                    alert.dismiss(animated: false)
+                })
+        )
+        present(alert, animated: true, completion: nil)
+    }
+
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        if let text = textField.text {
+            inputPassword = text
+        }
+    }
+
+    private func showAlert(title: String,
+                           message: String,
+                           positiveHandler: @escaping () -> Void,
+                           negativeHandler: @escaping
+    () -> Void) {
+        let alert = UIAlertController(title: title,
+                                      message:  message,
+                                      preferredStyle:  UIAlertController.Style.alert)
+        let positiveAction = UIAlertAction(title: "はい",
+                                          style: UIAlertAction.Style.default,
+                                          handler: {
+            (action: UIAlertAction!) -> Void in
+            positiveHandler()
             self.view.endEditing(true)
+        })
+        let negativeAction = UIAlertAction(title: "いいえ",
+                                          style: UIAlertAction.Style.default,
+                                          handler: {
+            (action: UIAlertAction!) -> Void in
+            negativeHandler()
+        })
+        alert.addAction(positiveAction)
+        alert.addAction(negativeAction)
+        present(alert, animated: true, completion: nil)
     }
 }
 
