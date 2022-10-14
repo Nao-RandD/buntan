@@ -10,6 +10,7 @@
 		1A660CACE448831BDD8E0950 /* Pods_buntanTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CE0DD626EE342DA6F052591 /* Pods_buntanTests.framework */; };
 		9B01D43BA0476047EE09C930 /* Pods_buntan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E2FED4ED7A2635244999AC9 /* Pods_buntan.framework */; };
 		9F091C0327894AAB0098DE85 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F091C0227894AAA0098DE85 /* TutorialViewController.swift */; };
+		9F14ED7E28C75F4C0087FCA7 /* ViewController+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F14ED7D28C75F4B0087FCA7 /* ViewController+Extention.swift */; };
 		9F33E539288BBC7A00DC972C /* GroupTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F33E538288BBC7900DC972C /* GroupTask.swift */; };
 		9F7EFE6D288E45530011540E /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7EFE6C288E45530011540E /* EditViewController.swift */; };
 		9F7F135426F7692100AF0543 /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7F135326F7692100AF0543 /* AddTaskViewController.swift */; };
@@ -62,6 +63,7 @@
 		582A46FAE6B9B26F6C7F082A /* Pods-buntanTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-buntanTests.release.xcconfig"; path = "Target Support Files/Pods-buntanTests/Pods-buntanTests.release.xcconfig"; sourceTree = "<group>"; };
 		72EA9A850438DA3D734141A9 /* Pods-buntanTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-buntanTests.debug.xcconfig"; path = "Target Support Files/Pods-buntanTests/Pods-buntanTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9F091C0227894AAA0098DE85 /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
+		9F14ED7D28C75F4B0087FCA7 /* ViewController+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Extention.swift"; sourceTree = "<group>"; };
 		9F33E538288BBC7900DC972C /* GroupTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTask.swift; sourceTree = "<group>"; };
 		9F7EFE6C288E45530011540E /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		9F7F135326F7692100AF0543 /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 				9F7F135726F83F5700AF0543 /* TabBarController.swift */,
 				9FB2F7E926F21961006CDF73 /* MyUINavigationControllerViewController.swift */,
 				9FB0157C2760D48800D63230 /* Contents.swift */,
+				9F14ED7D28C75F4B0087FCA7 /* ViewController+Extention.swift */,
 			);
 			path = Contents;
 			sourceTree = "<group>";
@@ -474,6 +477,7 @@
 				9FEC417426E8E2CC00B55299 /* AppDelegate.swift in Sources */,
 				9FA2207A27A40EDE00CFD239 /* AddAllViewController.swift in Sources */,
 				9FB2F7EA26F21961006CDF73 /* MyUINavigationControllerViewController.swift in Sources */,
+				9F14ED7E28C75F4C0087FCA7 /* ViewController+Extention.swift in Sources */,
 				9F8E376426F369FD00084709 /* TaskTableViewCell.swift in Sources */,
 				9F091C0327894AAB0098DE85 /* TutorialViewController.swift in Sources */,
 				9FEC417626E8E2CC00B55299 /* SceneDelegate.swift in Sources */,
