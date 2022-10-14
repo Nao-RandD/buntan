@@ -91,19 +91,6 @@ extension StartAppViewController {
         secondViewController.modalPresentationStyle = .fullScreen
         self.present(secondViewController, animated: false, completion: nil)
     }
-
-    private func showAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title,
-                                      message:  message,
-                                      preferredStyle:  UIAlertController.Style.alert)
-        let confirmAction = UIAlertAction(title: "OK",
-                                          style: UIAlertAction.Style.default,
-                                          handler: {
-                                            (action: UIAlertAction!) -> Void in
-        })
-        alert.addAction(confirmAction)
-        present(alert, animated: true, completion: nil)
-    }
 }
 
 // MARK - UIPickerViewDelegate
