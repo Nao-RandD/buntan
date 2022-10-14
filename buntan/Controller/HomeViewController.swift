@@ -156,19 +156,6 @@ extension HomeViewController {
         tableView.reloadData()
     }
 
-    private func showAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title,
-                                      message:  message,
-                                      preferredStyle:  UIAlertController.Style.alert)
-        let confirmAction = UIAlertAction(title: "OK",
-                                          style: UIAlertAction.Style.default,
-                                          handler: {
-                                            (action: UIAlertAction!) -> Void in
-        })
-        alert.addAction(confirmAction)
-        present(alert, animated: true, completion: nil)
-    }
-
     private func showTutorial() {
         guard let frame = self.navigationController?.navigationBar.frame else { return }
         print(dump(frame))

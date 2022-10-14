@@ -178,32 +178,6 @@ extension ProfileViewController {
             inputPassword = text
         }
     }
-
-    private func showAlert(title: String,
-                           message: String,
-                           positiveHandler: @escaping () -> Void,
-                           negativeHandler: @escaping
-    () -> Void) {
-        let alert = UIAlertController(title: title,
-                                      message:  message,
-                                      preferredStyle:  UIAlertController.Style.alert)
-        let positiveAction = UIAlertAction(title: "はい",
-                                          style: UIAlertAction.Style.default,
-                                          handler: {
-            (action: UIAlertAction!) -> Void in
-            positiveHandler()
-            self.view.endEditing(true)
-        })
-        let negativeAction = UIAlertAction(title: "いいえ",
-                                          style: UIAlertAction.Style.default,
-                                          handler: {
-            (action: UIAlertAction!) -> Void in
-            negativeHandler()
-        })
-        alert.addAction(positiveAction)
-        alert.addAction(negativeAction)
-        present(alert, animated: true, completion: nil)
-    }
 }
 
 // MARK: - UITextFieldDelegate
