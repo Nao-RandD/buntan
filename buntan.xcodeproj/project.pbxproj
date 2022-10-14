@@ -35,6 +35,7 @@
 		9FB5589B272D128F00906151 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB5589A272D128F00906151 /* FirebaseManager.swift */; };
 		9FCA3C1028F9A8BE00C96465 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 9FCA3C0F28F9A8BE00C96465 /* RxCocoa */; };
 		9FCA3C1228F9A8BE00C96465 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9FCA3C1128F9A8BE00C96465 /* RxSwift */; };
+		9FCA3C1528F9A97800C96465 /* PKHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 9FCA3C1428F9A97800C96465 /* PKHUD */; };
 		9FEC417426E8E2CC00B55299 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEC417326E8E2CC00B55299 /* AppDelegate.swift */; };
 		9FEC417626E8E2CC00B55299 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEC417526E8E2CC00B55299 /* SceneDelegate.swift */; };
 		9FEC417826E8E2CC00B55299 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEC417726E8E2CC00B55299 /* HomeViewController.swift */; };
@@ -121,6 +122,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9FCA3C1228F9A8BE00C96465 /* RxSwift in Frameworks */,
+				9FCA3C1528F9A97800C96465 /* PKHUD in Frameworks */,
 				9FCA3C1028F9A8BE00C96465 /* RxCocoa in Frameworks */,
 				9B01D43BA0476047EE09C930 /* Pods_buntan.framework in Frameworks */,
 			);
@@ -302,6 +304,7 @@
 			packageProductDependencies = (
 				9FCA3C0F28F9A8BE00C96465 /* RxCocoa */,
 				9FCA3C1128F9A8BE00C96465 /* RxSwift */,
+				9FCA3C1428F9A97800C96465 /* PKHUD */,
 			);
 			productName = buntan;
 			productReference = 9FEC417026E8E2CC00B55299 /* buntan.app */;
@@ -336,6 +339,7 @@
 			mainGroup = 9FEC416726E8E2CB00B55299;
 			packageReferences = (
 				9FCA3C0E28F9A8BE00C96465 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				9FCA3C1328F9A97800C96465 /* XCRemoteSwiftPackageReference "PKHUD" */,
 			);
 			productRefGroup = 9FEC417126E8E2CC00B55299 /* Products */;
 			projectDirPath = "";
@@ -782,6 +786,14 @@
 				minimumVersion = 6.0.0;
 			};
 		};
+		9FCA3C1328F9A97800C96465 /* XCRemoteSwiftPackageReference "PKHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pkluz/PKHUD";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -794,6 +806,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9FCA3C0E28F9A8BE00C96465 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
+		};
+		9FCA3C1428F9A97800C96465 /* PKHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9FCA3C1328F9A97800C96465 /* XCRemoteSwiftPackageReference "PKHUD" */;
+			productName = PKHUD;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
