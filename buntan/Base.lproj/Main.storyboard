@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ncD-Xa-r1W">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4GQ-TY-2LL">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -994,9 +994,6 @@
                                 <state key="normal" title="サインアップ">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
-                                <connections>
-                                    <action selector="didTapSignUpButton" destination="4GQ-TY-2LL" eventType="touchUpInside" id="f7X-kY-k9g"/>
-                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="パスワード" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bI2-lh-Uwr">
                                 <rect key="frame" x="112.5" y="433" width="189" height="34"/>
@@ -1056,6 +1053,7 @@
                         <outlet property="emailTextField" destination="46R-RN-N67" id="7Q4-Uq-Ro5"/>
                         <outlet property="nameTextField" destination="7EX-Gy-18C" id="giO-hv-DlL"/>
                         <outlet property="passwordTextField" destination="bI2-lh-Uwr" id="y2s-cX-0Jn"/>
+                        <outlet property="signUpButton" destination="kyO-fo-deU" id="k9d-pj-iHf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VPf-qr-DOZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1098,7 +1096,6 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="didTapSignUpButton" destination="4GQ-TY-2LL" eventType="touchUpInside" id="Wfd-r9-VfK"/>
                                     <action selector="tappedSignInButton:" destination="b6l-sZ-bT5" eventType="touchUpInside" id="MLo-MH-4T8"/>
                                 </connections>
                             </button>

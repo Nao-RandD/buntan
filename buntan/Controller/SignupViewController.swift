@@ -7,16 +7,29 @@
 
 import Firebase
 import UIKit
+import RxSwift
+import PKHUD
 
 class SignupViewController: UIViewController {
     @IBOutlet private weak var nameTextField: UITextField!
     @IBOutlet private weak var emailTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
+    @IBOutlet weak var signUpButton: UIButton!
+
+    private let disposeBag = DisposeBag()
+
+    private var viewModel: RegiserViewModel?
 
     private let userDefaults = UserDefaults.standard
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        viewModel = RegiserViewModel()
+
+        passwordTextField.isSecureTextEntry = true
+
+        setupBinding()
 
         if userDefaults.object(forKey: "isSignup") as? Bool ?? false ||
             userDefaults.object(forKey: "isLogin") as? Bool ?? false {
@@ -32,13 +45,13 @@ class SignupViewController: UIViewController {
         self.view.endEditing(true)
     }
 
-    @IBAction private func didTapSignUpButton() {
-        let email = emailTextField.text ?? ""
-        let password = passwordTextField.text ?? ""
-        let name = nameTextField.text ?? ""
-
-        signUp(email: email, password: password, name: name)
-    }
+//    @IBAction private func didTapSignUpButton() {
+//        let email = emailTextField.text ?? ""
+//        let password = passwordTextField.text ?? ""
+//        let name = nameTextField.text ?? ""
+//
+//        signUp(email: email, password: password, name: name)
+//    }
 
     // ログイン画面への繊維
     @IBAction func didTapToLoginButton(_ sender: Any) {
@@ -51,74 +64,66 @@ class SignupViewController: UIViewController {
 // MARK - Private Function -
 
 extension SignupViewController {
-    private func signUp(email: String, password: String, name: String) {
-        print("メール：\(email)、パスワード\(password)、ユーザー名\(name)を登録")
-        Auth.auth().createUser(withEmail: email, password: password) { [weak self] result, error in
-            print("\(String(describing: result))")
-            guard let self = self else { return }
-            if let user = result?.user {
-                print("メールアドレス登録完了")
-//                self.sendEmailVerification(to: user, name: name)
-                self.updateDisplayName(name, of: user)
+    private func setupBinding() {
+        nameTextField.rx.text
+            .asDriver()
+            .drive { [weak self] text in
+                self?.viewModel!.nameTextInput.onNext(text ?? "")
             }
-            self.showError(error)
-        }
+            .disposed(by: disposeBag)
+
+        emailTextField.rx.text
+            .asDriver()
+            .drive { [weak self] text in
+                self?.viewModel!.emailTextInput.onNext(text ?? "")
+            }
+            .disposed(by: disposeBag)
+
+        passwordTextField.rx.text
+            .asDriver()
+            .drive { [weak self] text in
+                self?.viewModel!.passwordTextInput.onNext(text ?? "")
+            }
+            .disposed(by: disposeBag)
+
+        signUpButton.rx.tap
+            .asDriver()
+            .drive { [weak self] _ in
+                // 登録時の処理
+                self?.createUser()
+            }
+            .disposed(by: disposeBag)
+
+        // viewModelのbinding
+        viewModel?.validRegisterDriver
+            .drive { validAll in
+                self.signUpButton.isEnabled = validAll
+                self.signUpButton.backgroundColor = validAll ? .rgb(red: 227, green: 48, blue: 78) : .init(white: 0.7, alpha: 1)
+            }
+            .disposed(by: disposeBag)
     }
 
-    // 認証メールに表示する名前を更新する
-    private func updateDisplayName(_ name: String, of user: User) {
-        print("表示名の更新")
-        let request = user.createProfileChangeRequest()
-        request.displayName = name
-        request.commitChanges() { [weak self] error in
-            guard let self = self else { return }
-            if error == nil {
-                print("ユーザー名登録完了")
-                self.sendEmailVerification(to: user, name: name)
-            }
-            self.showError(error)
-        }
-    }
+    private func createUser() {
+        let email = emailTextField.text
+        let password = passwordTextField.text
+        let name = nameTextField.text
 
-    // 登録したメールアドレスに向けて認証URLを送る
-    private func sendEmailVerification(to user: User, name: String) {
-        user.sendEmailVerification() { [weak self] error in
-            guard let self = self else { return }
-            if error == nil {
-                print("アクティベート含めた登録完了")
-                DispatchQueue.main.async {
-                    self.showDialog("メールアプリから認証を完了してください", user: name)
+        HUD.show(.progress)
+        FirebaseManager.createUserToFireAuth(email: email, password: password, name: name) { success in
+            HUD.hide()
+            if success {
+                print("処理が完了")
+                self.dismiss(animated: true)
+
+                self.showAlert(title: "登録成功", message: "ユーザーの登録が完了しました") {
+                    self.nextScreen()
                 }
+            } else {
+                self.showAlert(title: "無効な情報が含まれていました", message: "ユーザー名・パスワードは5文字以上か？メールアドレスは有効なものか？")
             }
-            self.showError(error)
         }
     }
-
-    // 指定のダイアログを表示する
-    private func showDialog(_ message: String, user: String) {
-        let alert = UIAlertController(title: "メール認証", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK",
-                                      style: .default,
-                                      handler: {
-                                              (action: UIAlertAction!) -> Void in
-            self.nextScreen()
-                                          }))
-        present(alert, animated: true, completion: nil)
-    }
-
-    // エラー内容をダイアログで表示する
-    private func showError(_ errorOrNil: Error?) {
-        // エラーがなければ何もしません
-        guard errorOrNil != nil else { return }
-        print("エラー内容は\(errorOrNil!)")
-
-        let message = errorOrNil?.localizedDescription
-        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        present(alert, animated: true, completion: nil)
-    }
-
-    // isSignupのフラグが立っていたら次の画面に遷移する
+    // 次の画面に遷移する
     private func nextScreen() {
         self.userDefaults.set(true, forKey: "isSignup")
 
