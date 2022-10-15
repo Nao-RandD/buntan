@@ -36,6 +36,8 @@
 		9FCA3C1028F9A8BE00C96465 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 9FCA3C0F28F9A8BE00C96465 /* RxCocoa */; };
 		9FCA3C1228F9A8BE00C96465 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9FCA3C1128F9A8BE00C96465 /* RxSwift */; };
 		9FCA3C1528F9A97800C96465 /* PKHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 9FCA3C1428F9A97800C96465 /* PKHUD */; };
+		9FCA3C1828F9AF8300C96465 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FCA3C1728F9AF8300C96465 /* RegisterViewModel.swift */; };
+		9FCA3C1A28F9B86300C96465 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FCA3C1928F9B86300C96465 /* UIColor+Extension.swift */; };
 		9FEC417426E8E2CC00B55299 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEC417326E8E2CC00B55299 /* AppDelegate.swift */; };
 		9FEC417626E8E2CC00B55299 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEC417526E8E2CC00B55299 /* SceneDelegate.swift */; };
 		9FEC417826E8E2CC00B55299 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEC417726E8E2CC00B55299 /* HomeViewController.swift */; };
@@ -92,6 +94,8 @@
 		9FB2F7E926F21961006CDF73 /* MyUINavigationControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyUINavigationControllerViewController.swift; sourceTree = "<group>"; };
 		9FB55898271A8D5A00906151 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		9FB5589A272D128F00906151 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
+		9FCA3C1728F9AF8300C96465 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		9FCA3C1928F9B86300C96465 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		9FEC417026E8E2CC00B55299 /* buntan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = buntan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FEC417326E8E2CC00B55299 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9FEC417526E8E2CC00B55299 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -157,6 +161,14 @@
 			path = buntanTests;
 			sourceTree = "<group>";
 		};
+		9FCA3C1628F9AF5100C96465 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9FCA3C1728F9AF8300C96465 /* RegisterViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		9FEC416726E8E2CB00B55299 = {
 			isa = PBXGroup;
 			children = (
@@ -185,6 +197,7 @@
 				9F99668E2743E39E00FF6AD5 /* GoogleService-Info.plist */,
 				9FEC419626F0B80B00B55299 /* Contents */,
 				9F9647E228794C2E00B7244E /* Utils */,
+				9FCA3C1628F9AF5100C96465 /* ViewModel */,
 				9FEC418D26F0B12200B55299 /* View */,
 				9FEC418826E8EE6700B55299 /* Model */,
 				9FEC418726E8EE5900B55299 /* Controller */,
@@ -248,6 +261,7 @@
 				9FB2F7E926F21961006CDF73 /* MyUINavigationControllerViewController.swift */,
 				9FB0157C2760D48800D63230 /* Contents.swift */,
 				9F14ED7D28C75F4B0087FCA7 /* ViewController+Extention.swift */,
+				9FCA3C1928F9B86300C96465 /* UIColor+Extension.swift */,
 			);
 			path = Contents;
 			sourceTree = "<group>";
@@ -488,10 +502,12 @@
 				9F33E539288BBC7A00DC972C /* GroupTask.swift in Sources */,
 				9F7F1363270007A400AF0543 /* HistoryTableViewCell.swift in Sources */,
 				9FB5589B272D128F00906151 /* FirebaseManager.swift in Sources */,
+				9FCA3C1A28F9B86300C96465 /* UIColor+Extension.swift in Sources */,
 				9FEC417826E8E2CC00B55299 /* HomeViewController.swift in Sources */,
 				9FEC417426E8E2CC00B55299 /* AppDelegate.swift in Sources */,
 				9FA2207A27A40EDE00CFD239 /* AddAllViewController.swift in Sources */,
 				9FB2F7EA26F21961006CDF73 /* MyUINavigationControllerViewController.swift in Sources */,
+				9FCA3C1828F9AF8300C96465 /* RegisterViewModel.swift in Sources */,
 				9F14ED7E28C75F4C0087FCA7 /* ViewController+Extention.swift in Sources */,
 				9F8E376426F369FD00084709 /* TaskTableViewCell.swift in Sources */,
 				9F091C0327894AAB0098DE85 /* TutorialViewController.swift in Sources */,
