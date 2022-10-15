@@ -45,14 +45,6 @@ class SignupViewController: UIViewController {
         self.view.endEditing(true)
     }
 
-//    @IBAction private func didTapSignUpButton() {
-//        let email = emailTextField.text ?? ""
-//        let password = passwordTextField.text ?? ""
-//        let name = nameTextField.text ?? ""
-//
-//        signUp(email: email, password: password, name: name)
-//    }
-
     // ログイン画面への繊維
     @IBAction func didTapToLoginButton(_ sender: Any) {
         DispatchQueue.main.async {
