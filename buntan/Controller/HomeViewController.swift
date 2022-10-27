@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 import RealmSwift
 
 class HomeViewController: UIViewController {
@@ -19,6 +20,7 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("HomeViewControlelr\(#function)")
 
         if #available(iOS 15.0, *) {
             // disable UITab bar transparent
@@ -28,24 +30,37 @@ class HomeViewController: UIViewController {
             UITabBar.appearance().standardAppearance = tabBarAppearance
         }
 
-        /// ホームのグループ名を取得してNavigation Barに設定
-        let group = self.userDefaults.object(forKey: "Group") as! String
-        self.navigationItem.title = group
-        settingTableView()
-
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+    
         /// NotificationCenterを登録
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(self.reloadScreen),
                                                name: .notifyName,
                                                object: nil)
+
+        settingTableView()
+        setListener()
+
+        /// ホームのグループ名を取得してNavigation Barに設定
+        let group = self.userDefaults.object(forKey: "Group") as! String
+        self.navigationItem.title = group
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        settingTableView()
-        setListener()
+        super.viewWillAppear(animated)
+        print("HomeViewControlelr\(#function)")
+
+        // FirebaseAuthにuidがなければサインアップ画面を表示
+        if Auth.auth().currentUser?.uid == nil {
+            let signupViewController = self.storyboard?.instantiateViewController(withIdentifier: "SignupViewController") as! SignupViewController
+            signupViewController.modalPresentationStyle = .fullScreen
+            self.present(signupViewController, animated: false, completion: nil)
+        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
+        print("HomeViewControlelr\(#function)")
+
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             let isShowTutorial = self.userDefaults.object(forKey: "isShowTutorial") as? Bool ?? false
             if !isShowTutorial {
