@@ -34,10 +34,24 @@ class DashboardViewController: UIViewController {
         // グループ名を設定
         let group = self.userDefaults.object(forKey: "Group") as! String
         groupLabel.text = group
+
+        /// NotificationCenterを登録
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.reloadScreen),
+                                               name: .notifyName,
+                                               object: nil)
     }
 }
 
 extension DashboardViewController {
+    @objc func reloadScreen(notification: Notification?) {
+        print("\(String(describing: notification))からの通知でグループが変更されたのでリロード")
+        let group = self.userDefaults.object(forKey: "Group") as! String
+        self.groupLabel.text = group
+        setListener()
+        reload()
+    }
+
     private func setListener() {
         self.taskListener = db.collection("users").addSnapshotListener { snapshot, e in
                 if let snapshot = snapshot {
@@ -52,6 +66,11 @@ extension DashboardViewController {
                 }
             }
     }
+
+    private func reload() {
+        tableView.reloadData()
+    }
+
 }
 
 extension DashboardViewController: UITableViewDataSource, UITableViewDelegate {
