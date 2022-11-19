@@ -23,7 +23,8 @@ class DashboardViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+
+        self.navigationItem.title = "ランキング"
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "DashboardTableViewCell", bundle: nil),
