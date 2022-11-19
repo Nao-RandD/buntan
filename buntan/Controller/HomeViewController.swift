@@ -15,7 +15,7 @@ class HomeViewController: UIViewController {
     private var indicator: UIActivityIndicatorView!
     private let userDefaults = UserDefaults.standard
     private var selectIndex: Int?  = nil
-    private var groupTasks : [GroupTask] = [GroupTask(group: "ハウス", name: "ほげ", point: 10)]
+    private var groupTasks : [GroupTask] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()

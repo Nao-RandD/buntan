@@ -16,14 +16,14 @@ class DashboardViewController: UIViewController {
     private let db = Firestore.firestore()
     private var taskListener: ListenerRegistration?
     private let userDefaults = UserDefaults.standard
-
     private var userPointList: [UserInfo] = [
         UserInfo(name: "ほげ", point: 20)
     ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+
+        self.navigationItem.title = "ランキング"
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "DashboardTableViewCell", bundle: nil),
@@ -34,10 +34,24 @@ class DashboardViewController: UIViewController {
         // グループ名を設定
         let group = self.userDefaults.object(forKey: "Group") as! String
         groupLabel.text = group
+
+        /// NotificationCenterを登録
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.reloadScreen),
+                                               name: .notifyName,
+                                               object: nil)
     }
 }
 
 extension DashboardViewController {
+    @objc func reloadScreen(notification: Notification?) {
+        print("\(String(describing: notification))からの通知でグループが変更されたのでリロード")
+        let group = self.userDefaults.object(forKey: "Group") as! String
+        self.groupLabel.text = group
+        setListener()
+        reload()
+    }
+
     private func setListener() {
         self.taskListener = db.collection("users").addSnapshotListener { snapshot, e in
                 if let snapshot = snapshot {
@@ -52,6 +66,11 @@ extension DashboardViewController {
                 }
             }
     }
+
+    private func reload() {
+        tableView.reloadData()
+    }
+
 }
 
 extension DashboardViewController: UITableViewDataSource, UITableViewDelegate {
@@ -69,5 +88,12 @@ extension DashboardViewController: UITableViewDataSource, UITableViewDelegate {
         cell.configure(user: userPointList[indexPath.row].name,
                        point: userPointList[indexPath.row].point)
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        // fetch the animation from the TableAnimation enum and initialze the TableViewAnimator class
+        let animation = TableAnimation.moveUpBounce(rowHeight: 150, duration: 1.5, delay: 0.05).getAnimation()
+        let animator = TableViewAnimator(animation: animation)
+        animator.animate(cell: cell, at: indexPath, in: tableView)
     }
 }
