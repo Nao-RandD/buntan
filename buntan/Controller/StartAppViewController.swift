@@ -87,7 +87,7 @@ class StartAppViewController: UIViewController {
 
 extension StartAppViewController {
     private func nextScreen() {
-        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "TabBarController") as! TabBarController
+        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "TabBarController") as! MyTabBarController
         secondViewController.modalPresentationStyle = .fullScreen
         self.present(secondViewController, animated: false, completion: nil)
     }
