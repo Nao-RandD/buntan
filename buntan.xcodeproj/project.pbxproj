@@ -13,6 +13,8 @@
 		9F14ED7E28C75F4C0087FCA7 /* ViewController+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F14ED7D28C75F4B0087FCA7 /* ViewController+Extention.swift */; };
 		9F33E539288BBC7A00DC972C /* GroupTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F33E538288BBC7900DC972C /* GroupTask.swift */; };
 		9F677C432928755D0091CF8B /* MyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F677C422928755D0091CF8B /* MyTabBarController.swift */; };
+		9F677C45292891970091CF8B /* TableViewAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F677C44292891960091CF8B /* TableViewAnimator.swift */; };
+		9F677C48292892560091CF8B /* Tables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F677C47292892560091CF8B /* Tables.swift */; };
 		9F7EFE6D288E45530011540E /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7EFE6C288E45530011540E /* EditViewController.swift */; };
 		9F7F135426F7692100AF0543 /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7F135326F7692100AF0543 /* AddTaskViewController.swift */; };
 		9F7F135626F83CCF00AF0543 /* StartAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7F135526F83CCF00AF0543 /* StartAppViewController.swift */; };
@@ -67,6 +69,8 @@
 		9F14ED7D28C75F4B0087FCA7 /* ViewController+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Extention.swift"; sourceTree = "<group>"; };
 		9F33E538288BBC7900DC972C /* GroupTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTask.swift; sourceTree = "<group>"; };
 		9F677C422928755D0091CF8B /* MyTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabBarController.swift; sourceTree = "<group>"; };
+		9F677C44292891960091CF8B /* TableViewAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewAnimator.swift; sourceTree = "<group>"; };
+		9F677C47292892560091CF8B /* Tables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tables.swift; sourceTree = "<group>"; };
 		9F7EFE6C288E45530011540E /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		9F7F135326F7692100AF0543 /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
 		9F7F135526F83CCF00AF0543 /* StartAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartAppViewController.swift; sourceTree = "<group>"; };
@@ -136,6 +140,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		9F677C46292892270091CF8B /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				9F677C44292891960091CF8B /* TableViewAnimator.swift */,
+				9F677C47292892560091CF8B /* Tables.swift */,
+			);
+			path = Animation;
+			sourceTree = "<group>";
+		};
 		9F9647E228794C2E00B7244E /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -180,6 +193,7 @@
 				9FA2207D27A512D800CFD239 /* buntan.entitlements */,
 				9F99668E2743E39E00FF6AD5 /* GoogleService-Info.plist */,
 				9FEC419626F0B80B00B55299 /* Contents */,
+				9F677C46292892270091CF8B /* Animation */,
 				9F9647E228794C2E00B7244E /* Utils */,
 				9FEC418D26F0B12200B55299 /* View */,
 				9FEC418826E8EE6700B55299 /* Model */,
@@ -467,8 +481,10 @@
 				9F7F135C26FFFEE700AF0543 /* HistoryViewController.swift in Sources */,
 				9F7F135A26FB596A00AF0543 /* ProfileViewController.swift in Sources */,
 				9FB55899271A8D5A00906151 /* RealmManager.swift in Sources */,
+				9F677C48292892560091CF8B /* Tables.swift in Sources */,
 				9FEC418F26F0B15D00B55299 /* DashboardTableViewCell.swift in Sources */,
 				9F99668D2743DBD800FF6AD5 /* SignupViewController.swift in Sources */,
+				9F677C45292891970091CF8B /* TableViewAnimator.swift in Sources */,
 				9FEC418C26EF5E4100B55299 /* TaskItem.swift in Sources */,
 				9F677C432928755D0091CF8B /* MyTabBarController.swift in Sources */,
 				9FEC419826F0B84900B55299 /* UserInfo.swift in Sources */,

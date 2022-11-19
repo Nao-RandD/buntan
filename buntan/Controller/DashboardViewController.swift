@@ -16,7 +16,6 @@ class DashboardViewController: UIViewController {
     private let db = Firestore.firestore()
     private var taskListener: ListenerRegistration?
     private let userDefaults = UserDefaults.standard
-
     private var userPointList: [UserInfo] = [
         UserInfo(name: "ほげ", point: 20)
     ]
@@ -89,5 +88,12 @@ extension DashboardViewController: UITableViewDataSource, UITableViewDelegate {
         cell.configure(user: userPointList[indexPath.row].name,
                        point: userPointList[indexPath.row].point)
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        // fetch the animation from the TableAnimation enum and initialze the TableViewAnimator class
+        let animation = TableAnimation.moveUpBounce(rowHeight: 150, duration: 1.5, delay: 0.05).getAnimation()
+        let animator = TableViewAnimator(animation: animation)
+        animator.animate(cell: cell, at: indexPath, in: tableView)
     }
 }
