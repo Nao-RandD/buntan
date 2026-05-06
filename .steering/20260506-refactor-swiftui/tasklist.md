@@ -182,7 +182,7 @@
 ### 5-3. XLPagerTabStrip SPM 削除
 - [x] `buntan.xcodeproj/project.pbxproj` から XLPagerTabStrip の参照を削除
 - [x] `Package.resolved` を更新（XLPagerTabStrip エントリなし確認済み）
-- [ ] ビルド確認（XLPagerTabStrip のインポートが残っていないこと）
+- [x] ビルド確認（XLPagerTabStrip のインポートが残っていないこと）
 
 ### 5-4. ドキュメント更新
 - [x] `docs/architecture.md` を移行後の構成に更新（レイヤー構成・データフロー・テクノロジースタックを SwiftUI/MVVM 版に書き換え）
@@ -190,12 +190,12 @@
 - [x] `CLAUDE.md` の Architecture・Key Directories・Navigation セクションを SwiftUI/MVVM 版に更新
 
 ### 5-5. 最終ビルド・動作確認
-- [ ] `xcodebuild -project buntan.xcodeproj -scheme buntan -configuration Debug build` でビルドエラーがないことを確認
-- [ ] シミュレーターで全画面の動作確認
-  - [ ] 初回起動（セットアップ）→ MainTabView 遷移
-  - [ ] ホーム: タスク一覧表示・選択・送信・コンテキストメニュー（編集・削除）
-  - [ ] ランキング: リアルタイム更新
-  - [ ] グループ切り替え → Home・Dashboard 連動更新
-  - [ ] タスク追加・グループ作成
-  - [ ] 履歴表示
-  - [ ] チュートリアル表示（初回のみ）
+- [x] `xcodebuild -project buntan.xcodeproj -scheme buntan -configuration Debug build` でビルドエラーがないことを確認
+- [x] シミュレーターで全画面の動作確認
+  - [x] 初回起動（セットアップ）→ MainTabView 遷移
+  - [x] ホーム: タスク一覧表示・選択・送信・コンテキストメニュー（編集・削除）
+  - [x] ランキング: リアルタイム更新
+  - [x] グループ切り替え → Home・Dashboard 連動更新
+  - [x] タスク追加・グループ作成
+  - [x] 履歴表示
+  - [x] チュートリアル表示（初回のみ）
