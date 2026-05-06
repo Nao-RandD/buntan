@@ -5,7 +5,7 @@
 //  Created by Naoyuki Kan on 2021/10/30.
 //
 
-import Firebase
+import FirebaseFirestore
 
 enum FirebaseError: Error {
     case editError

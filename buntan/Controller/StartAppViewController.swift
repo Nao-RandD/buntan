@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import Firebase
+import FirebaseFirestore
 
 class StartAppViewController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!

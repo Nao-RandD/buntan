@@ -61,9 +61,11 @@ extension MyTabBarController: UITabBarControllerDelegate  {
 class CustomTabBar: UITabBar {
     /// indexを受け取り、タブのUIImageViewを返却する
     func barItemImage(index: Int) -> UIImageView? {
-        let view = subviews[index + 1]
-        return view.recursiveSubviews.compactMap { $0 as? UIImageView }
-        .first
+        let buttons = subviews
+            .filter { NSStringFromClass(type(of: $0)) == "UITabBarButton" }
+            .sorted { $0.frame.origin.x < $1.frame.origin.x }
+        guard index < buttons.count else { return nil }
+        return buttons[index].recursiveSubviews.compactMap { $0 as? UIImageView }.first
     }
 }
 

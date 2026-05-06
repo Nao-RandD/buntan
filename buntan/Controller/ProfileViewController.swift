@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import Firebase
+import FirebaseFirestore
 
 class ProfileViewController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
