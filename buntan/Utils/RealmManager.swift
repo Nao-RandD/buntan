@@ -15,6 +15,11 @@ final class RealmManager {
     private var realm: Realm
 
     private init() {
+        let config = Realm.Configuration(
+            schemaVersion: UInt64(CurrentSchemaVersion),
+            migrationBlock: { _, _ in }
+        )
+        Realm.Configuration.defaultConfiguration = config
         realm = try! Realm()
     }
 

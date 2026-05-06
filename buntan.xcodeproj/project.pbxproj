@@ -3,12 +3,16 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1A660CACE448831BDD8E0950 /* Pods_buntanTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CE0DD626EE342DA6F052591 /* Pods_buntanTests.framework */; };
-		9B01D43BA0476047EE09C930 /* Pods_buntan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E2FED4ED7A2635244999AC9 /* Pods_buntan.framework */; };
+		7F6976622FAB0E8600FB17CB /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 7F6976612FAB0E8600FB17CB /* FirebaseAnalytics */; };
+		7F6976642FAB0E8600FB17CB /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 7F6976632FAB0E8600FB17CB /* FirebaseAuth */; };
+		7F6976662FAB0E8600FB17CB /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 7F6976652FAB0E8600FB17CB /* FirebaseCore */; };
+		7F6976682FAB0E8600FB17CB /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 7F6976672FAB0E8600FB17CB /* FirebaseFirestore */; };
+		7F69766B2FAB0F3800FB17CB /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7F69766A2FAB0F3800FB17CB /* RealmSwift */; };
+		7F69766E2FAB0F9700FB17CB /* XLPagerTabStrip in Frameworks */ = {isa = PBXBuildFile; productRef = 7F69766D2FAB0F9700FB17CB /* XLPagerTabStrip */; };
 		9F091C0327894AAB0098DE85 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F091C0227894AAA0098DE85 /* TutorialViewController.swift */; };
 		9F14ED7E28C75F4C0087FCA7 /* ViewController+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F14ED7D28C75F4B0087FCA7 /* ViewController+Extention.swift */; };
 		9F33E539288BBC7A00DC972C /* GroupTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F33E538288BBC7900DC972C /* GroupTask.swift */; };
@@ -60,11 +64,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0E2FED4ED7A2635244999AC9 /* Pods_buntan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_buntan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1CE0DD626EE342DA6F052591 /* Pods_buntanTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_buntanTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		204CB05096C6FB6120184E08 /* Pods-buntan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-buntan.release.xcconfig"; path = "Target Support Files/Pods-buntan/Pods-buntan.release.xcconfig"; sourceTree = "<group>"; };
-		582A46FAE6B9B26F6C7F082A /* Pods-buntanTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-buntanTests.release.xcconfig"; path = "Target Support Files/Pods-buntanTests/Pods-buntanTests.release.xcconfig"; sourceTree = "<group>"; };
-		72EA9A850438DA3D734141A9 /* Pods-buntanTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-buntanTests.debug.xcconfig"; path = "Target Support Files/Pods-buntanTests/Pods-buntanTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9F091C0227894AAA0098DE85 /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		9F14ED7D28C75F4B0087FCA7 /* ViewController+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Extention.swift"; sourceTree = "<group>"; };
 		9F33E538288BBC7900DC972C /* GroupTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTask.swift; sourceTree = "<group>"; };
@@ -108,7 +107,6 @@
 		9FEC419226F0B35E00B55299 /* DashboardTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashboardTableViewCell.xib; sourceTree = "<group>"; };
 		9FEC419426F0B65B00B55299 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		9FEC419726F0B84800B55299 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
-		DF870C7356CAFC3777A38F9F /* Pods-buntan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-buntan.debug.xcconfig"; path = "Target Support Files/Pods-buntan/Pods-buntan.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,7 +114,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A660CACE448831BDD8E0950 /* Pods_buntanTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,22 +121,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9B01D43BA0476047EE09C930 /* Pods_buntan.framework in Frameworks */,
+				7F6976622FAB0E8600FB17CB /* FirebaseAnalytics in Frameworks */,
+				7F6976682FAB0E8600FB17CB /* FirebaseFirestore in Frameworks */,
+				7F6976662FAB0E8600FB17CB /* FirebaseCore in Frameworks */,
+				7F69766B2FAB0F3800FB17CB /* RealmSwift in Frameworks */,
+				7F6976642FAB0E8600FB17CB /* FirebaseAuth in Frameworks */,
+				7F69766E2FAB0F9700FB17CB /* XLPagerTabStrip in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1021102835AC627E5C6AEB3E /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				0E2FED4ED7A2635244999AC9 /* Pods_buntan.framework */,
-				1CE0DD626EE342DA6F052591 /* Pods_buntanTests.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		9F677C46292892270091CF8B /* Animation */ = {
 			isa = PBXGroup;
 			children = (
@@ -173,7 +166,6 @@
 				9F97729C27E1BD1B00F1190A /* buntanTests */,
 				9FEC417126E8E2CC00B55299 /* Products */,
 				A6CD8567C968D8EF79B08B73 /* Pods */,
-				1021102835AC627E5C6AEB3E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -266,10 +258,6 @@
 		A6CD8567C968D8EF79B08B73 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				DF870C7356CAFC3777A38F9F /* Pods-buntan.debug.xcconfig */,
-				204CB05096C6FB6120184E08 /* Pods-buntan.release.xcconfig */,
-				72EA9A850438DA3D734141A9 /* Pods-buntanTests.debug.xcconfig */,
-				582A46FAE6B9B26F6C7F082A /* Pods-buntanTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -281,11 +269,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9F9772A127E1BD1B00F1190A /* Build configuration list for PBXNativeTarget "buntanTests" */;
 			buildPhases = (
-				1A8BA13DDCA9E970EA8233EB /* [CP] Check Pods Manifest.lock */,
 				9F97729727E1BD1B00F1190A /* Sources */,
 				9F97729827E1BD1B00F1190A /* Frameworks */,
 				9F97729927E1BD1B00F1190A /* Resources */,
-				23DDBD2B4FAF75863570BDAE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -301,11 +287,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9FEC418426E8E2D000B55299 /* Build configuration list for PBXNativeTarget "buntan" */;
 			buildPhases = (
-				0680D69DDD963637514C8D18 /* [CP] Check Pods Manifest.lock */,
 				9FEC416C26E8E2CC00B55299 /* Sources */,
 				9FEC416D26E8E2CC00B55299 /* Frameworks */,
 				9FEC416E26E8E2CC00B55299 /* Resources */,
-				213254C2F87F5E349650009E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -343,6 +327,11 @@
 				Base,
 			);
 			mainGroup = 9FEC416726E8E2CB00B55299;
+			packageReferences = (
+				7F6976602FAB0E8600FB17CB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				7F6976692FAB0F3800FB17CB /* XCRemoteSwiftPackageReference "realm-swift" */,
+				7F69766C2FAB0F9700FB17CB /* XCRemoteSwiftPackageReference "XLPagerTabStrip" */,
+			);
 			productRefGroup = 9FEC417126E8E2CC00B55299 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -376,87 +365,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		0680D69DDD963637514C8D18 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-buntan-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		1A8BA13DDCA9E970EA8233EB /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-buntanTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		213254C2F87F5E349650009E /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-buntan/Pods-buntan-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-buntan/Pods-buntan-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-buntan/Pods-buntan-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		23DDBD2B4FAF75863570BDAE /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-buntanTests/Pods-buntanTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-buntanTests/Pods-buntanTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-buntanTests/Pods-buntanTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9F97729727E1BD1B00F1190A /* Sources */ = {
@@ -536,7 +444,6 @@
 /* Begin XCBuildConfiguration section */
 		9F9772A227E1BD1B00F1190A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 72EA9A850438DA3D734141A9 /* Pods-buntanTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -562,7 +469,6 @@
 		};
 		9F9772A327E1BD1B00F1190A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 582A46FAE6B9B26F6C7F082A /* Pods-buntanTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -704,7 +610,6 @@
 		};
 		9FEC418526E8E2D000B55299 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DF870C7356CAFC3777A38F9F /* Pods-buntan.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -714,7 +619,7 @@
 				DEVELOPMENT_TEAM = 44SQBVTPVY;
 				INFOPLIST_FILE = buntan/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "buntan - 家事分担アプリ";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -729,7 +634,6 @@
 		};
 		9FEC418626E8E2D000B55299 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 204CB05096C6FB6120184E08 /* Pods-buntan.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -739,7 +643,7 @@
 				DEVELOPMENT_TEAM = 44SQBVTPVY;
 				INFOPLIST_FILE = buntan/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "buntan - 家事分担アプリ";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -783,6 +687,66 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7F6976602FAB0E8600FB17CB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.13.0;
+			};
+		};
+		7F6976692FAB0F3800FB17CB /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift";
+			requirement = {
+				branch = community;
+				kind = branch;
+			};
+		};
+		7F69766C2FAB0F9700FB17CB /* XCRemoteSwiftPackageReference "XLPagerTabStrip" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/xmartlabs/XLPagerTabStrip";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7F6976612FAB0E8600FB17CB /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7F6976602FAB0E8600FB17CB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		7F6976632FAB0E8600FB17CB /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7F6976602FAB0E8600FB17CB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		7F6976652FAB0E8600FB17CB /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7F6976602FAB0E8600FB17CB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+		7F6976672FAB0E8600FB17CB /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7F6976602FAB0E8600FB17CB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		7F69766A2FAB0F3800FB17CB /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7F6976692FAB0F3800FB17CB /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+		7F69766D2FAB0F9700FB17CB /* XLPagerTabStrip */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7F69766C2FAB0F9700FB17CB /* XCRemoteSwiftPackageReference "XLPagerTabStrip" */;
+			productName = XLPagerTabStrip;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9FEC416826E8E2CB00B55299 /* Project object */;
 }

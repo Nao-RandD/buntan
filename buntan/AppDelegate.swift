@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import Firebase
+import FirebaseCore
 
 func print(_ items: Any..., separator: String = " ", terminator: String = "\n") {
     #if DEBUG

@@ -7,22 +7,19 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 **buntan** is a UIKit-based iOS app for household chore-sharing among groups. Users join groups, pick tasks, earn points, and view rankings. Japanese is the app's UI language; code comments are often in Japanese.
 
 - Min iOS: 13.0 | Language: Swift 5.0 | UI: Storyboard + XIB
-- Dependencies managed via CocoaPods (`Podfile`)
+- Dependencies managed via Swift Package Manager (SPM)
 
 ## Build & Test Commands
 
 ```bash
-# Install dependencies (required after clone or Podfile changes)
-pod install
-
-# Open workspace (always use .xcworkspace, not .xcodeproj)
-open buntan.xcworkspace
+# SPM packages resolve automatically when Xcode opens the project
+open buntan.xcodeproj
 
 # Build from CLI
-xcodebuild -workspace buntan.xcworkspace -scheme buntan -configuration Debug build
+xcodebuild -project buntan.xcodeproj -scheme buntan -configuration Debug build
 
 # Run tests
-xcodebuild test -workspace buntan.xcworkspace -scheme buntan -destination 'platform=iOS Simulator,name=iPhone 16'
+xcodebuild test -project buntan.xcodeproj -scheme buntan -destination 'platform=iOS Simulator,name=iPhone 16'
 ```
 
 No linter (SwiftLint) is configured.
