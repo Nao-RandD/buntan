@@ -25,6 +25,7 @@ guard let group = userDefaults.string(forKey: "Group") else { return }
 `@Observable` クラスとして実装する。
 
 ```swift
+@MainActor
 @Observable
 class HomeViewModel {
     var groupTasks: [GroupTask] = []
@@ -32,7 +33,7 @@ class HomeViewModel {
 
     func setListener(group: String) {
         FirebaseManager.shared.setListener { [weak self] tasks in
-            DispatchQueue.main.async { self?.groupTasks = tasks }
+            self?.groupTasks = tasks
         }
     }
 }

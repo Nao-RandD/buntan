@@ -62,10 +62,9 @@
 
 ### セットアップ（初回起動）
 
-- 認証機能は現在実装されていない。アプリ起動時の Initial VC は `StartAppViewController`
-- 初回起動時（`isSetup` が未設定）：ユーザー名入力 + グループピッカー選択 → `UserDefaults` に `User`・`Group` を保存 → `isSetup = true` → メイン画面へ
-- 2回目以降の起動：`isSetup == true` を検知してセットアップをスキップし、直接メイン画面（`TabBarController`）へ遷移
-- `LoginViewController` / `SignupViewController` は storyboard 上に存在するが、現時点では動線がなく未使用
+- 認証機能は現在実装されていない
+- 初回起動時（`isSetup` が未設定）：ユーザー名入力 + グループピッカー選択 → `UserDefaults` に `User`・`Group` を保存 → `isSetup = true` → `MainTabView` へ
+- 2回目以降の起動：`isSetup == true` を検知してセットアップをスキップし、直接 `MainTabView` へ遷移
 
 ### グループ
 

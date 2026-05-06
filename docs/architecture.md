@@ -192,3 +192,4 @@ HomeView / DashboardView（.onChange(of: appVM.currentGroup)）
 - `AppViewModel` はアプリ全体の状態を `@Observable` で管理し、`.environment(appVM)` 経由で全 View に渡す。`currentGroup` の変更は `didSet` で即 `UserDefaults` へ同期する
 - Force-unwrap（`!`）が `UserDefaults` 読み出し周りで残存している。既存スタイルを踏襲し、新規コードでの追加は避ける
 - Realm の `community` ブランチ固定は将来的なバージョン管理リスクがある
+- `AccentColor.colorset` に `#F79321`（オレンジ）を設定済み。SwiftUI の全コントロール（タブバー・ボタン・トグル等）に自動適用される
