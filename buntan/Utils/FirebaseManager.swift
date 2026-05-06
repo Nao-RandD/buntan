@@ -182,4 +182,10 @@ class FirebaseManager {
 
         }
     }
+
+    func setRankingListener(completion: @escaping (QuerySnapshot) -> Void) -> ListenerRegistration {
+        return db.collection("users").addSnapshotListener { snapshot, _ in
+            if let snapshot = snapshot { completion(snapshot) }
+        }
+    }
 }

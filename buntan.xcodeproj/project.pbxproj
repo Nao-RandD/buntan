@@ -8,12 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		202BA521A7AE317C03116017 /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7B4035709A20DD56DE4F6B /* AppViewModel.swift */; };
+		53C0D87E36CA84FAF7676964 /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242ACAB78971C992798734CF /* DashboardViewModel.swift */; };
+		67462387EE14EEE8464B6B48 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5409BC4BD091A43596EEA742 /* DashboardView.swift */; };
+		7AAE704A1AB04D67A8AEBE02 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22B7CA734D3DE547284E141 /* HomeViewModel.swift */; };
 		7F6976622FAB0E8600FB17CB /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 7F6976612FAB0E8600FB17CB /* FirebaseAnalytics */; };
 		7F6976642FAB0E8600FB17CB /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 7F6976632FAB0E8600FB17CB /* FirebaseAuth */; };
 		7F6976662FAB0E8600FB17CB /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 7F6976652FAB0E8600FB17CB /* FirebaseCore */; };
 		7F6976682FAB0E8600FB17CB /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 7F6976672FAB0E8600FB17CB /* FirebaseFirestore */; };
 		7F69766B2FAB0F3800FB17CB /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7F69766A2FAB0F3800FB17CB /* RealmSwift */; };
 		7F69766E2FAB0F9700FB17CB /* XLPagerTabStrip in Frameworks */ = {isa = PBXBuildFile; productRef = 7F69766D2FAB0F9700FB17CB /* XLPagerTabStrip */; };
+		93770D81AA819162912D9DB8 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B1724EEDF7CE86804C26C7 /* HomeView.swift */; };
 		9F091C0327894AAB0098DE85 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F091C0227894AAA0098DE85 /* TutorialViewController.swift */; };
 		9F14ED7E28C75F4C0087FCA7 /* ViewController+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F14ED7D28C75F4B0087FCA7 /* ViewController+Extention.swift */; };
 		9F33E539288BBC7A00DC972C /* GroupTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F33E538288BBC7900DC972C /* GroupTask.swift */; };
@@ -52,8 +56,10 @@
 		9FEC419526F0B65B00B55299 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEC419426F0B65B00B55299 /* DashboardViewController.swift */; };
 		9FEC419826F0B84900B55299 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEC419726F0B84800B55299 /* UserInfo.swift */; };
 		AA2E52BDB8CD3A8C9D711DDD /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8B98028A8933EEA97FCD77 /* MainTabView.swift */; };
+		B4DA650292A13A4E7E981F5F /* RankingRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73513E4F612E52EC68C3963C /* RankingRowView.swift */; };
 		CC318799C368C8F649517C50 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C86AF245C1688DFBE6ED80 /* RootView.swift */; };
 		CDE34F991ACC3A2643B48267 /* BuntanApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED52F6BD3799423BEA93AD5 /* BuntanApp.swift */; };
+		E310DFF4FF9B67570F14DDF4 /* TaskRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFDF3FEEDC19688237D5CD86 /* TaskRowView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,8 +73,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		242ACAB78971C992798734CF /* DashboardViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
 		3ED52F6BD3799423BEA93AD5 /* BuntanApp.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BuntanApp.swift; sourceTree = "<group>"; };
 		4E8B98028A8933EEA97FCD77 /* MainTabView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		5409BC4BD091A43596EEA742 /* DashboardView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		73513E4F612E52EC68C3963C /* RankingRowView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RankingRowView.swift; sourceTree = "<group>"; };
 		9F091C0227894AAA0098DE85 /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		9F14ED7D28C75F4B0087FCA7 /* ViewController+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Extention.swift"; sourceTree = "<group>"; };
 		9F33E538288BBC7900DC972C /* GroupTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTask.swift; sourceTree = "<group>"; };
@@ -112,7 +121,10 @@
 		9FEC419426F0B65B00B55299 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		9FEC419726F0B84800B55299 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		A4C86AF245C1688DFBE6ED80 /* RootView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		C2B1724EEDF7CE86804C26C7 /* HomeView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		CF7B4035709A20DD56DE4F6B /* AppViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
+		DFDF3FEEDC19688237D5CD86 /* TaskRowView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TaskRowView.swift; sourceTree = "<group>"; };
+		F22B7CA734D3DE547284E141 /* HomeViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +154,8 @@
 		0E1EFA80B7FA94776247810C /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				DFDF3FEEDC19688237D5CD86 /* TaskRowView.swift */,
+				73513E4F612E52EC68C3963C /* RankingRowView.swift */,
 			);
 			name = Components;
 			path = Components;
@@ -150,6 +164,8 @@
 		32D201AA30E7956CB664A15E /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				C2B1724EEDF7CE86804C26C7 /* HomeView.swift */,
+				5409BC4BD091A43596EEA742 /* DashboardView.swift */,
 			);
 			name = Screens;
 			path = Screens;
@@ -159,6 +175,8 @@
 			isa = PBXGroup;
 			children = (
 				CF7B4035709A20DD56DE4F6B /* AppViewModel.swift */,
+				F22B7CA734D3DE547284E141 /* HomeViewModel.swift */,
+				242ACAB78971C992798734CF /* DashboardViewModel.swift */,
 			);
 			name = ViewModel;
 			path = ViewModel;
@@ -448,6 +466,12 @@
 				CDE34F991ACC3A2643B48267 /* BuntanApp.swift in Sources */,
 				CC318799C368C8F649517C50 /* RootView.swift in Sources */,
 				AA2E52BDB8CD3A8C9D711DDD /* MainTabView.swift in Sources */,
+				7AAE704A1AB04D67A8AEBE02 /* HomeViewModel.swift in Sources */,
+				53C0D87E36CA84FAF7676964 /* DashboardViewModel.swift in Sources */,
+				E310DFF4FF9B67570F14DDF4 /* TaskRowView.swift in Sources */,
+				B4DA650292A13A4E7E981F5F /* RankingRowView.swift in Sources */,
+				93770D81AA819162912D9DB8 /* HomeView.swift in Sources */,
+				67462387EE14EEE8464B6B48 /* DashboardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

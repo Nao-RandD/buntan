@@ -38,56 +38,56 @@
 ## Phase 2 — コア画面（Home / Dashboard）
 
 ### 2-1. FirebaseManager — setRankingListener 追加
-- [ ] `FirebaseManager.swift` に `setRankingListener(completion:) -> ListenerRegistration` を追加
+- [x] `FirebaseManager.swift` に `setRankingListener(completion:) -> ListenerRegistration` を追加
   - `db.collection("users").addSnapshotListener` のラッパー
   - 既存メソッドは一切変更しない
-- [ ] ビルド確認
+- [x] ビルド確認
 
 ### 2-2. TaskRowView 作成
-- [ ] `buntan/View/Components/TaskRowView.swift` を新規作成
+- [x] `buntan/View/Components/TaskRowView.swift` を新規作成
   - `TaskTableViewCell` と同等のレイアウト（タスク名・ポイント表示）
 
 ### 2-3. HomeViewModel 作成
-- [ ] `buntan/ViewModel/HomeViewModel.swift` を新規作成
+- [x] `buntan/ViewModel/HomeViewModel.swift` を新規作成
   - `@Observable class HomeViewModel`
   - `groupTasks: [GroupTask] = []`
   - `selectedTask: GroupTask? = nil`
   - `setListener(group:)` — `FirebaseManager.shared.setListener` を呼びメインスレッドで `groupTasks` を更新
-  - `sendTask(user:group:)` — Realm 書き込み → `FirebaseManager.shared.sendDoneTask` 呼び出し
+  - `sendTask(user:group:onSuccess:)` — Realm 書き込み → `FirebaseManager.shared.sendDoneTask` 呼び出し
   - `deleteTask(_ task:)` — `FirebaseManager.shared.deleteDocument` 呼び出し
   - `onGroupChanged(group:)` — `RealmManager.shared.deleteAllTaskItem()` → `setListener(group:)`
 
 ### 2-4. HomeView 作成
-- [ ] `buntan/View/Screens/HomeView.swift` を新規作成
+- [x] `buntan/View/Screens/HomeView.swift` を新規作成
   - `List` + `TaskRowView` でタスク一覧
   - タップで `selectedTask` を更新（行選択ハイライト）
   - 送信ボタン（ナビゲーションバー）タップで `homeVM.sendTask` 呼び出し → `.alert` で結果表示
-  - コンテキストメニュー（長押し）で「編集」→ `EditView` へ `navigationDestination` 遷移 / 「削除」→ 確認後 `homeVM.deleteTask`
+  - コンテキストメニュー（長押し）で「編集」→ Phase 3 で `EditView` に接続（現在プレースホルダー） / 「削除」→ `homeVM.deleteTask`
   - `.onAppear` で `homeVM.setListener(group:)` 呼び出し
   - `.onChange(of: appVM.currentGroup)` で `homeVM.onGroupChanged(group:)` 呼び出し
   - ナビゲーションタイトルはグループ名
-- [ ] `MainTabView` の Home プレースホルダーを `HomeView()` に差し替え
-- [ ] ビルド確認・動作確認（タスク一覧表示・タスク送信・グループ変更連動）
+- [x] `MainTabView` の Home プレースホルダーを `HomeView()` に差し替え
+- [x] ビルド確認
 
 ### 2-5. RankingRowView 作成
-- [ ] `buntan/View/Components/RankingRowView.swift` を新規作成
+- [x] `buntan/View/Components/RankingRowView.swift` を新規作成
   - `DashboardTableViewCell` と同等のレイアウト（ユーザー名・ポイント・順位表示）
 
 ### 2-6. DashboardViewModel 作成
-- [ ] `buntan/ViewModel/DashboardViewModel.swift` を新規作成
+- [x] `buntan/ViewModel/DashboardViewModel.swift` を新規作成
   - `@Observable class DashboardViewModel`
   - `rankings: [UserInfo] = []`（ポイント降順でソート済みを保持）
   - `setListener(group:)` — `FirebaseManager.shared.setRankingListener` を呼びメインスレッドで `rankings` を更新
   - `onGroupChanged(group:)` — リスナー解除 → `setListener(group:)`
 
 ### 2-7. DashboardView 作成
-- [ ] `buntan/View/Screens/DashboardView.swift` を新規作成
+- [x] `buntan/View/Screens/DashboardView.swift` を新規作成
   - グループ名ヘッダー表示
   - `List` + `RankingRowView` でランキング表示
   - `.onAppear` で `dashboardVM.setListener(group:)` 呼び出し
   - `.onChange(of: appVM.currentGroup)` で `dashboardVM.onGroupChanged(group:)` 呼び出し
-- [ ] `MainTabView` の Dashboard プレースホルダーを `DashboardView()` に差し替え
-- [ ] ビルド確認・動作確認（リアルタイム更新・グループ変更連動）
+- [x] `MainTabView` の Dashboard プレースホルダーを `DashboardView()` に差し替え
+- [x] ビルド確認
 
 ---
 

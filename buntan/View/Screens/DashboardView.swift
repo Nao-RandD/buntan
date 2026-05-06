@@ -1,0 +1,30 @@
+import SwiftUI
+
+struct DashboardView: View {
+    @Environment(AppViewModel.self) var appVM
+    @State private var dashboardVM = DashboardViewModel()
+
+    var body: some View {
+        VStack(spacing: 0) {
+            Text(appVM.currentGroup)
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal)
+                .padding(.vertical, 8)
+
+            List {
+                ForEach(Array(dashboardVM.rankings.enumerated()), id: \.element.id) { index, user in
+                    RankingRowView(rank: index + 1, userName: user.name, point: user.point)
+                }
+            }
+        }
+        .navigationTitle("ランキング")
+        .onAppear {
+            dashboardVM.setListener(group: appVM.currentGroup)
+        }
+        .onChange(of: appVM.currentGroup) { _, newGroup in
+            dashboardVM.onGroupChanged(group: newGroup)
+        }
+    }
+}
