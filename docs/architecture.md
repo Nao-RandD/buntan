@@ -5,8 +5,8 @@
 | 項目 | 内容 |
 |---|---|
 | 言語 | Swift 5.0 |
-| UI フレームワーク | UIKit（Storyboard + XIB） |
-| 最小 iOS バージョン | iOS 13.0 |
+| UI フレームワーク | UIKit（Storyboard + XIB）→ SwiftUI へ移行中 |
+| 最小 iOS バージョン | iOS 18.0 |
 | ターゲットデバイス | iPhone（`TARGETED_DEVICE_FAMILY = 1`） |
 | バンドル ID | `com.naorandd.buntan` |
 | アプリ表示名 | buntan - 家事分担アプリ |
@@ -147,9 +147,9 @@ NotificationCenter.post(.notifyName)
 
 | 制約 | 詳細 |
 |---|---|
-| 最小 iOS | iOS 13.0 — `UIMenu`（コンテキストメニュー）が利用可能な最低バージョン |
-| UI 方式 | Storyboard + XIB。ViewModel レイヤーや SwiftUI は使用しない |
-| リアクティブ | Combine / RxSwift は使用しない。NotificationCenter でコンポーネント間通知 |
+| 最小 iOS | iOS 18.0 — SwiftUI の最新 API（`@Observable`、`NavigationStack` 等）が全て利用可能 |
+| UI 方式 | UIKit（Storyboard + XIB）から SwiftUI（MVVM）へ段階的に移行中 |
+| リアクティブ | 移行後は `@Observable` / `@Published` を使用。NotificationCenter は ViewModel に置き換え |
 | 認証 | Firebase Auth は現在未使用。ユーザー識別は `UserDefaults` の文字列名のみ |
 | オフライン | Realm によるローカル履歴参照のみ対応。タスク送信はネットワーク必須 |
 | Lint | SwiftLint 未設定 |

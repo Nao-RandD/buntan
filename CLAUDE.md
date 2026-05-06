@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **buntan** は家事分担を支援するグループ向け UIKit ベースの iOS アプリ。グループに参加してタスクをこなし、ポイントを獲得してランキングを競う。UI 言語は日本語、コードコメントも日本語が多い。
 
-- Min iOS: 13.0 | Language: Swift 5.0 | UI: Storyboard + XIB
+- Min iOS: 18.0 | Language: Swift 5.0 | UI: Storyboard + XIB（SwiftUI へ移行中）
 - Dependencies managed via Swift Package Manager (SPM)
 
 ---
