@@ -28,16 +28,15 @@ buntan/                                    ← リポジトリルート
 │           └── Package.resolved           SPM 依存のロックファイル
 │
 ├── buntan/                                アプリソース（メインターゲット）
-│   ├── AppDelegate.swift                  起動処理・Firebase 初期化・print オーバーライド
-│   ├── SceneDelegate.swift                シーン管理
+│   ├── BuntanApp.swift                    @main エントリーポイント
+│   ├── AppDelegate.swift                  Firebase 初期化・print オーバーライド
 │   ├── Info.plist                         アプリメタ情報
 │   ├── GoogleService-Info.plist           Firebase 接続設定（要秘匿）
 │   ├── buntan.entitlements                Debug 用エンタイトルメント
 │   ├── buntanRelease.entitlements         Release 用エンタイトルメント
 │   │
 │   ├── Base.lproj/
-│   │   ├── Main.storyboard                全画面を管理するメイン Storyboard
-│   │   └── LaunchScreen.storyboard        起動画面
+│   │   └── LaunchScreen.storyboard        起動画面（LaunchScreen のみ残存）
 │   │
 │   ├── Assets.xcassets/                   画像・カラーアセット
 │   │   ├── AppIcon.appiconset/            アプリアイコン（各解像度）
@@ -50,42 +49,46 @@ buntan/                                    ← リポジトリルート
 │   ├── Model/                             データモデル
 │   │   ├── TaskItem.swift                 Realm Object（個人タスク履歴）
 │   │   ├── GroupTask.swift                in-memory 構造体（グループタスク）
-│   │   └── UserInfo.swift                 in-memory 構造体（ユーザー情報）
+│   │   ├── UserInfo.swift                 in-memory 構造体（ユーザー情報）
+│   │   └── GroupDetail.swift              in-memory 構造体（グループ詳細）
 │   │
 │   ├── Utils/                             シングルトンマネージャ
 │   │   ├── RealmManager.swift             Realm CRUD・ポイント集計
 │   │   └── FirebaseManager.swift          Firestore 読み書き・リスナー管理
 │   │
-│   ├── Controller/                        ViewController（画面ロジック）
-│   │   ├── StartAppViewController.swift   初回セットアップ
-│   │   ├── HomeViewController.swift       グループタスク一覧・完了送信
-│   │   ├── DashboardViewController.swift  ランキング表示
-│   │   ├── MenuViewController.swift       サイドメニュー
-│   │   ├── ProfileViewController.swift    ユーザー情報・グループ切り替え
-│   │   ├── HistoryViewController.swift    個人タスク履歴
-│   │   ├── AddAllViewController.swift     タスク/グループ追加タブコンテナ
-│   │   ├── AddTaskViewController.swift    グループタスク追加
-│   │   ├── AddGroupViewController.swift   グループ作成
-│   │   ├── EditViewController.swift       グループタスク編集
-│   │   ├── TutorialViewController.swift   初回チュートリアル
-│   │   ├── TabBarController.swift         空の UITabBarController サブクラス（未使用）
-│   │   ├── LoginViewController.swift      ログイン（現在動線なし）
-│   │   └── SignupViewController.swift     サインアップ（現在動線なし）
+│   ├── ViewModel/                         @Observable ViewModel（各画面 1 クラス）
+│   │   ├── AppViewModel.swift             アプリ全体の状態（isSetup・currentUser・currentGroup）
+│   │   ├── HomeViewModel.swift            グループタスク一覧・完了送信
+│   │   ├── DashboardViewModel.swift       ランキングデータ管理
+│   │   ├── ProfileViewModel.swift         ユーザー情報・グループ切り替え
+│   │   ├── HistoryViewModel.swift         個人タスク履歴（Realm）
+│   │   ├── AddTaskViewModel.swift         タスク追加フォーム
+│   │   ├── AddGroupViewModel.swift        グループ作成フォーム
+│   │   ├── EditViewModel.swift            タスク編集フォーム
+│   │   └── StartAppViewModel.swift        初回セットアップ
 │   │
-│   ├── View/                              カスタムセル（.swift + .xib ペア）
-│   │   ├── TaskTableViewCell.swift/.xib   ホーム画面のタスクセル
-│   │   ├── DashboardTableViewCell.swift/.xib  ランキングセル
-│   │   ├── HistoryTableViewCell.swift/.xib    履歴セル
-│   │   └── MyTabBarController.swift       カスタムタブバー（アニメーション）
-│   │
-│   ├── Animation/                         テーブルセルアニメーション
-│   │   ├── TableViewAnimator.swift        アニメーター本体
-│   │   └── Tables.swift                   TableAnimation enum（4種類）
+│   ├── View/                              SwiftUI View
+│   │   ├── RootView.swift                 ルート（isSetup で画面切り替え）
+│   │   ├── MainTabView.swift              TabView（Home / Dashboard）
+│   │   ├── Components/                    再利用可能な行コンポーネント
+│   │   │   ├── TaskRowView.swift
+│   │   │   ├── RankingRowView.swift
+│   │   │   └── HistoryRowView.swift
+│   │   └── Screens/                       各画面 View
+│   │       ├── StartAppView.swift
+│   │       ├── HomeView.swift
+│   │       ├── DashboardView.swift
+│   │       ├── MenuView.swift
+│   │       ├── ProfileView.swift
+│   │       ├── HistoryView.swift
+│   │       ├── AddAllView.swift
+│   │       ├── AddTaskView.swift
+│   │       ├── AddGroupView.swift
+│   │       ├── EditView.swift
+│   │       └── TutorialView.swift
 │   │
 │   └── Contents/                          共通ユーティリティ
-│       ├── Contents.swift                 Realm スキーマバージョン定数
-│       ├── ViewController+Extention.swift showAlert ヘルパー拡張
-│       └── MyUINavigationControllerViewController.swift  ナビゲーションバー外観
+│       └── Contents.swift                 Realm スキーマバージョン定数
 │
 └── buntanTests/                           テストターゲット（現在テストコードなし）
     └── buntanTests.swift
@@ -106,39 +109,42 @@ buntan/                                    ← リポジトリルート
 
 ### `buntan/Utils/`
 
-シングルトンのデータアクセス層。ViewController からの直接 Firestore / Realm 呼び出しを禁止し、必ずここを経由する。
+シングルトンのデータアクセス層。ViewModel からの直接 Firestore / Realm 呼び出しを禁止し、必ずここを経由する。
 
 - 新しい Firestore コレクション操作 → `FirebaseManager` にメソッドを追加
 - 新しい Realm 操作 → `RealmManager` にメソッドを追加
 
-### `buntan/Controller/`
+### `buntan/ViewModel/`
 
-画面ロジックを置く。1画面 = 1ファイルが原則。
+`@Observable` マクロを使った ViewModel を置く。1画面 = 1クラスが原則。
 
-- ViewController は `extension` を使って `MARK` でセクション分割する（Private Func / Delegate 等）
+- プロパティは `var` で宣言（`@Observable` が自動的に観測可能にする）
 - Firestore / Realm への直接アクセスは書かない（`Utils/` を使う）
+- `AppViewModel` だけは `.environment()` で注入し、他の ViewModel は View 側で `@State var vm = ViewModel()` で保持する
 
-### `buntan/View/`
+### `buntan/View/Screens/`
 
-カスタム `UITableViewCell` サブクラスを置く。**必ず同名の `.xib` ファイルとペアで追加する。**
+各画面の SwiftUI View を置く。1画面 = 1ファイルが原則。
 
-- セル名例：`FooTableViewCell.swift` + `FooTableViewCell.xib`
-- セルの登録は `register(UINib:forCellReuseIdentifier:)` で行う
+- ViewModel を `@State` で所有するか、`@Environment` で受け取る
+- アラートは `.alert` modifier で実装する（UIAlertController は使わない）
 
-### `buntan/Animation/`
+### `buntan/View/Components/`
 
-テーブルセルのアニメーション定義。新しいアニメーション種類は `Tables.swift` の `TableAnimation` enum にケースを追加し、`TableViewAnimator` を通じて適用する。
+複数の Screen で共用する小さな View（行コンポーネント等）を置く。
+
+- `List` 内で使う行ビューはここに置く
+- 単一画面でしか使わないサブビューは該当 Screen ファイル内に `private struct` として定義する
 
 ### `buntan/Contents/`
 
-プロジェクト横断の共通ユーティリティ。
+プロジェクト横断の共通定数。
 
 - `Contents.swift`：Realm スキーマバージョン定数（`CurrentSchemaVersion`）のみ管理
-- `ViewController+Extention.swift`：全 ViewController で使えるアラートヘルパー。アラートを追加する場合はここに拡張する
 
 ### `buntan/Base.lproj/`
 
-Storyboard ファイル。画面レイアウト・遷移・IBOutlet / IBAction 接続を管理する。新規画面は `Main.storyboard` に追加する。
+`LaunchScreen.storyboard` のみ残存。新規画面は SwiftUI で追加する。
 
 ### `buntan/Assets.xcassets/`
 
@@ -150,12 +156,33 @@ Storyboard ファイル。画面レイアウト・遷移・IBOutlet / IBAction �
 
 | 種別 | 規則 | 例 |
 |---|---|---|
-| ViewController | `[機能名]ViewController.swift` | `HomeViewController.swift` |
-| カスタムセル | `[機能名]TableViewCell.swift` + `.xib` | `TaskTableViewCell.swift` |
+| SwiftUI View（画面） | `[機能名]View.swift` | `HomeView.swift` |
+| SwiftUI View（部品） | `[機能名]RowView.swift` / `[機能名]View.swift` | `TaskRowView.swift` |
+| ViewModel | `[機能名]ViewModel.swift` | `HomeViewModel.swift` |
 | モデル | `[ドメイン名].swift` | `TaskItem.swift` |
 | マネージャ | `[サービス名]Manager.swift` | `FirebaseManager.swift` |
-| 拡張 | `[対象型]+[機能].swift` | `ViewController+Extention.swift` |
-| ステアリング | `[YYYYMMDD]-[kebab-case-title]/` | `20250506-add-tag-feature/` |
+| ステアリング | `[YYYYMMDD]-[kebab-case-title]/` | `20260506-refactor-swiftui/` |
+
+---
+
+## Xcode ファイル管理
+
+`buntan` ターゲットおよび `buntanTests` ターゲットはいずれも `PBXFileSystemSynchronizedRootGroup` を使用している。
+Xcode がフォルダの内容をファイルシステムと自動同期するため、`project.pbxproj` にファイルを手動で列挙する必要がない。
+
+### 新しいファイルの追加
+
+| 操作 | 方法 |
+|---|---|
+| Swift ファイル追加 | `buntan/ViewModel/` 等の正しいディレクトリに `.swift` ファイルを作成するだけ |
+| Swift ファイル削除 | ディスクから削除するだけ（Xcode ナビゲータ操作不要） |
+| アセット追加 | `Assets.xcassets` を Xcode で開き通常どおり追加 |
+
+### 注意事項
+
+- `Info.plist` は自動同期の例外として `PBXFileSystemSynchronizedBuildFileExceptionSet` で明示管理されている
+- `LaunchScreen.storyboard` はそのまま維持（UIKit LaunchScreen のため）
+- Xcode の "Add Files to project" 操作は不要
 
 ---
 

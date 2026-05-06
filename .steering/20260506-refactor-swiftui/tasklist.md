@@ -165,29 +165,29 @@
 ## Phase 5 — クリーンアップ
 
 ### 5-1. 不要ファイル削除
-- [ ] `LoginViewController.swift` を削除（未使用）
-- [ ] `SignupViewController.swift` を削除（未使用）
-- [ ] `TutorialViewController.swift` を削除（Phase 4 移行済み）
-- [ ] `Controller/` 内の残全 ViewController ファイルを削除
-- [ ] `View/*TableViewCell.swift` および対応 `.xib` を削除
-- [ ] `Animation/TableViewAnimator.swift`・`Animation/Tables.swift` を削除（または SwiftUI `.animation` で移植）
-- [ ] `Contents/ViewController+Extention.swift` を削除（alert は `.alert` modifier で代替済み）
-- [ ] `Contents/MyUINavigationControllerViewController.swift` を削除（NavigationStack のスタイルは SwiftUI 側で設定）
+- [x] `LoginViewController.swift` を削除（未使用）
+- [x] `SignupViewController.swift` を削除（未使用）
+- [x] `TutorialViewController.swift` を削除（Phase 4 移行済み）
+- [x] `Controller/` 内の残全 ViewController ファイルを削除
+- [x] `View/*TableViewCell.swift` および対応 `.xib` を削除
+- [x] `Animation/TableViewAnimator.swift`・`Animation/Tables.swift` を削除
+- [x] `Contents/ViewController+Extention.swift` を削除（alert は `.alert` modifier で代替済み）
+- [x] `Contents/MyUINavigationControllerViewController.swift` を削除
 
 ### 5-2. Storyboard・XIB 削除
-- [ ] `Main.storyboard` を削除
-- [ ] `View/DashboardTableViewCell.xib`・`TaskTableViewCell.xib`・`HistoryTableViewCell.xib` 削除確認（5-1 と同時）
-- [ ] `Info.plist` に `UIMainStoryboardFile` キーが残っていないことを確認
+- [x] `Main.storyboard` を削除
+- [x] `View/DashboardTableViewCell.xib`・`TaskTableViewCell.xib`・`HistoryTableViewCell.xib` 削除確認
+- [x] `Info.plist` に `UIMainStoryboardFile` キーが残っていないことを確認
 
 ### 5-3. XLPagerTabStrip SPM 削除
-- [ ] `buntan.xcodeproj/project.pbxproj` から XLPagerTabStrip の参照を削除
-- [ ] `Package.resolved` を更新（Xcode で "Reset Package Caches" 等）
+- [x] `buntan.xcodeproj/project.pbxproj` から XLPagerTabStrip の参照を削除
+- [x] `Package.resolved` を更新（XLPagerTabStrip エントリなし確認済み）
 - [ ] ビルド確認（XLPagerTabStrip のインポートが残っていないこと）
 
 ### 5-4. ドキュメント更新
-- [ ] `docs/architecture.md` を移行後の構成に更新（レイヤー構成図・データフロー図を SwiftUI/MVVM 版に書き換え）
-- [ ] `docs/repository-structure.md` を移行後のフォルダ構成に更新
-- [ ] `CLAUDE.md` の Architecture セクションを SwiftUI/MVVM 版に更新
+- [x] `docs/architecture.md` を移行後の構成に更新（レイヤー構成・データフロー・テクノロジースタックを SwiftUI/MVVM 版に書き換え）
+- [x] `docs/repository-structure.md` を移行後のフォルダ構成に更新
+- [x] `CLAUDE.md` の Architecture・Key Directories・Navigation セクションを SwiftUI/MVVM 版に更新
 
 ### 5-5. 最終ビルド・動作確認
 - [ ] `xcodebuild -project buntan.xcodeproj -scheme buntan -configuration Debug build` でビルドエラーがないことを確認

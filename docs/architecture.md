@@ -5,14 +5,14 @@
 | 項目 | 内容 |
 |---|---|
 | 言語 | Swift 5.0 |
-| UI フレームワーク | UIKit（Storyboard + XIB）→ SwiftUI へ移行中 |
+| UI フレームワーク | SwiftUI（`@Observable` MVVM） |
 | 最小 iOS バージョン | iOS 18.0 |
 | ターゲットデバイス | iPhone（`TARGETED_DEVICE_FAMILY = 1`） |
 | バンドル ID | `com.naorandd.buntan` |
 | アプリ表示名 | buntan - 家事分担アプリ |
 | 現在のバージョン | 2.4（ビルド: 2.4.0） |
 | パッケージ管理 | Swift Package Manager (SPM) |
-| アーキテクチャパターン | MVC |
+| アーキテクチャパターン | MVVM（`@Observable` マクロ） |
 
 ---
 
@@ -22,7 +22,6 @@
 |---|---|---|---|
 | firebase-ios-sdk | github.com/firebase/firebase-ios-sdk | `>= 12.13.0`（upToNextMajor） | 認証・データベース・分析 |
 | realm-swift | github.com/realm/realm-swift | `community` ブランチ | ローカル永続化 |
-| XLPagerTabStrip | github.com/xmartlabs/XLPagerTabStrip | `>= 9.1.0`（upToNextMajor） | タブ付きフォーム UI |
 
 ### firebase-ios-sdk 使用プロダクト
 
@@ -40,7 +39,7 @@
 ```mermaid
 flowchart LR
     subgraph Device["iOS デバイス"]
-        App["buntan アプリ\n(UIKit / MVC)"]
+        App["buntan アプリ\n(SwiftUI / MVVM)"]
         Realm["Realm\n(ローカル DB)"]
         UD["UserDefaults\n(軽量永続化)"]
         App <--> Realm
@@ -64,35 +63,52 @@ flowchart LR
 
 ```
 buntan/
+├── BuntanApp.swift            @main エントリーポイント
 ├── AppDelegate.swift          起動処理・Firebase 初期化
-├── SceneDelegate.swift        シーン管理
 │
 ├── Model/                     データモデル（ドメイン層）
 │   ├── TaskItem.swift         Realm Object（個人タスク履歴）
 │   ├── GroupTask.swift        in-memory 構造体（グループタスク）
-│   └── UserInfo.swift         in-memory 構造体（ユーザー情報）
+│   ├── UserInfo.swift         in-memory 構造体（ユーザー情報）
+│   └── GroupDetail.swift      in-memory 構造体（グループ詳細）
 │
 ├── Utils/                     データアクセス層（Singleton）
 │   ├── RealmManager.swift     Realm CRUD・ポイント集計
 │   └── FirebaseManager.swift  Firestore CRUD・リスナー管理
 │
-├── Controller/                プレゼンテーション層（ViewController）
-│   └── *ViewController.swift  各画面（14クラス）
+├── ViewModel/                 @Observable ViewModel（プレゼンテーション層）
+│   ├── AppViewModel.swift     アプリ全体の状態（isSetup・currentUser・currentGroup）
+│   ├── HomeViewModel.swift    グループタスク一覧・完了送信ロジック
+│   ├── DashboardViewModel.swift  ランキングデータ管理
+│   ├── ProfileViewModel.swift  ユーザー情報・グループ切り替え
+│   ├── HistoryViewModel.swift  個人タスク履歴（Realm）
+│   ├── AddTaskViewModel.swift  タスク追加フォーム
+│   ├── AddGroupViewModel.swift グループ作成フォーム
+│   ├── EditViewModel.swift    タスク編集フォーム
+│   └── StartAppViewModel.swift 初回セットアップ
 │
-├── View/                      カスタムセル（UITableViewCell + XIB）
-│   ├── TaskTableViewCell
-│   ├── DashboardTableViewCell
-│   ├── HistoryTableViewCell
-│   └── MyTabBarController     UITabBarController + CustomTabBar
-│
-├── Animation/                 テーブルセルアニメーション
-│   ├── TableViewAnimator.swift
-│   └── Tables.swift           TableAnimation enum（4種類）
+├── View/
+│   ├── RootView.swift         isSetup で StartAppView / MainTabView を切り替え
+│   ├── MainTabView.swift      TabView（Home / Dashboard）
+│   ├── Components/            再利用可能な行コンポーネント
+│   │   ├── TaskRowView.swift
+│   │   ├── RankingRowView.swift
+│   │   └── HistoryRowView.swift
+│   └── Screens/               各画面 View
+│       ├── StartAppView.swift
+│       ├── HomeView.swift
+│       ├── DashboardView.swift
+│       ├── MenuView.swift
+│       ├── ProfileView.swift
+│       ├── HistoryView.swift
+│       ├── AddAllView.swift
+│       ├── AddTaskView.swift
+│       ├── AddGroupView.swift
+│       ├── EditView.swift
+│       └── TutorialView.swift
 │
 └── Contents/                  共通ユーティリティ
-    ├── Contents.swift          Realm スキーマバージョン定数
-    ├── ViewController+Extention.swift  showAlert ヘルパー
-    └── MyUINavigationControllerViewController.swift  ナビバー外観設定
+    └── Contents.swift         Realm スキーマバージョン定数
 ```
 
 ---
@@ -109,16 +125,19 @@ FirebaseManager.setListener(completion:)
     │ フィルタリング（Group 一致）
     │ [GroupTask] にマッピング
     ▼
-HomeViewController.groupTasks
-    │ tableView.reloadData()
+HomeViewModel.groupTasks（@Observable）
+    │ SwiftUI 自動再描画
     ▼
-TaskTableViewCell（表示）
+HomeView → List + TaskRowView（表示）
 ```
 
 ### タスク完了フロー
 
 ```
-HomeViewController（送信ボタン）
+HomeView（送信ボタン）
+    │
+    ▼
+HomeViewModel.sendTask(user:group:onSuccess:)
     │
     ├─► RealmManager.writeTaskItem   → Realm（TaskItem 保存）
     │
@@ -131,14 +150,14 @@ HomeViewController（送信ボタン）
 ### グループ切り替えフロー
 
 ```
-ProfileViewController（グループ変更確定）
-    │ UserDefaults.Group を更新
+ProfileView（グループ変更確定）
+    │ AppViewModel.currentGroup を更新（didSet で UserDefaults 同期）
     │
     ▼
-NotificationCenter.post(.notifyName)
+HomeView / DashboardView（.onChange(of: appVM.currentGroup)）
     │
-    ├─► HomeViewController.reloadScreen  → Realm 全削除 + リスナー再設定
-    └─► DashboardViewController.reloadScreen → グループ名更新 + リスナー再設定
+    ├─► HomeViewModel.onGroupChanged   → Realm 全削除 + リスナー再設定
+    └─► DashboardViewModel.onGroupChanged → リスナー解除 + 再設定
 ```
 
 ---
@@ -147,9 +166,9 @@ NotificationCenter.post(.notifyName)
 
 | 制約 | 詳細 |
 |---|---|
-| 最小 iOS | iOS 18.0 — SwiftUI の最新 API（`@Observable`、`NavigationStack` 等）が全て利用可能 |
-| UI 方式 | UIKit（Storyboard + XIB）から SwiftUI（MVVM）へ段階的に移行中 |
-| リアクティブ | 移行後は `@Observable` / `@Published` を使用。NotificationCenter は ViewModel に置き換え |
+| 最小 iOS | iOS 18.0 — `@Observable`、`NavigationStack`、`.onChange(of:)` (2引数版) 等の最新 SwiftUI API を制限なく使用 |
+| UI 方式 | SwiftUI（MVVM）。Storyboard / XIB は廃止済み |
+| リアクティブ | `@Observable` マクロを使用。`NotificationCenter` によるリロードトリガーは ViewModel に置き換え済み |
 | 認証 | Firebase Auth は現在未使用。ユーザー識別は `UserDefaults` の文字列名のみ |
 | オフライン | Realm によるローカル履歴参照のみ対応。タスク送信はネットワーク必須 |
 | Lint | SwiftLint 未設定 |
@@ -170,6 +189,6 @@ NotificationCenter.post(.notifyName)
 ## 注意事項・既知の設計上の決定
 
 - `AppDelegate` でグローバル `print()` 関数をオーバーライドし、DEBUG ビルド以外での出力を抑制している
-- Force-unwrap（`!`）が既存コード全体で多用されている（`UserDefaults` 読み出し・Storyboard キャスト等）。既存スタイルを踏襲し、新規コードでの追加は避ける
-- `DashboardViewController` は `FirebaseManager` を経由せず Firestore を直接参照している（`FirebaseManager` の設計方針から外れている）
+- `AppViewModel` はアプリ全体の状態を `@Observable` で管理し、`.environment(appVM)` 経由で全 View に渡す。`currentGroup` の変更は `didSet` で即 `UserDefaults` へ同期する
+- Force-unwrap（`!`）が `UserDefaults` 読み出し周りで残存している。既存スタイルを踏襲し、新規コードでの追加は避ける
 - Realm の `community` ブランチ固定は将来的なバージョン管理リスクがある
