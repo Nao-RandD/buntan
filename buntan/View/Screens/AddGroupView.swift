@@ -28,7 +28,6 @@ struct AddGroupView: View {
             }
             .disabled(vm.groupName.isEmpty)
         }
-        .navigationTitle("グループ作成")
         .alert(errorTitle, isPresented: $showError) {
             Button("OK") {}
         } message: {

@@ -209,4 +209,17 @@ class FirebaseManager {
             completion(groups)
         }
     }
+
+    func setupUser(name: String, group: String, completion: @escaping () -> Void) {
+        db.collection("users").document(name).setData(
+            ["name": name, "group": group, "point": 0],
+            merge: true
+        ) { err in
+            if let err = err {
+                print("Error registering user: \(err)")
+            } else {
+                completion()
+            }
+        }
+    }
 }

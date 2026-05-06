@@ -20,7 +20,6 @@ struct AddTaskView: View {
             }
             .disabled(vm.taskName.isEmpty || vm.pointText.isEmpty)
         }
-        .navigationTitle("タスク追加")
         .alert("作成完了", isPresented: $showSuccess) {
             Button("OK") {}
         } message: {

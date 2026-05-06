@@ -15,4 +15,8 @@ class AppViewModel {
     var currentGroup: String = UserDefaults.standard.string(forKey: "Group") ?? "" {
         didSet { UserDefaults.standard.set(currentGroup, forKey: "Group") }
     }
+
+    var isShowTutorial: Bool = UserDefaults.standard.bool(forKey: "isShowTutorial") {
+        didSet { UserDefaults.standard.set(isShowTutorial, forKey: "isShowTutorial") }
+    }
 }

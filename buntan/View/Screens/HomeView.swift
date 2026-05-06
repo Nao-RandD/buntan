@@ -8,6 +8,8 @@ struct HomeView: View {
     @State private var taskToEdit: GroupTask? = nil
     @State private var showAddAll = false
     @State private var showProfile = false
+    @State private var showMenu = false
+    @State private var showTutorial = false
 
     var body: some View {
         List {
@@ -40,11 +42,16 @@ struct HomeView: View {
         .sheet(isPresented: $showAddAll) {
             NavigationStack { AddAllView() }
         }
+        .sheet(isPresented: $showMenu) {
+            MenuView()
+        }
+        .fullScreenCover(isPresented: $showTutorial) {
+            TutorialView(isPresented: $showTutorial)
+        }
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
-                // Phase 4 でメニューボタンに差し替える
-                Button { showProfile = true } label: {
-                    Image(systemName: "person.circle")
+                Button { showMenu = true } label: {
+                    Image(systemName: "line.3.horizontal")
                 }
             }
             ToolbarItemGroup(placement: .navigationBarTrailing) {
@@ -74,6 +81,12 @@ struct HomeView: View {
         }
         .onAppear {
             homeVM.setListener(group: appVM.currentGroup)
+            if !appVM.isShowTutorial {
+                Task {
+                    try? await Task.sleep(for: .seconds(0.5))
+                    showTutorial = true
+                }
+            }
         }
         .onChange(of: appVM.currentGroup) { _, newGroup in
             homeVM.onGroupChanged(group: newGroup)

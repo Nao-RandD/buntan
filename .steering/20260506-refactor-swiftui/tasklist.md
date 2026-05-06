@@ -135,32 +135,30 @@
 ## Phase 4 — 周辺画面
 
 ### 4-1. StartAppViewModel / StartAppView
-- [ ] `buntan/ViewModel/StartAppViewModel.swift` を新規作成
-  - `userName: String`、`groupList: [String]`、`selectedGroup: String`
-  - `fetchGroups()` — Firestore `group` コレクション取得
-  - `completeSetup(appVM:)` — UserDefaults 保存 + Firestore `users` 書き込み + `appVM.isSetup = true`
-- [ ] `buntan/View/Screens/StartAppView.swift` を新規作成
-  - ユーザー名入力 `TextField`
-  - グループ選択 `Picker`
-  - セットアップ完了ボタン
-- [ ] `RootView` の `StartAppView()` プレースホルダーを本実装に差し替え
-- [ ] ビルド確認・動作確認（初回起動 → セットアップ完了 → MainTabView 遷移）
+- [x] `buntan/ViewModel/StartAppViewModel.swift` を新規作成
+  - `userName: String`、`groups: [GroupDetail]`、`selectedGroupIndex: Int`
+  - `fetchGroups()` — `FirebaseManager.shared.fetchGroups` で取得
+  - `completeSetup(appVM:)` — appVM 更新 + `FirebaseManager.shared.setupUser` + `appVM.isSetup = true`
+- [x] `FirebaseManager.swift` に `setupUser(name:group:completion:)` を追加
+- [x] `AppViewModel` に `isShowTutorial: Bool` を追加
+- [x] `buntan/View/Screens/StartAppView.swift` を新規作成
+  - ユーザー名 TextField + グループ Picker(.wheel) + 「はじめる」ボタン
+- [x] `RootView` の `StartAppView()` プレースホルダーを本実装に差し替え
+- [x] ビルド確認
 
 ### 4-2. MenuView
-- [ ] `buntan/View/Screens/MenuView.swift` を新規作成
+- [x] `buntan/View/Screens/MenuView.swift` を新規作成
   - ユーザー名・累計ポイント表示
-  - HistoryView へのリンク
-  - ProfileView へのリンク
-- [ ] `HomeView` / `DashboardView` のナビゲーションバーにメニューボタンを追加し `sheet` または `navigationDestination` で表示
-- [ ] ビルド確認
+  - HistoryView・ProfileView へのリンク
+- [x] `HomeView` ナビゲーションバーに line.3.horizontal ボタン → MenuView を sheet で表示
+- [x] ビルド確認
 
 ### 4-3. TutorialView
-- [ ] `buntan/View/Screens/TutorialView.swift` を新規作成
-  - 初回起動時のチュートリアル内容（現行 `TutorialViewController` と同等）
-  - `.sheet` または `fullScreenCover` で表示
-  - 表示済みフラグ `UserDefaults["isShowTutorial"]` を `AppViewModel` で管理
-- [ ] `HomeView` の `.onAppear` に `isShowTutorial` チェックを追加
-- [ ] ビルド確認
+- [x] `buntan/View/Screens/TutorialView.swift` を新規作成
+  - 半透明オーバーレイ + 「+ボタンからタスクを追加してみましょう！」吹き出し
+  - `.fullScreenCover` で表示、タップで `isShowTutorial = true` にして閉じる
+- [x] `HomeView` の `.onAppear` に 0.5 秒遅延 + `isShowTutorial` チェックを追加
+- [x] ビルド確認
 
 ---
 
