@@ -5,15 +5,12 @@ struct DashboardView: View {
     @State private var dashboardVM = DashboardViewModel()
 
     var body: some View {
-        VStack(spacing: 0) {
-            Text(appVM.currentGroup)
-                .font(.subheadline)
-                .foregroundStyle(.secondary)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.horizontal)
-                .padding(.vertical, 8)
-
-            List {
+        List {
+            Section(header:
+                        Text(appVM.currentGroup)
+                            .font(.subheadline)
+                            // Section headerはデフォルトで適切なスタイルが当たる
+            ) {
                 ForEach(Array(dashboardVM.rankings.enumerated()), id: \.element.id) { index, user in
                     RankingRowView(rank: index + 1, userName: user.name, point: user.point)
                 }

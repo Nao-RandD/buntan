@@ -2,6 +2,7 @@ import Foundation
 import Observation
 import FirebaseFirestore
 
+@MainActor
 @Observable
 class DashboardViewModel {
     var rankings: [UserInfo] = []
@@ -17,7 +18,7 @@ class DashboardViewModel {
                     return UserInfo(name: d["name"] as! String, point: d["point"] as! Int)
                 }
                 .sorted { $0.point > $1.point }
-            DispatchQueue.main.async { self.rankings = users }
+            Task { @MainActor in self.rankings = users }
         }
     }
 

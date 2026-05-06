@@ -1,6 +1,7 @@
 import Foundation
 import Observation
 
+@MainActor
 @Observable
 class AddGroupViewModel {
     var groupName: String = ""
@@ -36,7 +37,7 @@ class AddGroupViewModel {
         }
         let pw: String? = usePassword ? password : nil
         FirebaseManager.shared.addGroup(name: groupName, password: pw) {
-            DispatchQueue.main.async {
+            Task { @MainActor in
                 self.groupName = ""
                 self.password = ""
                 self.usePassword = false

@@ -1,6 +1,7 @@
 import Foundation
 import Observation
 
+@MainActor
 @Observable
 class EditViewModel {
     var taskName: String
@@ -17,7 +18,7 @@ class EditViewModel {
         guard !taskName.isEmpty, let point = Int(pointText) else { return }
         let afterTask = GroupTask(group: group, name: taskName, point: point)
         FirebaseManager.shared.editDocument(before: originalTask, after: afterTask) {
-            DispatchQueue.main.async { onSuccess() }
+            Task { @MainActor in onSuccess() }
         }
     }
 }

@@ -1,6 +1,7 @@
 import Foundation
 import Observation
 
+@MainActor
 @Observable
 class StartAppViewModel {
     var userName: String = ""
@@ -14,7 +15,7 @@ class StartAppViewModel {
 
     func fetchGroups() {
         FirebaseManager.shared.fetchGroups { [weak self] fetched in
-            DispatchQueue.main.async {
+            Task { @MainActor [weak self] in
                 self?.groups = fetched
             }
         }
@@ -25,7 +26,7 @@ class StartAppViewModel {
         appVM.currentUser = userName
         appVM.currentGroup = group.name
         FirebaseManager.shared.setupUser(name: userName, group: group.name) {
-            DispatchQueue.main.async {
+            Task { @MainActor in
                 appVM.isSetup = true
             }
         }

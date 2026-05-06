@@ -10,6 +10,7 @@ struct HomeView: View {
     @State private var showProfile = false
     @State private var showMenu = false
     @State private var showTutorial = false
+    @State private var plusButtonFrame: CGRect = .zero
 
     var body: some View {
         List {
@@ -46,7 +47,7 @@ struct HomeView: View {
             MenuView()
         }
         .fullScreenCover(isPresented: $showTutorial) {
-            TutorialView(isPresented: $showTutorial)
+            TutorialView(isPresented: $showTutorial, plusButtonFrame: plusButtonFrame)
         }
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
@@ -57,6 +58,11 @@ struct HomeView: View {
             ToolbarItemGroup(placement: .navigationBarTrailing) {
                 Button { showAddAll = true } label: {
                     Image(systemName: "plus")
+                        .onGeometryChange(for: CGRect.self) { proxy in
+                            proxy.frame(in: .global)
+                        } action: { newFrame in
+                            plusButtonFrame = newFrame
+                        }
                 }
                 Button("送信") {
                     guard homeVM.selectedTask != nil else {

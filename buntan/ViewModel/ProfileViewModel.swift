@@ -1,6 +1,7 @@
 import Foundation
 import Observation
 
+@MainActor
 @Observable
 class ProfileViewModel {
     var userName: String = UserDefaults.standard.string(forKey: "User") ?? ""
@@ -9,8 +10,8 @@ class ProfileViewModel {
 
     func fetchGroups(currentGroup: String) {
         FirebaseManager.shared.fetchGroups { [weak self] fetched in
-            guard let self else { return }
-            DispatchQueue.main.async {
+            Task { @MainActor [weak self] in
+                guard let self else { return }
                 self.groups = fetched
                 if let idx = fetched.firstIndex(where: { $0.name == currentGroup }) {
                     self.selectedGroupIndex = idx

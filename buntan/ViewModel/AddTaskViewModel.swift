@@ -1,6 +1,7 @@
 import Foundation
 import Observation
 
+@MainActor
 @Observable
 class AddTaskViewModel {
     var taskName: String = ""
@@ -9,7 +10,7 @@ class AddTaskViewModel {
     func addTask(group: String, onSuccess: @escaping () -> Void) {
         guard !taskName.isEmpty, let point = Int(pointText) else { return }
         FirebaseManager.shared.addTask(name: taskName, group: group, point: point) {
-            DispatchQueue.main.async {
+            Task { @MainActor in
                 self.taskName = ""
                 self.pointText = ""
                 onSuccess()

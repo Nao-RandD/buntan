@@ -2,6 +2,7 @@ import Foundation
 import Observation
 import FirebaseFirestore
 
+@MainActor
 @Observable
 class HomeViewModel {
     var groupTasks: [GroupTask] = []
@@ -19,7 +20,7 @@ class HomeViewModel {
                         point: d["point"] as! Int
                     )
                 }
-            DispatchQueue.main.async { self.groupTasks = tasks }
+            Task { @MainActor in self.groupTasks = tasks }
         }
     }
 
@@ -28,7 +29,7 @@ class HomeViewModel {
         RealmManager.shared.writeTaskItem(task: task.name, point: task.point)
         let point = RealmManager.shared.getTotalPoint()
         FirebaseManager.shared.sendDoneTask(name: user, group: group, point: point) {
-            DispatchQueue.main.async {
+            Task { @MainActor in
                 self.selectedTask = nil
                 onSuccess()
             }
