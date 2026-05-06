@@ -7,31 +7,31 @@
 ## Phase 1 — 基盤（エントリーポイント・タブ構造）
 
 ### 1-1. AppViewModel 作成
-- [ ] `buntan/ViewModel/AppViewModel.swift` を新規作成
+- [x] `buntan/ViewModel/AppViewModel.swift` を新規作成
   - `@Observable class AppViewModel`
   - `isSetup: Bool`（`UserDefaults["isSetup"]` をラップ）
   - `currentUser: String`（`UserDefaults["User"]` をラップ）
   - `currentGroup: String`（`UserDefaults["Group"]` をラップ、`didSet` で UserDefaults 更新）
-- [ ] ビルド確認
+- [x] ビルド確認
 
 ### 1-2. BuntanApp + RootView 作成
-- [ ] `buntan/BuntanApp.swift` を新規作成
+- [x] `buntan/BuntanApp.swift` を新規作成
   - `@main struct BuntanApp: App`
   - `@UIApplicationDelegateAdaptor(AppDelegate.self) var delegate`
   - `WindowGroup { RootView().environment(appVM) }`
-- [ ] `buntan/View/RootView.swift` を新規作成
+- [x] `buntan/View/RootView.swift` を新規作成
   - `isSetup` が `true` → `MainTabView()`、`false` → `StartAppView()`（Phase 4 で実装、それまでは `Text("TODO")` プレースホルダー）
-- [ ] `Info.plist` の `UIMainStoryboardFile` キーを削除（Storyboard 起動を無効化）
-- [ ] `SceneDelegate.swift` を削除
-- [ ] `AppDelegate` から UIWindow / Scene まわりのコードを除去し Firebase 初期化のみにする
-- [ ] ビルド確認
+- [x] `Info.plist` の `UIMainStoryboardFile` キーを削除（Storyboard 起動を無効化）
+- [x] `SceneDelegate.swift` を削除
+- [x] `AppDelegate` から UIWindow / Scene まわりのコードを除去し Firebase 初期化のみにする
+- [x] ビルド確認
 
 ### 1-3. MainTabView 作成
-- [ ] `buntan/View/MainTabView.swift` を新規作成
+- [x] `buntan/View/MainTabView.swift` を新規作成
   - `TabView` で Home タブ（`NavigationStack { HomeView() }`）と Dashboard タブ（`NavigationStack { DashboardView() }`）を定義
   - 各 View はこの段階では `Text("TODO: HomeView")` 等のプレースホルダーでよい
-- [ ] `RootView` の `MainTabView()` プレースホルダーを本実装に差し替え
-- [ ] ビルド確認
+- [x] `RootView` の `MainTabView()` プレースホルダーを本実装に差し替え
+- [x] ビルド確認
 
 ---
 
