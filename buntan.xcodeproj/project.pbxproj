@@ -7,9 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0BD6E18A6D0D30AF92E301F1 /* HistoryRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A60FA89FB9D13478A0453BB /* HistoryRowView.swift */; };
+		141334EC0AF17DEDD7699906 /* AddGroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967450B3BFD29695A603159E /* AddGroupViewModel.swift */; };
 		202BA521A7AE317C03116017 /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7B4035709A20DD56DE4F6B /* AppViewModel.swift */; };
+		2C6BF9A2541D5BEA0EA41271 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B6FC3C535F08E60305F428 /* HistoryViewModel.swift */; };
+		3B5FE758A24295C5237E558A /* AddGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30403B4EE79A03DAC7A38C7 /* AddGroupView.swift */; };
+		43313E2192E58A3DC881732F /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEB2A834107885EE4717C9E /* EditView.swift */; };
 		53C0D87E36CA84FAF7676964 /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242ACAB78971C992798734CF /* DashboardViewModel.swift */; };
 		67462387EE14EEE8464B6B48 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5409BC4BD091A43596EEA742 /* DashboardView.swift */; };
+		6EB2A895EA7813471A626A01 /* AddTaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037A5BEB1861BD80DC8A006D /* AddTaskViewModel.swift */; };
 		7AAE704A1AB04D67A8AEBE02 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22B7CA734D3DE547284E141 /* HomeViewModel.swift */; };
 		7F6976622FAB0E8600FB17CB /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 7F6976612FAB0E8600FB17CB /* FirebaseAnalytics */; };
 		7F6976642FAB0E8600FB17CB /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 7F6976632FAB0E8600FB17CB /* FirebaseAuth */; };
@@ -17,7 +23,10 @@
 		7F6976682FAB0E8600FB17CB /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 7F6976672FAB0E8600FB17CB /* FirebaseFirestore */; };
 		7F69766B2FAB0F3800FB17CB /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7F69766A2FAB0F3800FB17CB /* RealmSwift */; };
 		7F69766E2FAB0F9700FB17CB /* XLPagerTabStrip in Frameworks */ = {isa = PBXBuildFile; productRef = 7F69766D2FAB0F9700FB17CB /* XLPagerTabStrip */; };
+		83E613A55394C132064651F0 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F07BE49DC331CA1719F28BF /* ProfileViewModel.swift */; };
+		8B6C097150072710CD46C120 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FF09AE5E640E47D6433FF3 /* ProfileView.swift */; };
 		93770D81AA819162912D9DB8 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B1724EEDF7CE86804C26C7 /* HomeView.swift */; };
+		9C3328041BA7FB90276E79B7 /* GroupDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833608346699F0454C350259 /* GroupDetail.swift */; };
 		9F091C0327894AAB0098DE85 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F091C0227894AAA0098DE85 /* TutorialViewController.swift */; };
 		9F14ED7E28C75F4C0087FCA7 /* ViewController+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F14ED7D28C75F4B0087FCA7 /* ViewController+Extention.swift */; };
 		9F33E539288BBC7A00DC972C /* GroupTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F33E538288BBC7900DC972C /* GroupTask.swift */; };
@@ -55,11 +64,15 @@
 		9FEC419326F0B35E00B55299 /* DashboardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FEC419226F0B35E00B55299 /* DashboardTableViewCell.xib */; };
 		9FEC419526F0B65B00B55299 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEC419426F0B65B00B55299 /* DashboardViewController.swift */; };
 		9FEC419826F0B84900B55299 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEC419726F0B84800B55299 /* UserInfo.swift */; };
+		A550E9797F849DB3FA588BFC /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCD401FD25C535EE3CB4C60 /* AddTaskView.swift */; };
 		AA2E52BDB8CD3A8C9D711DDD /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8B98028A8933EEA97FCD77 /* MainTabView.swift */; };
+		B4AC878FCCBB06FCC8552FA1 /* EditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E096871827AC7C3303F0B890 /* EditViewModel.swift */; };
 		B4DA650292A13A4E7E981F5F /* RankingRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73513E4F612E52EC68C3963C /* RankingRowView.swift */; };
 		CC318799C368C8F649517C50 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C86AF245C1688DFBE6ED80 /* RootView.swift */; };
 		CDE34F991ACC3A2643B48267 /* BuntanApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED52F6BD3799423BEA93AD5 /* BuntanApp.swift */; };
+		CE0B7B4A7F17E672DE2E9010 /* AddAllView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188DC7893BCD044CABE38C97 /* AddAllView.swift */; };
 		E310DFF4FF9B67570F14DDF4 /* TaskRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFDF3FEEDC19688237D5CD86 /* TaskRowView.swift */; };
+		F35C17BD5CF2AB81D116B954 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD3A1A2B1B79C6CC8A8218A /* HistoryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,11 +86,21 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		037A5BEB1861BD80DC8A006D /* AddTaskViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AddTaskViewModel.swift; sourceTree = "<group>"; };
+		188DC7893BCD044CABE38C97 /* AddAllView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AddAllView.swift; sourceTree = "<group>"; };
 		242ACAB78971C992798734CF /* DashboardViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
+		25B6FC3C535F08E60305F428 /* HistoryViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
+		2DEB2A834107885EE4717C9E /* EditView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
+		3DCD401FD25C535EE3CB4C60 /* AddTaskView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
 		3ED52F6BD3799423BEA93AD5 /* BuntanApp.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BuntanApp.swift; sourceTree = "<group>"; };
 		4E8B98028A8933EEA97FCD77 /* MainTabView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		5409BC4BD091A43596EEA742 /* DashboardView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		5AD3A1A2B1B79C6CC8A8218A /* HistoryView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		73513E4F612E52EC68C3963C /* RankingRowView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RankingRowView.swift; sourceTree = "<group>"; };
+		7A60FA89FB9D13478A0453BB /* HistoryRowView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HistoryRowView.swift; sourceTree = "<group>"; };
+		833608346699F0454C350259 /* GroupDetail.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GroupDetail.swift; sourceTree = "<group>"; };
+		967450B3BFD29695A603159E /* AddGroupViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AddGroupViewModel.swift; sourceTree = "<group>"; };
+		9F07BE49DC331CA1719F28BF /* ProfileViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		9F091C0227894AAA0098DE85 /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		9F14ED7D28C75F4B0087FCA7 /* ViewController+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Extention.swift"; sourceTree = "<group>"; };
 		9F33E538288BBC7900DC972C /* GroupTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTask.swift; sourceTree = "<group>"; };
@@ -123,7 +146,10 @@
 		A4C86AF245C1688DFBE6ED80 /* RootView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		C2B1724EEDF7CE86804C26C7 /* HomeView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		CF7B4035709A20DD56DE4F6B /* AppViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
+		D9FF09AE5E640E47D6433FF3 /* ProfileView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		DFDF3FEEDC19688237D5CD86 /* TaskRowView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TaskRowView.swift; sourceTree = "<group>"; };
+		E096871827AC7C3303F0B890 /* EditViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EditViewModel.swift; sourceTree = "<group>"; };
+		E30403B4EE79A03DAC7A38C7 /* AddGroupView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AddGroupView.swift; sourceTree = "<group>"; };
 		F22B7CA734D3DE547284E141 /* HomeViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -156,6 +182,7 @@
 			children = (
 				DFDF3FEEDC19688237D5CD86 /* TaskRowView.swift */,
 				73513E4F612E52EC68C3963C /* RankingRowView.swift */,
+				7A60FA89FB9D13478A0453BB /* HistoryRowView.swift */,
 			);
 			name = Components;
 			path = Components;
@@ -166,6 +193,12 @@
 			children = (
 				C2B1724EEDF7CE86804C26C7 /* HomeView.swift */,
 				5409BC4BD091A43596EEA742 /* DashboardView.swift */,
+				D9FF09AE5E640E47D6433FF3 /* ProfileView.swift */,
+				5AD3A1A2B1B79C6CC8A8218A /* HistoryView.swift */,
+				3DCD401FD25C535EE3CB4C60 /* AddTaskView.swift */,
+				E30403B4EE79A03DAC7A38C7 /* AddGroupView.swift */,
+				188DC7893BCD044CABE38C97 /* AddAllView.swift */,
+				2DEB2A834107885EE4717C9E /* EditView.swift */,
 			);
 			name = Screens;
 			path = Screens;
@@ -177,6 +210,11 @@
 				CF7B4035709A20DD56DE4F6B /* AppViewModel.swift */,
 				F22B7CA734D3DE547284E141 /* HomeViewModel.swift */,
 				242ACAB78971C992798734CF /* DashboardViewModel.swift */,
+				9F07BE49DC331CA1719F28BF /* ProfileViewModel.swift */,
+				25B6FC3C535F08E60305F428 /* HistoryViewModel.swift */,
+				037A5BEB1861BD80DC8A006D /* AddTaskViewModel.swift */,
+				967450B3BFD29695A603159E /* AddGroupViewModel.swift */,
+				E096871827AC7C3303F0B890 /* EditViewModel.swift */,
 			);
 			name = ViewModel;
 			path = ViewModel;
@@ -276,6 +314,7 @@
 				9FEC419726F0B84800B55299 /* UserInfo.swift */,
 				9FEC418B26EF5E4100B55299 /* TaskItem.swift */,
 				9F33E538288BBC7900DC972C /* GroupTask.swift */,
+				833608346699F0454C350259 /* GroupDetail.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -472,6 +511,19 @@
 				B4DA650292A13A4E7E981F5F /* RankingRowView.swift in Sources */,
 				93770D81AA819162912D9DB8 /* HomeView.swift in Sources */,
 				67462387EE14EEE8464B6B48 /* DashboardView.swift in Sources */,
+				9C3328041BA7FB90276E79B7 /* GroupDetail.swift in Sources */,
+				83E613A55394C132064651F0 /* ProfileViewModel.swift in Sources */,
+				2C6BF9A2541D5BEA0EA41271 /* HistoryViewModel.swift in Sources */,
+				6EB2A895EA7813471A626A01 /* AddTaskViewModel.swift in Sources */,
+				141334EC0AF17DEDD7699906 /* AddGroupViewModel.swift in Sources */,
+				B4AC878FCCBB06FCC8552FA1 /* EditViewModel.swift in Sources */,
+				0BD6E18A6D0D30AF92E301F1 /* HistoryRowView.swift in Sources */,
+				8B6C097150072710CD46C120 /* ProfileView.swift in Sources */,
+				F35C17BD5CF2AB81D116B954 /* HistoryView.swift in Sources */,
+				A550E9797F849DB3FA588BFC /* AddTaskView.swift in Sources */,
+				3B5FE758A24295C5237E558A /* AddGroupView.swift in Sources */,
+				CE0B7B4A7F17E672DE2E9010 /* AddAllView.swift in Sources */,
+				43313E2192E58A3DC881732F /* EditView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

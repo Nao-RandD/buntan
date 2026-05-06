@@ -188,4 +188,25 @@ class FirebaseManager {
             if let snapshot = snapshot { completion(snapshot) }
         }
     }
+
+    func fetchGroups(completion: @escaping ([GroupDetail]) -> Void) {
+        db.collection("group").getDocuments { snapshot, error in
+            guard let snapshot = snapshot, error == nil else { return }
+            let groups = snapshot.documents.compactMap { doc -> GroupDetail? in
+                let d = doc.data()
+                guard let name = d["name"] as? String else { return nil }
+                let isPassword: Bool
+                if let flag = d["isPassword"] as? Bool {
+                    isPassword = flag
+                } else if let flag = d["isPassword"] as? Int {
+                    isPassword = flag == 1
+                } else {
+                    isPassword = false
+                }
+                let password = (d["password"] as? String) ?? ""
+                return GroupDetail(name: name, isPassword: isPassword, password: password)
+            }
+            completion(groups)
+        }
+    }
 }

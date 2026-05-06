@@ -6,6 +6,8 @@ struct HomeView: View {
     @State private var showCompletionAlert = false
     @State private var showSelectionError = false
     @State private var taskToEdit: GroupTask? = nil
+    @State private var showAddAll = false
+    @State private var showProfile = false
 
     var body: some View {
         List {
@@ -30,12 +32,25 @@ struct HomeView: View {
         }
         .navigationTitle(appVM.currentGroup)
         .navigationDestination(item: $taskToEdit) { task in
-            // Phase 3 で EditView(task:) に差し替える
-            Text("タスク編集（準備中）")
-                .navigationTitle("タスク編集")
+            EditView(task: task)
+        }
+        .navigationDestination(isPresented: $showProfile) {
+            ProfileView()
+        }
+        .sheet(isPresented: $showAddAll) {
+            NavigationStack { AddAllView() }
         }
         .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
+            ToolbarItem(placement: .navigationBarLeading) {
+                // Phase 4 でメニューボタンに差し替える
+                Button { showProfile = true } label: {
+                    Image(systemName: "person.circle")
+                }
+            }
+            ToolbarItemGroup(placement: .navigationBarTrailing) {
+                Button { showAddAll = true } label: {
+                    Image(systemName: "plus")
+                }
                 Button("送信") {
                     guard homeVM.selectedTask != nil else {
                         showSelectionError = true

@@ -94,52 +94,41 @@
 ## Phase 3 — サポート画面
 
 ### 3-1. ProfileViewModel / ProfileView
-- [ ] `buntan/ViewModel/ProfileViewModel.swift` を新規作成
-  - `groups: [String]`（Firestore `group` コレクションから取得）
-  - `userName: String`、`selectedGroup: String`
-  - `fetchGroups()`、`saveProfile(appVM:)` — UserDefaults 更新 + `appVM.currentGroup` 更新
-- [ ] `buntan/View/Screens/ProfileView.swift` を新規作成
-  - ユーザー名入力フィールド
-  - グループ `Picker`（`groupVM.groups` から選択）
-  - 保存ボタン → `profileVM.saveProfile(appVM:)` 呼び出し
-- [ ] `HomeView` / `DashboardView` のナビゲーションバーにプロフィールボタンを追加し `ProfileView` へ遷移
-- [ ] ビルド確認・動作確認（グループ切り替え → Home / Dashboard が連動更新）
+- [x] `buntan/ViewModel/ProfileViewModel.swift` を新規作成
+  - `groups: [GroupDetail]`（`FirebaseManager.shared.fetchGroups` で取得）
+  - `userName: String`、`selectedGroupIndex: Int`
+  - `fetchGroups(currentGroup:)`、`saveUserName(appVM:)`
+- [x] `Model/GroupDetail.swift` を新規作成（name / isPassword / password / displayName）
+- [x] `FirebaseManager.swift` に `fetchGroups(completion:)` を追加
+- [x] `buntan/View/Screens/ProfileView.swift` を新規作成
+  - ユーザー名 TextField + 保存ボタン
+  - グループ Picker（.wheel）+ パスワードアラート + 変更確認アラート
+- [x] `HomeView` のナビゲーションバーに person.circle ボタン → ProfileView 遷移
+- [x] ビルド確認
 
 ### 3-2. HistoryViewModel / HistoryView
-- [ ] `buntan/ViewModel/HistoryViewModel.swift` を新規作成
+- [x] `buntan/ViewModel/HistoryViewModel.swift` を新規作成
   - `taskItems: [TaskItem]`（`RealmManager.shared` から取得）
-  - `fetchHistory()`
-- [ ] `buntan/View/Components/HistoryRowView.swift` を新規作成
-  - `HistoryTableViewCell` と同等のレイアウト
-- [ ] `buntan/View/Screens/HistoryView.swift` を新規作成
-  - `List` + `HistoryRowView`
-  - `.onAppear` で `historyVM.fetchHistory()` 呼び出し
-- [ ] `MainTabView` または `MenuView`（Phase 4）から遷移先に追加
-- [ ] ビルド確認
+  - `fetchHistory()`、`deleteItem(_:)`
+- [x] `buntan/View/Components/HistoryRowView.swift` を新規作成
+- [x] `buntan/View/Screens/HistoryView.swift` を新規作成
+  - `List` + `HistoryRowView` + swipeActions 削除 + EditButton
+- [x] ビルド確認（MenuView Phase 4 から遷移予定）
 
 ### 3-3. AddTaskViewModel / AddGroupViewModel / AddAllView
-- [ ] `buntan/ViewModel/AddTaskViewModel.swift` を新規作成
-  - `taskName: String`、`point: Int`
-  - `addTask(group:)` — `FirebaseManager.shared.addTask` 呼び出し
-- [ ] `buntan/ViewModel/AddGroupViewModel.swift` を新規作成
-  - `groupName: String`、`password: String`、`usePassword: Bool`
-  - `addGroup()` — `FirebaseManager.shared.addGroup` 呼び出し
-- [ ] `buntan/View/Screens/AddTaskView.swift` を新規作成（フォーム UI）
-- [ ] `buntan/View/Screens/AddGroupView.swift` を新規作成（フォーム UI）
-- [ ] `buntan/View/Screens/AddAllView.swift` を新規作成
-  - `Picker(.segmented)` で AddTask / AddGroup を切り替え
-- [ ] `MainTabView` に「追加」タブを追加（`NavigationStack { AddAllView() }`）
-- [ ] ビルド確認
+- [x] `buntan/ViewModel/AddTaskViewModel.swift` を新規作成
+- [x] `buntan/ViewModel/AddGroupViewModel.swift` を新規作成（バリデーション含む）
+- [x] `buntan/View/Screens/AddTaskView.swift` を新規作成
+- [x] `buntan/View/Screens/AddGroupView.swift` を新規作成
+- [x] `buntan/View/Screens/AddAllView.swift` を新規作成（`Picker(.segmented)` で切り替え）
+- [x] `HomeView` ツールバーに「+」ボタン → AddAllView を sheet で表示
+- [x] ビルド確認
 
 ### 3-4. EditViewModel / EditView
-- [ ] `buntan/ViewModel/EditViewModel.swift` を新規作成
-  - `taskName: String`、`point: Int`、`target: GroupTask`
-  - `saveEdit(group:)` — `FirebaseManager.shared.editDocument` 呼び出し（既存メソッドを確認）
-- [ ] `buntan/View/Screens/EditView.swift` を新規作成
-  - タスク名・ポイント編集フォーム
-  - 保存ボタン → `editVM.saveEdit(group:)` 呼び出し後 dismiss
-- [ ] `HomeView` のコンテキストメニュー「編集」から `EditView` へ `navigationDestination` 遷移
-- [ ] ビルド確認
+- [x] `buntan/ViewModel/EditViewModel.swift` を新規作成
+- [x] `buntan/View/Screens/EditView.swift` を新規作成（タスク名・ポイント編集 Form）
+- [x] `HomeView` コンテキストメニュー「編集」→ `EditView` に `navigationDestination` 接続
+- [x] ビルド確認
 
 ---
 
