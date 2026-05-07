@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct AddGroupView: View {
+    @Environment(AppViewModel.self) var appVM
+    @Environment(\.dismiss) private var dismiss
     @State private var vm = AddGroupViewModel()
     @State private var errorTitle = ""
     @State private var errorMessage = ""
@@ -19,7 +21,7 @@ struct AddGroupView: View {
 
             Button("作成") {
                 do {
-                    try vm.addGroup { showSuccess = true }
+                    try vm.addGroup(owner: appVM.currentUser) { showSuccess = true }
                 } catch let e as AddGroupViewModel.ValidationError {
                     errorTitle = e.title
                     errorMessage = e.errorDescription ?? ""
@@ -34,7 +36,7 @@ struct AddGroupView: View {
             Text(errorMessage)
         }
         .alert("作成完了", isPresented: $showSuccess) {
-            Button("OK") {}
+            Button("OK") { dismiss() }
         } message: {
             Text("グループを作成しました")
         }

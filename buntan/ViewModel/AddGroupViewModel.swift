@@ -28,7 +28,7 @@ class AddGroupViewModel {
         }
     }
 
-    func addGroup(onSuccess: @escaping () -> Void) throws {
+    func addGroup(owner: String, onSuccess: @escaping () -> Void) throws {
         guard !groupName.isEmpty else { throw ValidationError.noGroupName }
         if usePassword {
             guard !password.isEmpty else { throw ValidationError.noPassword }
@@ -36,7 +36,7 @@ class AddGroupViewModel {
             else { throw ValidationError.invalidPassword }
         }
         let pw: String? = usePassword ? password : nil
-        FirebaseManager.shared.addGroup(name: groupName, password: pw) {
+        FirebaseManager.shared.addGroup(name: groupName, password: pw, owner: owner) {
             Task { @MainActor in
                 self.groupName = ""
                 self.password = ""

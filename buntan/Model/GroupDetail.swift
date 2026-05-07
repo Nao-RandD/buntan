@@ -4,6 +4,7 @@ struct GroupDetail: Identifiable {
     let name: String
     let isPassword: Bool
     let password: String
+    let owner: String
 
     var id: String { name }
 

@@ -20,8 +20,16 @@ class AppViewModel {
     }
 
     var currentGroup: String = UserDefaults.standard.string(forKey: "Group") ?? "" {
-        didSet { UserDefaults.standard.set(currentGroup, forKey: "Group") }
+        didSet {
+            UserDefaults.standard.set(currentGroup, forKey: "Group")
+            fetchCurrentGroupOwner()
+            startGroupDeletionListener()
+        }
     }
+
+    var currentGroupOwner: String = ""
+
+    var isGroupOwner: Bool { !currentGroupOwner.isEmpty && currentUser == currentGroupOwner }
 
     var isShowTutorial: Bool = UserDefaults.standard.bool(forKey: "isShowTutorial") {
         didSet { UserDefaults.standard.set(isShowTutorial, forKey: "isShowTutorial") }
@@ -45,6 +53,37 @@ class AppViewModel {
             : 3
         fontSizeIndex = saved
         dynamicTypeSize = AppViewModel.fontSizes[saved]
+        fetchCurrentGroupOwner()
+        startGroupDeletionListener()
+    }
+
+    func fetchCurrentGroupOwner() {
+        guard !currentGroup.isEmpty else { currentGroupOwner = ""; return }
+        FirebaseManager.shared.fetchGroupOwner(name: currentGroup) { owner in
+            Task { @MainActor in self.currentGroupOwner = owner }
+        }
+    }
+
+    func renameGroup(to newName: String) {
+        let oldName = currentGroup
+        let owner = currentUser
+        stopGroupDeletionListener()
+        FirebaseManager.shared.renameGroup(oldName: oldName, newName: newName, owner: owner) {
+            Task { @MainActor in
+                self.currentGroup = newName   // didSet で startGroupDeletionListener が自動呼び出される
+            }
+        }
+    }
+
+    func switchGroup(to newGroup: String) {
+        let userName = currentUser
+        FirebaseManager.shared.deleteUser(name: userName) {
+            FirebaseManager.shared.setupUser(name: userName, group: newGroup) {
+                Task { @MainActor in
+                    self.currentGroup = newGroup
+                }
+            }
+        }
     }
 
     func leaveGroup() {
@@ -70,6 +109,7 @@ class AppViewModel {
     }
 
     func startGroupDeletionListener() {
+        stopGroupDeletionListener()
         guard !currentGroup.isEmpty else { return }
         groupDeletionListener = FirebaseManager.shared.setGroupDeletionListener(name: currentGroup) {
             Task { @MainActor in

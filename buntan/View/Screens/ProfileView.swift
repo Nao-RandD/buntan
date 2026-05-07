@@ -13,8 +13,8 @@ struct ProfileView: View {
         Form {
             Section("ユーザー名") {
                 TextField("ユーザー名", text: $profileVM.userName)
-                    .onSubmit { profileVM.saveUserName(appVM: appVM) }
-                Button("保存") { profileVM.saveUserName(appVM: appVM) }
+                    .onSubmit { profileVM.saveUserName(appVM: appVM); dismiss() }
+                Button("保存") { profileVM.saveUserName(appVM: appVM); dismiss() }
             }
 
             Section("グループ変更") {
@@ -60,9 +60,10 @@ struct ProfileView: View {
         .alert("グループ変更", isPresented: $showConfirmAlert) {
             Button("変更する", role: .destructive) {
                 if let group = pendingGroup {
-                    appVM.currentGroup = group.name
+                    appVM.switchGroup(to: group.name)
                 }
                 pendingGroup = nil
+                dismiss()
             }
             Button("キャンセル", role: .cancel) { pendingGroup = nil }
         } message: {

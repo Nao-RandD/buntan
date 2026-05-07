@@ -46,9 +46,9 @@ class FirebaseManager {
         }
     }
 
-    func addGroup(name: String, password: String?, completion: @escaping () -> Void) {
+    func addGroup(name: String, password: String?, owner: String, completion: @escaping () -> Void) {
         db.collection("group").document(name).setData([
-            "name": name, "isPassword": password != nil, "password": password ?? ""
+            "name": name, "isPassword": password != nil, "password": password ?? "", "owner": owner
         ]) { err in
             if let err = err {
                 print("Error writing document: \(err)")
@@ -204,7 +204,8 @@ class FirebaseManager {
                     isPassword = false
                 }
                 let password = (d["password"] as? String) ?? ""
-                return GroupDetail(name: name, isPassword: isPassword, password: password)
+                let owner = (d["owner"] as? String) ?? ""
+                return GroupDetail(name: name, isPassword: isPassword, password: password, owner: owner)
             }
             completion(groups)
         }
@@ -220,6 +221,43 @@ class FirebaseManager {
             } else {
                 completion()
             }
+        }
+    }
+
+    func fetchGroupOwner(name: String, completion: @escaping (String) -> Void) {
+        db.collection("group").document(name).getDocument { snapshot, _ in
+            let owner = (snapshot?.data()?["owner"] as? String) ?? ""
+            completion(owner)
+        }
+    }
+
+    func renameGroup(oldName: String, newName: String, owner: String, completion: @escaping () -> Void) {
+        db.collection("group").document(oldName).getDocument { snapshot, _ in
+            let data = snapshot?.data() ?? [:]
+            let isPassword = (data["isPassword"] as? Bool) ?? false
+            let password = (data["password"] as? String) ?? ""
+            self.db.collection("group").document(newName).setData([
+                "name": newName, "isPassword": isPassword, "password": password, "owner": owner
+            ]) { _ in
+                self.db.collection("task").whereField("group", isEqualTo: oldName).getDocuments { tSnap, _ in
+                    self.db.collection("users").whereField("group", isEqualTo: oldName).getDocuments { uSnap, _ in
+                        let batch = self.db.batch()
+                        tSnap?.documents.forEach { batch.updateData(["group": newName], forDocument: $0.reference) }
+                        uSnap?.documents.forEach { batch.updateData(["group": newName], forDocument: $0.reference) }
+                        batch.commit { _ in
+                            self.db.collection("group").document(oldName).delete { _ in completion() }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    func updateGroupPassword(name: String, isPassword: Bool, password: String, completion: @escaping () -> Void) {
+        db.collection("group").document(name).updateData([
+            "isPassword": isPassword, "password": password
+        ]) { err in
+            if err == nil { completion() }
         }
     }
 

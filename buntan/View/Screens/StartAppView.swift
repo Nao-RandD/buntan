@@ -23,6 +23,10 @@ struct StartAppView: View {
                         }
                         .pickerStyle(.wheel)
                     }
+                    NavigationLink("グループを新規作成") {
+                        AddGroupView()
+                            .navigationTitle("グループ作成")
+                    }
                 }
 
                 Button("はじめる") {

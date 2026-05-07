@@ -12,8 +12,15 @@ struct RankingRowView: View {
                 .font(.headline)
                 .frame(width: 28, alignment: .center)
                 .foregroundStyle(.secondary)
-            Text(userName)
-                .font(.body)
+            HStack(spacing: 4) {
+                Text(userName)
+                    .font(.body)
+                if userName == appVM.currentGroupOwner {
+                    Image(systemName: "crown.fill")
+                        .foregroundStyle(.yellow)
+                        .font(.caption)
+                }
+            }
             Spacer()
             Text("\(point) pt")
                 .font(.body)

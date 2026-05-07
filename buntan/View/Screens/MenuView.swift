@@ -32,6 +32,9 @@ struct MenuView: View {
                     NavigationLink("ユーザー情報") {
                         ProfileView()
                     }
+                    NavigationLink("グループ作成") {
+                        AddGroupView()
+                    }
                 }
 
                 Section("設定") {

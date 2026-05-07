@@ -1,8 +1,6 @@
 import SwiftUI
 
 struct MainTabView: View {
-    @Environment(AppViewModel.self) var appVM
-
     var body: some View {
         TabView {
             NavigationStack {
@@ -15,7 +13,5 @@ struct MainTabView: View {
             }
             .tabItem { Label("ランキング", systemImage: "chart.bar") }
         }
-        .onAppear { appVM.startGroupDeletionListener() }
-        .onDisappear { appVM.stopGroupDeletionListener() }
     }
 }

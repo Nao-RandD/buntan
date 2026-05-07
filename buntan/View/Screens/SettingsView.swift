@@ -40,12 +40,22 @@ struct SettingsView: View {
                 }
             }
 
+            if appVM.isGroupOwner {
+                Section("グループ設定") {
+                    NavigationLink("グループ名・パスワードを変更") {
+                        GroupOwnerSettingsView()
+                    }
+                }
+            }
+
             Section("グループ管理") {
                 Button("グループを退会する", role: .destructive) {
                     showLeaveAlert = true
                 }
-                Button("グループを削除する", role: .destructive) {
-                    showDeleteAlert = true
+                if appVM.isGroupOwner {
+                    Button("グループを削除する", role: .destructive) {
+                        showDeleteAlert = true
+                    }
                 }
             }
         }
