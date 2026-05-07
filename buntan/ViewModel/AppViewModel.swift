@@ -1,6 +1,7 @@
 import Foundation
 import Observation
 import SwiftUI
+import FirebaseFirestore
 
 @Observable
 class AppViewModel {
@@ -36,11 +37,49 @@ class AppViewModel {
     // stored property so @Observable tracks it directly
     var dynamicTypeSize: DynamicTypeSize = .large
 
+    private var groupDeletionListener: ListenerRegistration?
+
     init() {
         let saved = UserDefaults.standard.object(forKey: "fontSizeIndex") != nil
             ? UserDefaults.standard.integer(forKey: "fontSizeIndex")
             : 3
         fontSizeIndex = saved
         dynamicTypeSize = AppViewModel.fontSizes[saved]
+    }
+
+    func leaveGroup() {
+        stopGroupDeletionListener()
+        let name = currentUser
+        RealmManager.shared.deleteAllTaskItem()
+        isShowTutorial = false
+        currentUser = ""
+        currentGroup = ""
+        isSetup = false
+        FirebaseManager.shared.deleteUser(name: name) {}
+    }
+
+    func deleteGroup(groupName: String) {
+        stopGroupDeletionListener()
+        FirebaseManager.shared.deleteGroupTasks(groupName: groupName) {
+            FirebaseManager.shared.deleteGroup(name: groupName) {
+                Task { @MainActor in
+                    self.leaveGroup()
+                }
+            }
+        }
+    }
+
+    func startGroupDeletionListener() {
+        guard !currentGroup.isEmpty else { return }
+        groupDeletionListener = FirebaseManager.shared.setGroupDeletionListener(name: currentGroup) {
+            Task { @MainActor in
+                self.leaveGroup()
+            }
+        }
+    }
+
+    func stopGroupDeletionListener() {
+        groupDeletionListener?.remove()
+        groupDeletionListener = nil
     }
 }

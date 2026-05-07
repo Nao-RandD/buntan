@@ -2,6 +2,8 @@ import SwiftUI
 
 struct SettingsView: View {
     @Environment(AppViewModel.self) var appVM
+    @State private var showLeaveAlert = false
+    @State private var showDeleteAlert = false
 
     var body: some View {
         Form {
@@ -37,7 +39,28 @@ struct SettingsView: View {
                     LicenseView()
                 }
             }
+
+            Section("グループ管理") {
+                Button("グループを退会する", role: .destructive) {
+                    showLeaveAlert = true
+                }
+                Button("グループを削除する", role: .destructive) {
+                    showDeleteAlert = true
+                }
+            }
         }
         .navigationTitle("設定")
+        .alert("グループを退会しますか？", isPresented: $showLeaveAlert) {
+            Button("退会する", role: .destructive) { appVM.leaveGroup() }
+            Button("キャンセル", role: .cancel) {}
+        } message: {
+            Text("退会するとランキングから削除され、タスク履歴もすべて消去されます。")
+        }
+        .alert("グループを削除しますか？", isPresented: $showDeleteAlert) {
+            Button("削除する", role: .destructive) { appVM.deleteGroup(groupName: appVM.currentGroup) }
+            Button("キャンセル", role: .cancel) {}
+        } message: {
+            Text("グループのタスクがすべて削除されます。メンバー全員が初期設定画面へ戻ります。この操作は取り消せません。")
+        }
     }
 }

@@ -222,4 +222,35 @@ class FirebaseManager {
             }
         }
     }
+
+    func deleteUser(name: String, completion: @escaping () -> Void) {
+        db.collection("users").document(name).delete { err in
+            if err == nil { completion() }
+        }
+    }
+
+    func deleteGroup(name: String, completion: @escaping () -> Void) {
+        db.collection("group").document(name).delete { err in
+            if err == nil { completion() }
+        }
+    }
+
+    func deleteGroupTasks(groupName: String, completion: @escaping () -> Void) {
+        db.collection("task").whereField("group", isEqualTo: groupName).getDocuments { snapshot, _ in
+            guard let docs = snapshot?.documents, !docs.isEmpty else { completion(); return }
+            let batch = self.db.batch()
+            docs.forEach { batch.deleteDocument($0.reference) }
+            batch.commit { err in
+                if err == nil { completion() }
+            }
+        }
+    }
+
+    func setGroupDeletionListener(name: String, onDeleted: @escaping () -> Void) -> ListenerRegistration {
+        db.collection("group").document(name).addSnapshotListener { snapshot, _ in
+            if snapshot?.exists == false {
+                onDeleted()
+            }
+        }
+    }
 }
