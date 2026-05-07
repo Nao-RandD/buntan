@@ -77,7 +77,7 @@ buntan/
 │   └── FirebaseManager.swift  Firestore CRUD・リスナー管理
 │
 ├── ViewModel/                 @Observable ViewModel（プレゼンテーション層）
-│   ├── AppViewModel.swift     アプリ全体の状態（isSetup・currentUser・currentGroup）
+│   ├── AppViewModel.swift     アプリ全体の状態（isSetup・currentUser・currentGroup・fontSizeIndex・currentGroupOwner）、グループ削除リスナー管理
 │   ├── HomeViewModel.swift    グループタスク一覧・完了送信ロジック
 │   ├── DashboardViewModel.swift  ランキングデータ管理
 │   ├── ProfileViewModel.swift  ユーザー情報・グループ切り替え
@@ -105,7 +105,10 @@ buntan/
 │       ├── AddTaskView.swift
 │       ├── AddGroupView.swift
 │       ├── EditView.swift
-│       └── TutorialView.swift
+│       ├── TutorialView.swift
+│       ├── SettingsView.swift          フォントサイズ・ライセンス・グループ管理
+│       ├── LicenseView.swift           OSS ライセンス一覧
+│       └── GroupOwnerSettingsView.swift グループ名・パスワード変更（オーナーのみ）
 │
 └── Contents/                  共通ユーティリティ
     └── Contents.swift         Realm スキーマバージョン定数
@@ -189,7 +192,10 @@ HomeView / DashboardView（.onChange(of: appVM.currentGroup)）
 ## 注意事項・既知の設計上の決定
 
 - `AppDelegate` でグローバル `print()` 関数をオーバーライドし、DEBUG ビルド以外での出力を抑制している
-- `AppViewModel` はアプリ全体の状態を `@Observable` で管理し、`.environment(appVM)` 経由で全 View に渡す。`currentGroup` の変更は `didSet` で即 `UserDefaults` へ同期する
+- `AppViewModel` はアプリ全体の状態を `@Observable` で管理し、`.environment(appVM)` 経由で全 View に渡す。`currentGroup` の変更は `didSet` で即 `UserDefaults` へ同期し、グループ削除リスナーの再設定も行う
+- `AppViewModel` はグループ削除リスナー（`groupDeletionListener: ListenerRegistration?`）を保持し、グループが Firestore から削除された際に `leaveGroup()` を自動呼び出して初期セットアップ画面へ戻す
+- `AppViewModel.isGroupOwner` は `currentGroupOwner == currentUser` で判定される計算プロパティ。グループオーナー専用 UI（`SettingsView` の「グループ設定」セクション等）の表示制御に使用
+- フォントサイズは `AppViewModel.fontSizeIndex`（UserDefaults 永続化）と `dynamicTypeSize`（stored property）で管理。`BuntanApp` から `.environment(\.dynamicTypeSize, appVM.dynamicTypeSize)` でアプリ全体に適用
 - Force-unwrap（`!`）が `UserDefaults` 読み出し周りで残存している。既存スタイルを踏襲し、新規コードでの追加は避ける
 - Realm の `community` ブランチ固定は将来的なバージョン管理リスクがある
 - `AccentColor.colorset` に `#F79321`（オレンジ）を設定済み。SwiftUI の全コントロール（タブバー・ボタン・トグル等）に自動適用される

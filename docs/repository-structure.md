@@ -57,7 +57,7 @@ buntan/                                    ← リポジトリルート
 │   │   └── FirebaseManager.swift          Firestore 読み書き・リスナー管理
 │   │
 │   ├── ViewModel/                         @Observable ViewModel（各画面 1 クラス）
-│   │   ├── AppViewModel.swift             アプリ全体の状態（isSetup・currentUser・currentGroup）
+│   │   ├── AppViewModel.swift             アプリ全体の状態（isSetup・currentUser・currentGroup・fontSizeIndex・currentGroupOwner）、グループ削除リスナー
 │   │   ├── HomeViewModel.swift            グループタスク一覧・完了送信
 │   │   ├── DashboardViewModel.swift       ランキングデータ管理
 │   │   ├── ProfileViewModel.swift         ユーザー情報・グループ切り替え
@@ -85,7 +85,10 @@ buntan/                                    ← リポジトリルート
 │   │       ├── AddTaskView.swift
 │   │       ├── AddGroupView.swift
 │   │       ├── EditView.swift
-│   │       └── TutorialView.swift
+│   │       ├── TutorialView.swift
+│   │       ├── SettingsView.swift
+│   │       ├── LicenseView.swift
+│   │       └── GroupOwnerSettingsView.swift
 │   │
 │   └── Contents/                          共通ユーティリティ
 │       └── Contents.swift                 Realm スキーマバージョン定数
