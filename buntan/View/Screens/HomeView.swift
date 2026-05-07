@@ -48,6 +48,7 @@ struct HomeView: View {
         .sheet(isPresented: $showMenu) {
             MenuView()
         }
+        .sensoryFeedback(.impact(weight: .light), trigger: showMenu) { _, new in new }
         .fullScreenCover(isPresented: $showTutorial) {
             TutorialView(isPresented: $showTutorial, plusButtonFrame: plusButtonFrame)
         }
@@ -73,6 +74,7 @@ struct HomeView: View {
         } message: {
             Text("お疲れさまでした")
         }
+        .sensoryFeedback(.success, trigger: showCompletionAlert) { _, new in new }
         .onAppear {
             homeVM.setListener(group: appVM.currentGroup)
             if !appVM.isShowTutorial {
