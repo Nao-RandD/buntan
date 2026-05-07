@@ -4,7 +4,6 @@ struct HomeView: View {
     @Environment(AppViewModel.self) var appVM
     @State private var homeVM = HomeViewModel()
     @State private var showCompletionAlert = false
-    @State private var showSelectionError = false
     @State private var taskToEdit: GroupTask? = nil
     @State private var showAddAll = false
     @State private var showProfile = false
@@ -33,6 +32,9 @@ struct HomeView: View {
                     }
             }
         }
+        .safeAreaInset(edge: .bottom) {
+            sendButton
+        }
         .navigationTitle(appVM.currentGroup)
         .navigationDestination(item: $taskToEdit) { task in
             EditView(task: task)
@@ -55,7 +57,7 @@ struct HomeView: View {
                     Image(systemName: "line.3.horizontal")
                 }
             }
-            ToolbarItemGroup(placement: .navigationBarTrailing) {
+            ToolbarItem(placement: .navigationBarTrailing) {
                 Button { showAddAll = true } label: {
                     Image(systemName: "plus")
                         .onGeometryChange(for: CGRect.self) { proxy in
@@ -64,23 +66,7 @@ struct HomeView: View {
                             plusButtonFrame = newFrame
                         }
                 }
-                Button {
-                    guard homeVM.selectedTask != nil else {
-                        showSelectionError = true
-                        return
-                    }
-                    homeVM.sendTask(user: appVM.currentUser, group: appVM.currentGroup) {
-                        showCompletionAlert = true
-                    }
-                } label: {
-                    Text("送信")
-                }
             }
-        }
-        .alert("選択エラー", isPresented: $showSelectionError) {
-            Button("OK") {}
-        } message: {
-            Text("タスクを選択してください")
         }
         .alert("タスクの送信完了", isPresented: $showCompletionAlert) {
             Button("OK") {}
@@ -99,5 +85,52 @@ struct HomeView: View {
         .onChange(of: appVM.currentGroup) { _, newGroup in
             homeVM.onGroupChanged(group: newGroup)
         }
+    }
+
+    private var sendButton: some View {
+        let isSelected = homeVM.selectedTask != nil
+        return Button {
+            homeVM.sendTask(user: appVM.currentUser, group: appVM.currentGroup) {
+                showCompletionAlert = true
+            }
+        } label: {
+            HStack(spacing: 12) {
+                if let task = homeVM.selectedTask {
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text(task.name)
+                            .font(.subheadline)
+                            .fontWeight(.medium)
+                        Text("\(task.point) pt")
+                            .font(.caption)
+                    }
+                    Spacer()
+                    Label("送信", systemImage: "paperplane.fill")
+                        .font(.headline)
+                        .fontWeight(.semibold)
+                } else {
+                    Image(systemName: "hand.tap.fill")
+                        .font(.body)
+                    Text("タスクを選択してください")
+                        .font(.subheadline)
+                    Spacer()
+                }
+            }
+            .padding(.horizontal, 20)
+            .padding(.vertical, 14)
+            .frame(maxWidth: .infinity)
+            .background(isSelected ? Color.accentColor : Color(UIColor.secondarySystemBackground))
+            .foregroundStyle(isSelected ? .white : .secondary)
+            .clipShape(RoundedRectangle(cornerRadius: 14))
+            .shadow(
+                color: isSelected ? Color.accentColor.opacity(0.35) : .black.opacity(0.06),
+                radius: isSelected ? 10 : 2,
+                y: isSelected ? 4 : 1
+            )
+        }
+        .disabled(!isSelected)
+        .padding(.horizontal, 16)
+        .padding(.vertical, 10)
+        .background(.regularMaterial)
+        .animation(.spring(response: 0.3, dampingFraction: 0.7), value: isSelected)
     }
 }
