@@ -4,10 +4,13 @@ struct RootView: View {
     @Environment(AppViewModel.self) var appVM
 
     var body: some View {
-        if appVM.isSetup {
-            MainTabView()
-        } else {
-            StartAppView()
+        Group {
+            if appVM.isSetup {
+                MainTabView()
+            } else {
+                StartAppView()
+            }
         }
+        .environment(\.dynamicTypeSize, appVM.dynamicTypeSize)
     }
 }

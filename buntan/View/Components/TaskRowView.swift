@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct TaskRowView: View {
+    @Environment(AppViewModel.self) var appVM
     let taskName: String
     let point: Int
 
@@ -13,6 +14,7 @@ struct TaskRowView: View {
                 .font(.body)
                 .foregroundStyle(.secondary)
         }
+        .dynamicTypeSize(appVM.dynamicTypeSize)
         .padding(.vertical, 4)
     }
 }

@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct RankingRowView: View {
+    @Environment(AppViewModel.self) var appVM
     let rank: Int
     let userName: String
     let point: Int
@@ -18,6 +19,7 @@ struct RankingRowView: View {
                 .font(.body)
                 .foregroundStyle(.secondary)
         }
+        .dynamicTypeSize(appVM.dynamicTypeSize)
         .padding(.vertical, 4)
     }
 }

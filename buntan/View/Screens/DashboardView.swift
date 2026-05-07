@@ -2,6 +2,7 @@ import SwiftUI
 
 struct DashboardView: View {
     @Environment(AppViewModel.self) var appVM
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @State private var dashboardVM = DashboardViewModel()
 
     var body: some View {

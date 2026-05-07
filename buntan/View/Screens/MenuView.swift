@@ -4,7 +4,7 @@ struct MenuView: View {
     @Environment(AppViewModel.self) var appVM
     @Environment(\.dismiss) private var dismiss
 
-    var totalPoint: Int { RealmManager.shared.getTotalPoint() }
+    @State private var totalPoint: Int = 0
 
     var body: some View {
         NavigationStack {
@@ -33,7 +33,14 @@ struct MenuView: View {
                         ProfileView()
                     }
                 }
+
+                Section("設定") {
+                    NavigationLink("設定") {
+                        SettingsView()
+                    }
+                }
             }
+            .onAppear { totalPoint = RealmManager.shared.getTotalPoint() }
             .navigationTitle("メニュー")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {

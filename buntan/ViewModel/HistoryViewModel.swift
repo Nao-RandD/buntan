@@ -14,8 +14,10 @@ class HistoryViewModel {
         taskItems = Array(RealmManager.shared.getTaskInRealm())
     }
 
-    func deleteItem(_ item: TaskItem) {
+    func deleteItem(_ item: TaskItem, user: String, group: String) {
         RealmManager.shared.deleteTaskItem(item: item)
         fetchHistory()
+        let newTotal = RealmManager.shared.getTotalPoint()
+        FirebaseManager.shared.sendDoneTask(name: user, group: group, point: newTotal) {}
     }
 }

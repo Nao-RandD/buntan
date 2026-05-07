@@ -64,7 +64,7 @@ struct HomeView: View {
                             plusButtonFrame = newFrame
                         }
                 }
-                Button("送信") {
+                Button {
                     guard homeVM.selectedTask != nil else {
                         showSelectionError = true
                         return
@@ -72,6 +72,8 @@ struct HomeView: View {
                     homeVM.sendTask(user: appVM.currentUser, group: appVM.currentGroup) {
                         showCompletionAlert = true
                     }
+                } label: {
+                    Text("送信")
                 }
             }
         }

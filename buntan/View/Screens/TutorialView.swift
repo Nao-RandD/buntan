@@ -64,7 +64,7 @@ struct TutorialView: View {
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, 16)
                     .padding(.vertical, 10)
-                    .background(.white, in: RoundedRectangle(cornerRadius: 10))
+                    .background(Color(.systemBackground), in: RoundedRectangle(cornerRadius: 10))
                     .padding(.trailing, 8)
 
                 Spacer(minLength: 0)
