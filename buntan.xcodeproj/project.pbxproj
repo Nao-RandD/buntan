@@ -11,7 +11,8 @@
 		7F6976642FAB0E8600FB17CB /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 7F6976632FAB0E8600FB17CB /* FirebaseAuth */; };
 		7F6976662FAB0E8600FB17CB /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 7F6976652FAB0E8600FB17CB /* FirebaseCore */; };
 		7F6976682FAB0E8600FB17CB /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 7F6976672FAB0E8600FB17CB /* FirebaseFirestore */; };
-		7F69766B2FAB0F3800FB17CB /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7F69766A2FAB0F3800FB17CB /* RealmSwift */; };
+		7F6978DD2FAE412F00FB17CB /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7F6978DC2FAE412F00FB17CB /* RealmSwift */; };
+		7F6979002FAE412F00FB17CB /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 7F6978DC2FAE412F00FB17CB /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -23,6 +24,20 @@
 			remoteInfo = buntan;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7F6979012FAE412F00FB17CB /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				7F6979002FAE412F00FB17CB /* RealmSwift in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		9F97729B27E1BD1B00F1190A /* buntanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = buntanTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -56,10 +71,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F6978DD2FAE412F00FB17CB /* RealmSwift in Frameworks */,
 				7F6976622FAB0E8600FB17CB /* FirebaseAnalytics in Frameworks */,
 				7F6976682FAB0E8600FB17CB /* FirebaseFirestore in Frameworks */,
 				7F6976662FAB0E8600FB17CB /* FirebaseCore in Frameworks */,
-				7F69766B2FAB0F3800FB17CB /* RealmSwift in Frameworks */,
 				7F6976642FAB0E8600FB17CB /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -116,6 +131,7 @@
 				9FEC416C26E8E2CC00B55299 /* Sources */,
 				9FEC416D26E8E2CC00B55299 /* Frameworks */,
 				9FEC416E26E8E2CC00B55299 /* Resources */,
+				7F6979012FAE412F00FB17CB /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -158,7 +174,7 @@
 			mainGroup = 9FEC416726E8E2CB00B55299;
 			packageReferences = (
 				7F6976602FAB0E8600FB17CB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				7F6976692FAB0F3800FB17CB /* XCRemoteSwiftPackageReference "realm-swift" */,
+				7F6978DB2FAE412F00FB17CB /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 9FEC417126E8E2CC00B55299 /* Products */;
 			projectDirPath = "";
@@ -386,7 +402,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = buntan/buntan.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2.4.0;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 44SQBVTPVY;
 				INFOPLIST_FILE = buntan/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "buntan - 家事分担アプリ";
@@ -395,7 +411,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.4;
+				MARKETING_VERSION = 3.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.naorandd.buntan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -410,7 +426,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = buntan/buntanRelease.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2.4.0;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 44SQBVTPVY;
 				INFOPLIST_FILE = buntan/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "buntan - 家事分担アプリ";
@@ -419,7 +435,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.4;
+				MARKETING_VERSION = 3.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.naorandd.buntan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -468,12 +484,12 @@
 				minimumVersion = 12.13.0;
 			};
 		};
-		7F6976692FAB0F3800FB17CB /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+		7F6978DB2FAE412F00FB17CB /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift";
 			requirement = {
-				branch = community;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 20.0.4;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -499,9 +515,9 @@
 			package = 7F6976602FAB0E8600FB17CB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
 		};
-		7F69766A2FAB0F3800FB17CB /* RealmSwift */ = {
+		7F6978DC2FAE412F00FB17CB /* RealmSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 7F6976692FAB0F3800FB17CB /* XCRemoteSwiftPackageReference "realm-swift" */;
+			package = 7F6978DB2FAE412F00FB17CB /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
