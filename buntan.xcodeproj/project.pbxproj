@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,46 +11,8 @@
 		7F6976642FAB0E8600FB17CB /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 7F6976632FAB0E8600FB17CB /* FirebaseAuth */; };
 		7F6976662FAB0E8600FB17CB /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 7F6976652FAB0E8600FB17CB /* FirebaseCore */; };
 		7F6976682FAB0E8600FB17CB /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 7F6976672FAB0E8600FB17CB /* FirebaseFirestore */; };
-		7F69766B2FAB0F3800FB17CB /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7F69766A2FAB0F3800FB17CB /* RealmSwift */; };
-		7F69766E2FAB0F9700FB17CB /* XLPagerTabStrip in Frameworks */ = {isa = PBXBuildFile; productRef = 7F69766D2FAB0F9700FB17CB /* XLPagerTabStrip */; };
-		9F091C0327894AAB0098DE85 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F091C0227894AAA0098DE85 /* TutorialViewController.swift */; };
-		9F14ED7E28C75F4C0087FCA7 /* ViewController+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F14ED7D28C75F4B0087FCA7 /* ViewController+Extention.swift */; };
-		9F33E539288BBC7A00DC972C /* GroupTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F33E538288BBC7900DC972C /* GroupTask.swift */; };
-		9F677C432928755D0091CF8B /* MyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F677C422928755D0091CF8B /* MyTabBarController.swift */; };
-		9F677C45292891970091CF8B /* TableViewAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F677C44292891960091CF8B /* TableViewAnimator.swift */; };
-		9F677C48292892560091CF8B /* Tables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F677C47292892560091CF8B /* Tables.swift */; };
-		9F7EFE6D288E45530011540E /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7EFE6C288E45530011540E /* EditViewController.swift */; };
-		9F7F135426F7692100AF0543 /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7F135326F7692100AF0543 /* AddTaskViewController.swift */; };
-		9F7F135626F83CCF00AF0543 /* StartAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7F135526F83CCF00AF0543 /* StartAppViewController.swift */; };
-		9F7F135826F83F5700AF0543 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7F135726F83F5700AF0543 /* TabBarController.swift */; };
-		9F7F135A26FB596A00AF0543 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7F135926FB596900AF0543 /* ProfileViewController.swift */; };
-		9F7F135C26FFFEE700AF0543 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7F135B26FFFEE700AF0543 /* HistoryViewController.swift */; };
-		9F7F1363270007A400AF0543 /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7F1361270007A400AF0543 /* HistoryTableViewCell.swift */; };
-		9F7F1364270007A400AF0543 /* HistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F7F1362270007A400AF0543 /* HistoryTableViewCell.xib */; };
-		9F8E376426F369FD00084709 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8E376226F369FD00084709 /* TaskTableViewCell.swift */; };
-		9F8E376526F369FD00084709 /* TaskTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F8E376326F369FD00084709 /* TaskTableViewCell.xib */; };
-		9F8E376926F576FB00084709 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8E376826F576FB00084709 /* MenuViewController.swift */; };
-		9F97729E27E1BD1B00F1190A /* buntanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F97729D27E1BD1B00F1190A /* buntanTests.swift */; };
-		9F99668D2743DBD800FF6AD5 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F99668C2743DBD800FF6AD5 /* SignupViewController.swift */; };
-		9F99668F2743E39F00FF6AD5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9F99668E2743E39E00FF6AD5 /* GoogleService-Info.plist */; };
-		9FA2207A27A40EDE00CFD239 /* AddAllViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA2207927A40EDE00CFD239 /* AddAllViewController.swift */; };
-		9FA2207C27A4139300CFD239 /* AddGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA2207B27A4139300CFD239 /* AddGroupViewController.swift */; };
-		9FB0157D2760D48800D63230 /* Contents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB0157C2760D48800D63230 /* Contents.swift */; };
-		9FB0157F27677CE900D63230 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB0157E27677CE900D63230 /* LoginViewController.swift */; };
-		9FB2F7EA26F21961006CDF73 /* MyUINavigationControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB2F7E926F21961006CDF73 /* MyUINavigationControllerViewController.swift */; };
-		9FB55899271A8D5A00906151 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB55898271A8D5A00906151 /* RealmManager.swift */; };
-		9FB5589B272D128F00906151 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB5589A272D128F00906151 /* FirebaseManager.swift */; };
-		9FEC417426E8E2CC00B55299 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEC417326E8E2CC00B55299 /* AppDelegate.swift */; };
-		9FEC417626E8E2CC00B55299 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEC417526E8E2CC00B55299 /* SceneDelegate.swift */; };
-		9FEC417826E8E2CC00B55299 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEC417726E8E2CC00B55299 /* HomeViewController.swift */; };
-		9FEC417B26E8E2CC00B55299 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FEC417926E8E2CC00B55299 /* Main.storyboard */; };
-		9FEC417D26E8E2D000B55299 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FEC417C26E8E2D000B55299 /* Assets.xcassets */; };
-		9FEC418026E8E2D000B55299 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FEC417E26E8E2D000B55299 /* LaunchScreen.storyboard */; };
-		9FEC418C26EF5E4100B55299 /* TaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEC418B26EF5E4100B55299 /* TaskItem.swift */; };
-		9FEC418F26F0B15D00B55299 /* DashboardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEC418E26F0B15D00B55299 /* DashboardTableViewCell.swift */; };
-		9FEC419326F0B35E00B55299 /* DashboardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FEC419226F0B35E00B55299 /* DashboardTableViewCell.xib */; };
-		9FEC419526F0B65B00B55299 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEC419426F0B65B00B55299 /* DashboardViewController.swift */; };
-		9FEC419826F0B84900B55299 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEC419726F0B84800B55299 /* UserInfo.swift */; };
+		7F6978DD2FAE412F00FB17CB /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7F6978DC2FAE412F00FB17CB /* RealmSwift */; };
+		7F6979002FAE412F00FB17CB /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 7F6978DC2FAE412F00FB17CB /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,51 +25,39 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		7F6979012FAE412F00FB17CB /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				7F6979002FAE412F00FB17CB /* RealmSwift in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		9F091C0227894AAA0098DE85 /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
-		9F14ED7D28C75F4B0087FCA7 /* ViewController+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Extention.swift"; sourceTree = "<group>"; };
-		9F33E538288BBC7900DC972C /* GroupTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTask.swift; sourceTree = "<group>"; };
-		9F677C422928755D0091CF8B /* MyTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabBarController.swift; sourceTree = "<group>"; };
-		9F677C44292891960091CF8B /* TableViewAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewAnimator.swift; sourceTree = "<group>"; };
-		9F677C47292892560091CF8B /* Tables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tables.swift; sourceTree = "<group>"; };
-		9F7EFE6C288E45530011540E /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
-		9F7F135326F7692100AF0543 /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
-		9F7F135526F83CCF00AF0543 /* StartAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartAppViewController.swift; sourceTree = "<group>"; };
-		9F7F135726F83F5700AF0543 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TabBarController.swift; path = buntan/Controller/TabBarController.swift; sourceTree = SOURCE_ROOT; };
-		9F7F135926FB596900AF0543 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		9F7F135B26FFFEE700AF0543 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
-		9F7F1361270007A400AF0543 /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
-		9F7F1362270007A400AF0543 /* HistoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryTableViewCell.xib; sourceTree = "<group>"; };
-		9F8E376226F369FD00084709 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
-		9F8E376326F369FD00084709 /* TaskTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskTableViewCell.xib; sourceTree = "<group>"; };
-		9F8E376826F576FB00084709 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		9F97729B27E1BD1B00F1190A /* buntanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = buntanTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9F97729D27E1BD1B00F1190A /* buntanTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = buntanTests.swift; sourceTree = "<group>"; };
-		9F99668C2743DBD800FF6AD5 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
-		9F99668E2743E39E00FF6AD5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		9FA2207927A40EDE00CFD239 /* AddAllViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAllViewController.swift; sourceTree = "<group>"; };
-		9FA2207B27A4139300CFD239 /* AddGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroupViewController.swift; sourceTree = "<group>"; };
-		9FA2207D27A512D800CFD239 /* buntan.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = buntan.entitlements; sourceTree = "<group>"; };
-		9FA2207E27A5130800CFD239 /* buntanRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = buntanRelease.entitlements; sourceTree = "<group>"; };
-		9FB0157C2760D48800D63230 /* Contents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contents.swift; sourceTree = "<group>"; };
-		9FB0157E27677CE900D63230 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		9FB2F7E926F21961006CDF73 /* MyUINavigationControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyUINavigationControllerViewController.swift; sourceTree = "<group>"; };
-		9FB55898271A8D5A00906151 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
-		9FB5589A272D128F00906151 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		9FEC417026E8E2CC00B55299 /* buntan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = buntan.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		9FEC417326E8E2CC00B55299 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9FEC417526E8E2CC00B55299 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		9FEC417726E8E2CC00B55299 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		9FEC417A26E8E2CC00B55299 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		9FEC417C26E8E2D000B55299 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		9FEC417F26E8E2D000B55299 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		9FEC418126E8E2D000B55299 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9FEC418B26EF5E4100B55299 /* TaskItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItem.swift; sourceTree = "<group>"; };
-		9FEC418E26F0B15D00B55299 /* DashboardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardTableViewCell.swift; sourceTree = "<group>"; };
-		9FEC419226F0B35E00B55299 /* DashboardTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashboardTableViewCell.xib; sourceTree = "<group>"; };
-		9FEC419426F0B65B00B55299 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
-		9FEC419726F0B84800B55299 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		7F6977102FAB738B00FB17CB /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 9FEC416F26E8E2CC00B55299 /* buntan */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		7F6976B72FAB738700FB17CB /* buntanTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = buntanTests; sourceTree = "<group>"; };
+		7F6976E92FAB738A00FB17CB /* buntan */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (7F6977102FAB738B00FB17CB /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = buntan; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		9F97729827E1BD1B00F1190A /* Frameworks */ = {
@@ -121,51 +71,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F6978DD2FAE412F00FB17CB /* RealmSwift in Frameworks */,
 				7F6976622FAB0E8600FB17CB /* FirebaseAnalytics in Frameworks */,
 				7F6976682FAB0E8600FB17CB /* FirebaseFirestore in Frameworks */,
 				7F6976662FAB0E8600FB17CB /* FirebaseCore in Frameworks */,
-				7F69766B2FAB0F3800FB17CB /* RealmSwift in Frameworks */,
 				7F6976642FAB0E8600FB17CB /* FirebaseAuth in Frameworks */,
-				7F69766E2FAB0F9700FB17CB /* XLPagerTabStrip in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9F677C46292892270091CF8B /* Animation */ = {
-			isa = PBXGroup;
-			children = (
-				9F677C44292891960091CF8B /* TableViewAnimator.swift */,
-				9F677C47292892560091CF8B /* Tables.swift */,
-			);
-			path = Animation;
-			sourceTree = "<group>";
-		};
-		9F9647E228794C2E00B7244E /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				9FB55898271A8D5A00906151 /* RealmManager.swift */,
-				9FB5589A272D128F00906151 /* FirebaseManager.swift */,
-			);
-			path = Utils;
-			sourceTree = "<group>";
-		};
-		9F97729C27E1BD1B00F1190A /* buntanTests */ = {
-			isa = PBXGroup;
-			children = (
-				9F97729D27E1BD1B00F1190A /* buntanTests.swift */,
-			);
-			path = buntanTests;
-			sourceTree = "<group>";
-		};
 		9FEC416726E8E2CB00B55299 = {
 			isa = PBXGroup;
 			children = (
-				9FEC417226E8E2CC00B55299 /* buntan */,
-				9F97729C27E1BD1B00F1190A /* buntanTests */,
+				7F6976E92FAB738A00FB17CB /* buntan */,
+				7F6976B72FAB738700FB17CB /* buntanTests */,
 				9FEC417126E8E2CC00B55299 /* Products */,
-				A6CD8567C968D8EF79B08B73 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -176,90 +98,6 @@
 				9F97729B27E1BD1B00F1190A /* buntanTests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		9FEC417226E8E2CC00B55299 /* buntan */ = {
-			isa = PBXGroup;
-			children = (
-				9FA2207E27A5130800CFD239 /* buntanRelease.entitlements */,
-				9FA2207D27A512D800CFD239 /* buntan.entitlements */,
-				9F99668E2743E39E00FF6AD5 /* GoogleService-Info.plist */,
-				9FEC419626F0B80B00B55299 /* Contents */,
-				9F677C46292892270091CF8B /* Animation */,
-				9F9647E228794C2E00B7244E /* Utils */,
-				9FEC418D26F0B12200B55299 /* View */,
-				9FEC418826E8EE6700B55299 /* Model */,
-				9FEC418726E8EE5900B55299 /* Controller */,
-				9FEC417326E8E2CC00B55299 /* AppDelegate.swift */,
-				9FEC417526E8E2CC00B55299 /* SceneDelegate.swift */,
-				9FEC417926E8E2CC00B55299 /* Main.storyboard */,
-				9FEC417C26E8E2D000B55299 /* Assets.xcassets */,
-				9FEC417E26E8E2D000B55299 /* LaunchScreen.storyboard */,
-				9FEC418126E8E2D000B55299 /* Info.plist */,
-			);
-			path = buntan;
-			sourceTree = "<group>";
-		};
-		9FEC418726E8EE5900B55299 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				9FEC417726E8E2CC00B55299 /* HomeViewController.swift */,
-				9FEC419426F0B65B00B55299 /* DashboardViewController.swift */,
-				9F8E376826F576FB00084709 /* MenuViewController.swift */,
-				9F7F135326F7692100AF0543 /* AddTaskViewController.swift */,
-				9F7F135526F83CCF00AF0543 /* StartAppViewController.swift */,
-				9F7F135926FB596900AF0543 /* ProfileViewController.swift */,
-				9F7F135B26FFFEE700AF0543 /* HistoryViewController.swift */,
-				9F99668C2743DBD800FF6AD5 /* SignupViewController.swift */,
-				9FB0157E27677CE900D63230 /* LoginViewController.swift */,
-				9F091C0227894AAA0098DE85 /* TutorialViewController.swift */,
-				9FA2207927A40EDE00CFD239 /* AddAllViewController.swift */,
-				9FA2207B27A4139300CFD239 /* AddGroupViewController.swift */,
-				9F7EFE6C288E45530011540E /* EditViewController.swift */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		9FEC418826E8EE6700B55299 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				9FEC419726F0B84800B55299 /* UserInfo.swift */,
-				9FEC418B26EF5E4100B55299 /* TaskItem.swift */,
-				9F33E538288BBC7900DC972C /* GroupTask.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		9FEC418D26F0B12200B55299 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				9FEC418E26F0B15D00B55299 /* DashboardTableViewCell.swift */,
-				9FEC419226F0B35E00B55299 /* DashboardTableViewCell.xib */,
-				9F8E376226F369FD00084709 /* TaskTableViewCell.swift */,
-				9F8E376326F369FD00084709 /* TaskTableViewCell.xib */,
-				9F7F1361270007A400AF0543 /* HistoryTableViewCell.swift */,
-				9F7F1362270007A400AF0543 /* HistoryTableViewCell.xib */,
-				9F677C422928755D0091CF8B /* MyTabBarController.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		9FEC419626F0B80B00B55299 /* Contents */ = {
-			isa = PBXGroup;
-			children = (
-				9F7F135726F83F5700AF0543 /* TabBarController.swift */,
-				9FB2F7E926F21961006CDF73 /* MyUINavigationControllerViewController.swift */,
-				9FB0157C2760D48800D63230 /* Contents.swift */,
-				9F14ED7D28C75F4B0087FCA7 /* ViewController+Extention.swift */,
-			);
-			path = Contents;
-			sourceTree = "<group>";
-		};
-		A6CD8567C968D8EF79B08B73 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -278,6 +116,9 @@
 			dependencies = (
 				9F9772A027E1BD1B00F1190A /* PBXTargetDependency */,
 			);
+			fileSystemSynchronizedGroups = (
+				7F6976B72FAB738700FB17CB /* buntanTests */,
+			);
 			name = buntanTests;
 			productName = buntanTests;
 			productReference = 9F97729B27E1BD1B00F1190A /* buntanTests.xctest */;
@@ -290,10 +131,14 @@
 				9FEC416C26E8E2CC00B55299 /* Sources */,
 				9FEC416D26E8E2CC00B55299 /* Frameworks */,
 				9FEC416E26E8E2CC00B55299 /* Resources */,
+				7F6979012FAE412F00FB17CB /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				7F6976E92FAB738A00FB17CB /* buntan */,
 			);
 			name = buntan;
 			productName = buntan;
@@ -329,8 +174,7 @@
 			mainGroup = 9FEC416726E8E2CB00B55299;
 			packageReferences = (
 				7F6976602FAB0E8600FB17CB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				7F6976692FAB0F3800FB17CB /* XCRemoteSwiftPackageReference "realm-swift" */,
-				7F69766C2FAB0F9700FB17CB /* XCRemoteSwiftPackageReference "XLPagerTabStrip" */,
+				7F6978DB2FAE412F00FB17CB /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 9FEC417126E8E2CC00B55299 /* Products */;
 			projectDirPath = "";
@@ -354,13 +198,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9FEC418026E8E2D000B55299 /* LaunchScreen.storyboard in Resources */,
-				9FEC417D26E8E2D000B55299 /* Assets.xcassets in Resources */,
-				9F8E376526F369FD00084709 /* TaskTableViewCell.xib in Resources */,
-				9FEC417B26E8E2CC00B55299 /* Main.storyboard in Resources */,
-				9FEC419326F0B35E00B55299 /* DashboardTableViewCell.xib in Resources */,
-				9F7F1364270007A400AF0543 /* HistoryTableViewCell.xib in Resources */,
-				9F99668F2743E39F00FF6AD5 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,7 +208,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9F97729E27E1BD1B00F1190A /* buntanTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -379,36 +215,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9F7EFE6D288E45530011540E /* EditViewController.swift in Sources */,
-				9FB0157F27677CE900D63230 /* LoginViewController.swift in Sources */,
-				9FEC419526F0B65B00B55299 /* DashboardViewController.swift in Sources */,
-				9F7F135826F83F5700AF0543 /* TabBarController.swift in Sources */,
-				9F7F135426F7692100AF0543 /* AddTaskViewController.swift in Sources */,
-				9FA2207C27A4139300CFD239 /* AddGroupViewController.swift in Sources */,
-				9F8E376926F576FB00084709 /* MenuViewController.swift in Sources */,
-				9F7F135C26FFFEE700AF0543 /* HistoryViewController.swift in Sources */,
-				9F7F135A26FB596A00AF0543 /* ProfileViewController.swift in Sources */,
-				9FB55899271A8D5A00906151 /* RealmManager.swift in Sources */,
-				9F677C48292892560091CF8B /* Tables.swift in Sources */,
-				9FEC418F26F0B15D00B55299 /* DashboardTableViewCell.swift in Sources */,
-				9F99668D2743DBD800FF6AD5 /* SignupViewController.swift in Sources */,
-				9F677C45292891970091CF8B /* TableViewAnimator.swift in Sources */,
-				9FEC418C26EF5E4100B55299 /* TaskItem.swift in Sources */,
-				9F677C432928755D0091CF8B /* MyTabBarController.swift in Sources */,
-				9FEC419826F0B84900B55299 /* UserInfo.swift in Sources */,
-				9FB0157D2760D48800D63230 /* Contents.swift in Sources */,
-				9F7F135626F83CCF00AF0543 /* StartAppViewController.swift in Sources */,
-				9F33E539288BBC7A00DC972C /* GroupTask.swift in Sources */,
-				9F7F1363270007A400AF0543 /* HistoryTableViewCell.swift in Sources */,
-				9FB5589B272D128F00906151 /* FirebaseManager.swift in Sources */,
-				9FEC417826E8E2CC00B55299 /* HomeViewController.swift in Sources */,
-				9FEC417426E8E2CC00B55299 /* AppDelegate.swift in Sources */,
-				9FA2207A27A40EDE00CFD239 /* AddAllViewController.swift in Sources */,
-				9FB2F7EA26F21961006CDF73 /* MyUINavigationControllerViewController.swift in Sources */,
-				9F14ED7E28C75F4C0087FCA7 /* ViewController+Extention.swift in Sources */,
-				9F8E376426F369FD00084709 /* TaskTableViewCell.swift in Sources */,
-				9F091C0327894AAB0098DE85 /* TutorialViewController.swift in Sources */,
-				9FEC417626E8E2CC00B55299 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,25 +228,6 @@
 		};
 /* End PBXTargetDependency section */
 
-/* Begin PBXVariantGroup section */
-		9FEC417926E8E2CC00B55299 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9FEC417A26E8E2CC00B55299 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		9FEC417E26E8E2D000B55299 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9FEC417F26E8E2D000B55299 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
 		9F9772A227E1BD1B00F1190A /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -451,7 +238,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 44SQBVTPVY;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -476,7 +263,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 44SQBVTPVY;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -543,7 +330,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -598,7 +385,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -613,18 +400,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = buntan/buntan.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2.4.0;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 44SQBVTPVY;
 				INFOPLIST_FILE = buntan/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "buntan - 家事分担アプリ";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.4;
+				MARKETING_VERSION = 3.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.naorandd.buntan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -637,18 +425,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = buntan/buntanRelease.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2.4.0;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 44SQBVTPVY;
 				INFOPLIST_FILE = buntan/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "buntan - 家事分担アプリ";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.4;
+				MARKETING_VERSION = 3.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.naorandd.buntan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -697,20 +486,12 @@
 				minimumVersion = 12.13.0;
 			};
 		};
-		7F6976692FAB0F3800FB17CB /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+		7F6978DB2FAE412F00FB17CB /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift";
 			requirement = {
-				branch = community;
-				kind = branch;
-			};
-		};
-		7F69766C2FAB0F9700FB17CB /* XCRemoteSwiftPackageReference "XLPagerTabStrip" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/xmartlabs/XLPagerTabStrip";
-			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 9.1.0;
+				minimumVersion = 20.0.4;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -736,15 +517,10 @@
 			package = 7F6976602FAB0E8600FB17CB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
 		};
-		7F69766A2FAB0F3800FB17CB /* RealmSwift */ = {
+		7F6978DC2FAE412F00FB17CB /* RealmSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 7F6976692FAB0F3800FB17CB /* XCRemoteSwiftPackageReference "realm-swift" */;
+			package = 7F6978DB2FAE412F00FB17CB /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
-		};
-		7F69766D2FAB0F9700FB17CB /* XLPagerTabStrip */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 7F69766C2FAB0F9700FB17CB /* XCRemoteSwiftPackageReference "XLPagerTabStrip" */;
-			productName = XLPagerTabStrip;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

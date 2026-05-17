@@ -7,8 +7,10 @@
 
 import Foundation
 
-struct GroupTask {
+struct GroupTask: Hashable, Identifiable {
     var group: String
     var name: String
     var point: Int
+
+    var id: String { "\(group)/\(name)" }
 }

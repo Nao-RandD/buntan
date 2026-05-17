@@ -20,7 +20,16 @@ final class RealmManager {
             migrationBlock: { _, _ in }
         )
         Realm.Configuration.defaultConfiguration = config
-        realm = try! Realm()
+        do {
+            realm = try Realm()
+        } catch {
+            // 旧バージョン（CocoaPods時代）のRealmファイルとフォーマット非互換の場合、
+            // ファイルを削除して再作成する（タスク履歴はリセットされる）
+            if let fileURL = config.fileURL {
+                try? FileManager.default.removeItem(at: fileURL)
+            }
+            realm = try! Realm()
+        }
     }
 
     private func getTaskNumber() -> Int {

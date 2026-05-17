@@ -7,9 +7,11 @@
 
 import Foundation
 
-struct UserInfo {
+struct UserInfo: Identifiable {
     var name: String
     var point: Int
+
+    var id: String { name }
 
     init(name: String, point: Int) {
         self.name = name

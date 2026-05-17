@@ -10,71 +10,68 @@
 
 ### Force-unwrap
 
-既存コードで `UserDefaults` 読み出しや Storyboard キャストに `!` が多用されている。この スタイルは踏襲するが、**新規コードで force-unwrap を増やさない**。
+既存コードで `UserDefaults` 読み出しに `!` が残存している。このスタイルは踏襲するが、**新規コードで force-unwrap を増やさない**。
 
 ```swift
 // 既存スタイル（踏襲する）
 let group = userDefaults.object(forKey: "Group") as! String
-let vc = storyboard?.instantiateViewController(withIdentifier: "Edit") as! EditViewController
 
 // 新規コードでは optional binding を優先する
 guard let group = userDefaults.string(forKey: "Group") else { return }
 ```
 
-### ViewController の構造
+### ViewModel の構造
 
-`extension` と `// MARK:` でセクションを分割する。
+`@Observable` クラスとして実装する。
 
 ```swift
-class FooViewController: UIViewController {
-    // IBOutlet・プロパティ定義
-}
+@MainActor
+@Observable
+class HomeViewModel {
+    var groupTasks: [GroupTask] = []
+    var selectedTask: GroupTask? = nil
 
-// MARK: - Private Func
-extension FooViewController {
-    // 内部ロジック
-}
-
-// MARK: - UITableViewDelegate
-extension FooViewController: UITableViewDelegate, UITableViewDataSource {
-    // テーブルビューのデリゲート実装
-}
-
-// MARK: - Notification Center Extension（必要な場合）
-extension Notification.Name {
-    // 通知名定義
+    func setListener(group: String) {
+        FirebaseManager.shared.setListener { [weak self] tasks in
+            self?.groupTasks = tasks
+        }
+    }
 }
 ```
 
 ### データアクセス
 
-- Firestore への直接アクセスは `FirebaseManager` のメソッドを通じてのみ行う（`DashboardViewController` は既存の例外）
+- Firestore への直接アクセスは `FirebaseManager` のメソッドを通じてのみ行う
 - Realm への直接アクセスは `RealmManager` のメソッドを通じてのみ行う
-- ViewController 内にインライン Firestore / Realm 呼び出しを書かない
+- ViewModel 内にインライン Firestore / Realm 呼び出しを書かない
 
 ### アラート表示
 
-`UIAlertController` を直接生成せず、`ViewController+Extention.swift` のヘルパーを使う。
+SwiftUI の `.alert` modifier を使う。
 
 ```swift
-// OK のみ
-showAlert(title: "タイトル", message: "メッセージ")
-
-// はい / いいえ
-showAlert(title: "確認", message: "実行しますか？",
-          positiveHandler: { /* はい */ },
-          negativeHandler: { /* いいえ */ })
+.alert("確認", isPresented: $showConfirmAlert) {
+    Button("はい") { /* 処理 */ }
+    Button("いいえ", role: .cancel) {}
+} message: {
+    Text("実行しますか？")
+}
 ```
 
-### カスタムセル
+### 行コンポーネント
 
-- 新しいセルは `UITableViewCell` を継承し、同名の `.xib` ファイルとペアで作成する
-- 登録は `register(UINib:forCellReuseIdentifier:)` で行う
-- セルへのデータ設定は `configure(...)` メソッドに集約する
+- 新しい行コンポーネントは `buntan/View/Components/` に `[機能名]RowView.swift` として作成する
+- データは引数で受け取り、ViewModel への参照は持たない（純粋な表示コンポーネント）
 
-### NotificationCenter
+### グループ変更の検知
 
-グループ変更の通知は既存の `.notifyName` を使う。新たに別の通知が必要な場合は `HomeViewController.swift` 末尾の `Notification.Name` 拡張に追記する。
+`AppViewModel.currentGroup` の変化は View 側の `.onChange(of:)` で検知し、ViewModel のメソッドを呼び出す。`NotificationCenter` は使わない。
+
+```swift
+.onChange(of: appVM.currentGroup) { _, newGroup in
+    homeVM.onGroupChanged(group: newGroup)
+}
+```
 
 ### print デバッグ
 
@@ -89,11 +86,30 @@ showAlert(title: "確認", message: "実行しますか？",
 | クラス・構造体・列挙型 | UpperCamelCase | `TaskItem`, `FirebaseManager` |
 | メソッド・変数・プロパティ | lowerCamelCase | `groupTasks`, `sendFirestore()` |
 | 定数（グローバル） | UpperCamelCase | `CurrentSchemaVersion` |
-| IBOutlet | lowerCamelCase + 型サフィックス | `tableView`, `groupLabel`, `nameTextField` |
-| IBAction | `tapped[要素名]` / `did[動作]` | `tappedSendButton`, `didTapSignUpButton` |
-| 通知名 | `notify[内容]` | `notifyName` |
+| ViewModel | `[機能名]ViewModel` | `HomeViewModel`, `AddTaskViewModel` |
+| SwiftUI View（画面） | `[機能名]View` | `HomeView`, `StartAppView` |
+| SwiftUI View（行部品） | `[機能名]RowView` | `TaskRowView`, `RankingRowView` |
 | UserDefaults キー | UpperCamelCase 文字列リテラル | `"Group"`, `"User"`, `"isSetup"` |
-| ステアリングディレクトリ | `YYYYMMDD-kebab-case` | `20250506-add-tag-feature` |
+| ステアリングディレクトリ | `YYYYMMDD-kebab-case` | `20260506-refactor-swiftui` |
+
+---
+
+## Xcode ファイル管理
+
+このプロジェクトは `PBXFileSystemSynchronizedRootGroup`（Xcode フォルダ同期）を使用している。
+`buntan/` 以下の正しいディレクトリにファイルを作成するだけで自動的にビルドターゲットに取り込まれる。
+
+| 操作 | 方法 |
+|---|---|
+| Swift ファイルの追加 | 正しいディレクトリ（例: `buntan/ViewModel/`）に `.swift` ファイルを作成するだけ |
+| Swift ファイルの削除 | ディスクから削除するだけ |
+| アセットの追加 | `Assets.xcassets` を Xcode で開き通常どおり追加 |
+
+**例外:**
+- `Info.plist` は自動同期から除外されており、`PBXFileSystemSynchronizedBuildFileExceptionSet` で明示管理されている
+- `Assets.xcassets` は Xcode の GUI でアセットを追加する（通常どおり）
+
+Xcode の "Add Files to project" 操作やプロジェクトナビゲータからの削除操作は不要。
 
 ---
 

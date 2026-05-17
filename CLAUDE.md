@@ -4,9 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-**buntan** は家事分担を支援するグループ向け UIKit ベースの iOS アプリ。グループに参加してタスクをこなし、ポイントを獲得してランキングを競う。UI 言語は日本語、コードコメントも日本語が多い。
+**buntan** は家事分担を支援するグループ向け SwiftUI ベースの iOS アプリ（MVVM）。グループに参加してタスクをこなし、ポイントを獲得してランキングを競う。UI 言語は日本語、コードコメントも日本語が多い。
 
-- Min iOS: 13.0 | Language: Swift 5.0 | UI: Storyboard + XIB
+- Min iOS: 18.0 | Language: Swift 5.0 | UI: SwiftUI (MVVM + `@Observable`)
 - Dependencies managed via Swift Package Manager (SPM)
 
 ---
@@ -121,33 +121,34 @@ No linter (SwiftLint) is configured.
 
 ## Architecture
 
-MVC pattern with two singleton managers handling all data access:
+MVVM pattern using Swift's `@Observable` macro, with two singleton managers for data access:
 
 - **`RealmManager.shared`** — Local persistence (Realm). Stores `TaskItem` objects (name, point, time) for offline-first task data.
 - **`FirebaseManager.shared`** — Remote persistence (Firestore) + real-time snapshot listeners. Manages groups, group tasks, user rankings.
 
-**Data flow:** ViewControllers call managers directly. Firebase snapshot listeners fire `NotificationCenter.post(.notifyName)` to refresh UI without callback coupling.
+**Data flow:** SwiftUI Views observe `@Observable` ViewModels. ViewModels call managers and update their properties; SwiftUI re-renders automatically.
 
-**State:** `UserDefaults` stores `isLogin`, `isShowTutorial`, and the selected group name. No ViewModel layer or reactive framework.
+**State:** `AppViewModel` is the single source of truth for app-wide state (`isSetup`, `currentUser`, `currentGroup`). It wraps `UserDefaults` and is passed via `.environment(appVM)`. No `NotificationCenter` usage.
 
 ## Key Directories
 
 | Path | Contents |
 |------|----------|
-| `buntan/Model/` | `TaskItem` (Realm-persisted), `UserInfo`, `GroupTask` (in-memory) |
+| `buntan/Model/` | `TaskItem` (Realm-persisted), `UserInfo`, `GroupTask`, `GroupDetail` (in-memory) |
 | `buntan/Utils/` | `RealmManager.swift`, `FirebaseManager.swift` |
-| `buntan/Controller/` | 14 ViewControllers driving all screens |
-| `buntan/View/` | Custom `UITableViewCell` subclasses with paired `.xib` files |
-| `buntan/Animation/` | `TableViewAnimator` + `Tables.swift` — cell animation factory |
-| `buntan/Contents/` | `ViewController+Extention.swift` (alert helpers, `showTutorial`), Realm schema version constant |
+| `buntan/ViewModel/` | `@Observable` ViewModels — one per screen |
+| `buntan/View/Screens/` | SwiftUI screen Views (HomeView, DashboardView, etc.) |
+| `buntan/View/Components/` | Reusable row Views (TaskRowView, RankingRowView, HistoryRowView) |
+| `buntan/Contents/` | `Contents.swift` — Realm schema version constant only |
 
 ## Navigation & UI Patterns
 
-- Storyboard-based segues; `Main.storyboard` is the primary storyboard.
-- `MyTabBarController` wraps the standard `UITabBarController` with custom animation.
-- `XLPagerTabStrip` is used in `AddTaskViewController` for the tabbed task-creation form.
-- Alert presentation uses the extension on `UIViewController` in `ViewController+Extention.swift` — prefer those helpers (`showAlert`, etc.) over inline `UIAlertController` setup.
-- Custom cells registered from `.xib` files; always pair a new cell class with a `.xib` of the same name.
+- `BuntanApp` (`@main`) uses `WindowGroup { RootView().environment(appVM) }` as the entry point.
+- `RootView` switches between `StartAppView` and `MainTabView` based on `appVM.isSetup`.
+- `MainTabView` wraps `NavigationStack { HomeView() }` and `NavigationStack { DashboardView() }` in a `TabView`.
+- Navigation within a tab uses `NavigationStack` + `navigationDestination(for:)` for type-safe routing.
+- `MenuView` and `ProfileView` are presented as `.sheet`.
+- Alerts use the `.alert` modifier on Views — no `UIAlertController` setup.
 
 ## Realm Schema Migrations
 
@@ -155,11 +156,11 @@ The schema version constant lives in `buntan/Contents/Contents.swift`. Increment
 
 ## Firebase / Firestore
 
-`FirebaseManager.shared` is the sole entry point for all Firestore reads and writes. Real-time listeners are attached there and broadcast via `NotificationCenter`. When adding a new Firestore collection or field, add the corresponding CRUD methods to `FirebaseManager` rather than writing Firestore calls inline in a ViewController.
+`FirebaseManager.shared` is the sole entry point for all Firestore reads and writes. Real-time listeners are attached there; ViewModels subscribe in their `setListener` methods and update `@Observable` properties on the main thread. When adding a new Firestore collection or field, add the corresponding CRUD methods to `FirebaseManager` rather than writing Firestore calls inline in a ViewModel.
 
 ## Notable Quirks
 
 - `AppDelegate` overrides the global `print()` function to suppress output in non-DEBUG builds.
-- Force-unwrapping is common throughout (especially `UserDefaults` reads and storyboard casts) — this is the existing style; avoid introducing more.
+- Force-unwrapping is present around `UserDefaults` reads — this is the existing style; avoid introducing more.
 - ドキュメントの作成・更新は段階的に行い、各段階で承認を得る。
 - コード変更後は必ずビルドと型チェックを実施する。
