@@ -8,7 +8,7 @@ struct RootView: View {
             if appVM.isSetup {
                 MainTabView()
             } else {
-                StartAppView()
+                OnboardingView()
             }
         }
         .environment(\.dynamicTypeSize, appVM.dynamicTypeSize)
